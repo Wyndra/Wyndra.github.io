@@ -24,8 +24,10 @@
 <meta property="og:description" content="逻辑处理及循环布尔值扩展在01章，我们已经有所了解比较运算符和逻辑运算符了，接下来我们对它们的结果布尔值再做一些扩展。 12345678910# 显式布尔值# 比如明天是周六，必须满18周岁才可以进入网吧day &#x3D; &#x27;周六&#x27;age &#x3D; 21print(day &#x3D;&#x3D; &#x27;周六&#x27;) # Trueprint(age &gt;&#x3D; 18) # True# 隐式布尔值#">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://srcandy.top/2024/02/23/%E9%80%BB%E8%BE%91%E5%A4%84%E7%90%86%E5%8F%8A%E5%BE%AA%E7%8E%AF/Image.png">
+<meta property="og:image" content="https://srcandy.top/2024/02/23/%E9%80%BB%E8%BE%91%E5%A4%84%E7%90%86%E5%8F%8A%E5%BE%AA%E7%8E%AF/Image(2).png">
+<meta property="og:image" content="https://srcandy.top/2024/02/23/%E9%80%BB%E8%BE%91%E5%A4%84%E7%90%86%E5%8F%8A%E5%BE%AA%E7%8E%AF/Image(3).png">
 <meta property="article:published_time" content="2024-02-23T14:49:37.000Z">
-<meta property="article:modified_time" content="2024-02-23T15:45:18.270Z">
+<meta property="article:modified_time" content="2024-02-23T15:51:51.999Z">
 <meta property="article:author" content="Candy">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://srcandy.top/2024/02/23/%E9%80%BB%E8%BE%91%E5%A4%84%E7%90%86%E5%8F%8A%E5%BE%AA%E7%8E%AF/Image.png">
@@ -302,7 +304,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">while</span> 判断条件(condition)：<br>    执行语句(statements)……<br></code></pre></td></tr></table></figure>
 
 <p><code>condition</code>就是循环条件，当循环条件不满足的时候，就跳出循环。当循环条件满足的时候，就依次执行循环体，执行完循环体后会再次去判断循环条件，如此继续。来看流程图</p>
-
+<img src="/2024/02/23/%E9%80%BB%E8%BE%91%E5%A4%84%E7%90%86%E5%8F%8A%E5%BE%AA%E7%8E%AF/Image(2).png" srcset="/img/loading.gif" lazyload class="" title="This is a picture">
 
 <p>操作执行逻辑就如上图所示，那我们来看实际的代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">num = <span class="hljs-number">0</span><br><span class="hljs-keyword">while</span> num &lt; <span class="hljs-number">10</span>:<br>    <span class="hljs-built_in">print</span>(num)<br></code></pre></td></tr></table></figure>
@@ -366,7 +368,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> 变量名 <span class="hljs-keyword">in</span> 可迭代对象：<br>	循环体<br></code></pre></td></tr></table></figure>
 
 <p>for循环的语法如上，我们来看一个for循环的应用举例</p>
-
+<img src="/2024/02/23/%E9%80%BB%E8%BE%91%E5%A4%84%E7%90%86%E5%8F%8A%E5%BE%AA%E7%8E%AF/Image(3).png" srcset="/img/loading.gif" lazyload class="" title="This is a picture">
 
 <p>我们来看这个循环执行的过程，我们用i来作为一个临时变量，当遇到第一个值的时候，会把“赵”赋值给i，然后打印出来，但是我们加上了xx（字符串的连接），所以输出是“赵xx”。后面依次。</p>
 <p>for循环能做的事情，while循环都可以做，上面的代码我们只需要让while循环遍历0～3即可，然后根据索引去获得对应的值，然后进行操作。代码如下。</p>

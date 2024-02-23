@@ -24,8 +24,13 @@
 <meta property="og:description" content="基本数据类型（详）字符串类型字符串的内置操作首先字符串内置的操作有**，::索引取值、切片、strip去除空格、split拆分、长度Len、成员运算in和not in::**这些。    索引取值：Python为所有的由多个元素组成按顺序排列的，都设置了索引的概念，因此我们可以通过索引取到对应的某个值，当然也可以反向索引 123name &#x3D; &#x27;张xx&#x27;print(name[0]">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E8%AF%A6%EF%BC%89/Image.png">
+<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E8%AF%A6%EF%BC%89/Image(2).png">
+<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E8%AF%A6%EF%BC%89/Image(3).png">
+<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E8%AF%A6%EF%BC%89/Image(4).png">
+<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E8%AF%A6%EF%BC%89/Image(5).png">
+<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E8%AF%A6%EF%BC%89/Image(6).png">
 <meta property="article:published_time" content="2024-02-23T14:49:08.000Z">
-<meta property="article:modified_time" content="2024-02-23T15:48:46.295Z">
+<meta property="article:modified_time" content="2024-02-23T15:51:06.118Z">
 <meta property="article:author" content="Candy">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://srcandy.top/2024/02/23/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E8%AF%A6%EF%BC%89/Image.png">
@@ -311,20 +316,20 @@
 
 <p>右边的值是按照位置一一对应传递给左边的，少一个&#x2F;多一个都会报错，用法就是这样，可以自己试试看当然我们还可以不按照位置传值</p>
 <p>代码如下<strong>（按字典传值）</strong></p>
-
+<img src="/2024/02/23/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E8%AF%A6%EF%BC%89/Image(2).png" srcset="/img/loading.gif" lazyload class="" title="This is a picture">
 
 <p>这时候<strong>原字符串内的%s就要被替换为%(key)s</strong>这样才能完成格式化。由于其是不按位置传值的，所以后面的name，hometown顺序可以更换。</p>
 <h4 id="d格式化输出"><a href="#d格式化输出" class="headerlink" title="%d格式化输出"></a>%d格式化输出</h4><p>%d可以传整型，浮点型的值，会被转换成字符串型，但是传入字符串型就会直接报错。</p>
 <p><strong>::总结：%s可以传任何类型的值进去，其都会被转换成字符串型::</strong></p>
 <h4 id="format格式化输出"><a href="#format格式化输出" class="headerlink" title="format格式化输出"></a>format格式化输出</h4><p>format是Python提供的内置格式化字符串的函数。</p>
-
+<img src="/2024/02/23/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E8%AF%A6%EF%BC%89/Image(3).png" srcset="/img/loading.gif" lazyload class="" title="This is a picture">
 
 <p>当我们在{}内不提供任何内容的时候，是按照传入参数的索引作为位置替换的。当然我们也可以在大括号内添加索引号，{1}就会被填充为Guangzhou</p>
 <p>当然也可以采用key:value的格式来填充</p>
-
+<img src="/2024/02/23/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E8%AF%A6%EF%BC%89/Image(4).png" srcset="/img/loading.gif" lazyload class="" title="This is a picture">
 
 <h4 id="f格式化字符串"><a href="#f格式化字符串" class="headerlink" title="f格式化字符串"></a>f格式化字符串</h4><p>直接来看一个例子</p>
-
+<img src="/2024/02/23/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E8%AF%A6%EF%BC%89/Image(5).png" srcset="/img/loading.gif" lazyload class="" title="This is a picture">
 
 <p>在字符串前面加一个f，并且将要替换的位置用{变量名}替换即可。</p>
 <h2 id="列表类型"><a href="#列表类型" class="headerlink" title="列表类型"></a>列表类型</h2><p>首先我们来了解一下，如何生成一个列表，你可能会疑惑，这个问题我们在第一章已经解决了。还记得我们第一章是怎么解决的么？</p>
@@ -360,7 +365,7 @@
 
 <p>那么既然可以包含可变的对象，那么元组到底不可变了什么呢？</p>
 <p>不可变的是存的内存地址，还记得列表在内存的存储方式么</p>
-
+<img src="/2024/02/23/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E8%AF%A6%EF%BC%89/Image(6).png" srcset="/img/loading.gif" lazyload class="" title="This is a picture">
 
 <p>它不可变的，就是值“a”对应的内存地址等这些。</p>
 <h4 id="元组和列表"><a href="#元组和列表" class="headerlink" title="元组和列表"></a>元组和列表</h4><p>元组是用来存储一组不变的值，那如果我们定义一个列表，我们不去改它，就让他在那里，不就好了么？元组存在的意义是什么呢？列表可以改也可以写。如果一组数据，只有读取的需求，而没有写的需求，那么当然是元组更加节省内存空间，当然，也没有那么省，所以，最好还是该使用元组的时候使用元组。</p>
