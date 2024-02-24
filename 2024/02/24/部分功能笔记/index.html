@@ -1,0 +1,1091 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/candy.png">
+  <link rel="icon" href="/img/candy.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Candy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="部分功能笔记#Android #教程 圆形头像框实现用layer-list来实现 基本思路在 layer-list 中显示一个 item（覆盖四角效果通过 ltrb 实现） 在 item 中实现一个 shape（oval） 添加描边 stroke 使之透明 gradient 实现代码： 12345678910111213141516171819&lt;?xml version&#x3D;&quot;1.0&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部分功能笔记">
+<meta property="og:url" content="https://srcandy.top/2024/02/24/%E9%83%A8%E5%88%86%E5%8A%9F%E8%83%BD%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Candy&#39;s blog">
+<meta property="og:description" content="部分功能笔记#Android #教程 圆形头像框实现用layer-list来实现 基本思路在 layer-list 中显示一个 item（覆盖四角效果通过 ltrb 实现） 在 item 中实现一个 shape（oval） 添加描边 stroke 使之透明 gradient 实现代码： 12345678910111213141516171819&lt;?xml version&#x3D;&quot;1.0&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://srcandy.top/Android%E7%9B%B8%E5%85%B3/%E9%83%A8%E5%88%86%E5%8A%9F%E8%83%BD%E7%AC%94%E8%AE%B0.assets/Image.png">
+<meta property="og:image" content="https://srcandy.top/Android%E7%9B%B8%E5%85%B3/%E9%83%A8%E5%88%86%E5%8A%9F%E8%83%BD%E7%AC%94%E8%AE%B0.assets/Image%20(2).png">
+<meta property="article:published_time" content="2024-02-24T03:30:21.000Z">
+<meta property="article:modified_time" content="2024-02-24T03:39:42.540Z">
+<meta property="article:author" content="Candy">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://srcandy.top/Android%E7%9B%B8%E5%85%B3/%E9%83%A8%E5%88%86%E5%8A%9F%E8%83%BD%E7%AC%94%E8%AE%B0.assets/Image.png">
+  
+  
+  
+  <title>部分功能笔记 - Candy&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"srcandy.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Candy&#39;s small Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="部分功能笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-02-24 11:30" pubdate>
+          2024年2月24日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          55 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">部分功能笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="部分功能笔记"><a href="#部分功能笔记" class="headerlink" title="部分功能笔记"></a>部分功能笔记</h1><p>#Android #教程</p>
+<h1 id="圆形头像框实现"><a href="#圆形头像框实现" class="headerlink" title="圆形头像框实现"></a>圆形头像框实现</h1><p>用<code>layer-list</code>来实现</p>
+<h4 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h4><p>在 layer-list 中显示一个 item（覆盖四角效果通过 ltrb 实现）</p>
+<p>在 item 中实现一个 shape（oval）</p>
+<p>添加描边 stroke</p>
+<p>使之透明 gradient</p>
+<p>实现代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">layer-list</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">item</span> <span class="hljs-attr">android:left</span>=<span class="hljs-string">&quot;-10dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:right</span>=<span class="hljs-string">&quot;-10dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:top</span>=<span class="hljs-string">&quot;-10dp&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">android:bottom</span>=<span class="hljs-string">&quot;-10dp&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">shape</span> <span class="hljs-attr">android:shape</span>=<span class="hljs-string">&quot;oval&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">stroke</span></span><br><span class="hljs-tag">                <span class="hljs-attr">android:width</span>=<span class="hljs-string">&quot;10dp&quot;</span></span><br><span class="hljs-tag">                <span class="hljs-attr">android:color</span>=<span class="hljs-string">&quot;@color/white&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">stroke</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">size</span> <span class="hljs-attr">android:height</span>=<span class="hljs-string">&quot;50dp&quot;</span></span><br><span class="hljs-tag">                <span class="hljs-attr">android:width</span>=<span class="hljs-string">&quot;50dp&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">size</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">gradient</span> <span class="hljs-attr">android:centerColor</span>=<span class="hljs-string">&quot;#0000&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">gradient</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">shape</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">item</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">layer-list</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>::使用方式：将实际头像作为 background，这个样式作为 src::</strong></p>
+<ol start="2">
+<li><h1 id="太阳旋转动画"><a href="#太阳旋转动画" class="headerlink" title="太阳旋转动画"></a>太阳旋转动画</h1></li>
+</ol>
+<p>首先创建一个 anim 文件夹，用于存放动画文件。</p>
+<p>Step1 创建一个 sun_rotate 的 xml 文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">rotate</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:pivotX</span>=<span class="hljs-string">&quot;50%&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:pivotY</span>=<span class="hljs-string">&quot;50%&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:fromDegrees</span>=<span class="hljs-string">&quot;0&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:toDegrees</span>=<span class="hljs-string">&quot;360&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:repeatCount</span>=<span class="hljs-string">&quot;-1&quot;</span></span><br><span class="hljs-tag">    <span class="hljs-attr">android:duration</span>=<span class="hljs-string">&quot;2000&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">rotate</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>以上参数依次含义分别为，3，4 设置中心，5，6 设置动画的旋转角度，0 ～ 360，repeatCount 代表循环次数，这里-1 代表无限循环，duration 循环时间。</p>
+<p>在对应的 fragment 中，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onViewCreated</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> View view, <span class="hljs-meta">@Nullable</span> Bundle savedInstanceState)</span> &#123;<br>        <span class="hljs-type">View</span> <span class="hljs-variable">sun_rotate</span> <span class="hljs-operator">=</span> view.findViewById(R.id.sun_rotate);<br>        <span class="hljs-type">Animation</span> <span class="hljs-variable">anim</span> <span class="hljs-operator">=</span> AnimationUtils.loadAnimation(getContext(),R.anim.sun_rotate);<br>        sun_rotate.startAnimation(anim);<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>首先先获取到需要作用动画的对象，然后在创建一个 Animation 对象，使用<code>AnimationUtils.loadAnimation</code>创建。</p>
+<p>然后将需要作用动画的对象 startAnimation。</p>
+<ol start="3">
+<li><h1 id="Timer-定时器"><a href="#Timer-定时器" class="headerlink" title="Timer 定时器"></a>Timer 定时器</h1></li>
+</ol>
+<p>通过使用 timer 定时器可以执行一些定时任务。</p>
+<p>首先先创建一个 Timer 对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Timer</span> <span class="hljs-variable">timer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Timer</span>()<br></code></pre></td></tr></table></figure>
+
+<p>然后设置这个对象的 schedule</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java">timer.schedule(<span class="hljs-keyword">new</span> <span class="hljs-title class_">TimerTask</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>                activity.runOnUiThread(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;<br>                    <span class="hljs-meta">@Override</span><br>                    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>                        temperature.setText(temp[count%temp.length]);<br>                    &#125;<br>                &#125;);<br>                count = count + <span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;,<span class="hljs-number">0</span>,<span class="hljs-number">3000</span>);<br></code></pre></td></tr></table></figure>
+
+<p>schedule 方法有多种重载形式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">void</span> <span class="hljs-title function_">schedule</span><span class="hljs-params">(TimerTask task, <span class="hljs-type">long</span> delay)</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">schedule</span><span class="hljs-params">(TimerTask task, <span class="hljs-type">long</span> delay, <span class="hljs-type">long</span> period)</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>task</code>：要安排执行的任务，通常是 <code>TimerTask</code> 的一个实例，该实例包含了要执行的逻辑。</li>
+<li><code>delay</code>：任务开始执行的延迟时间（<strong>以毫秒为单位</strong>）。</li>
+<li><code>period</code>：任务执行的间隔时间（<strong>以毫秒为单位</strong>），如果指定该参数，则任务将周期性地执行。</li>
+</ul>
+<p>以下是一些示例用法：</p>
+<ol>
+<li>安排任务在延迟一定时间后执行一次：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Timer</span> <span class="hljs-variable">timer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Timer</span>();<br><span class="hljs-type">TimerTask</span> <span class="hljs-variable">task</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyTask</span>(); <span class="hljs-comment">// 自定义的 TimerTask 子类</span><br>timer.schedule(task, <span class="hljs-number">2000</span>); <span class="hljs-comment">// 延迟 2000 毫秒后执行任务</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>安排任务在延迟一定时间后周期性地执行：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Timer</span> <span class="hljs-variable">timer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Timer</span>();<br><span class="hljs-type">TimerTask</span> <span class="hljs-variable">task</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyTask</span>(); <span class="hljs-comment">// 自定义的 TimerTask 子类</span><br>timer.schedule(task, <span class="hljs-number">1000</span>, <span class="hljs-number">5000</span>); <span class="hljs-comment">// 延迟 1000 毫秒后开始执行任务，之后每隔 5000 毫秒执行一次</span><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><h1 id="Fragment-中调用-Activity"><a href="#Fragment-中调用-Activity" class="headerlink" title="Fragment 中调用 Activity"></a>Fragment 中调用 Activity</h1></li>
+</ol>
+<p>在 Fragment 的生命周期中，当 Fragment 被 detach() 或替换掉的时候，它将与 Activity 解除关联，此时 getActivity() 将返回 null。您可以在解除关联的情况下避免调用 getActivity()。</p>
+<p>也就是说**::直接使用 getActivity()可能无法获取到 Activity::**</p>
+<p>::onAttach 中获取::</p>
+<p>在 Fragment 中，在 onCreate()这个生命周期中，才可以获取到当前的 Activity，**::所以可以定义一个全局变量 activity，然后在 onCreate()这个生命周期中，将当前的 Activity 保存起来::**，这样可以在后面无法获取到 Activity 的时候使用。</p>
+<p>getActivity 的返回类型是 Activity</p>
+<ol start="5">
+<li><h1 id="RecyclerView-使用"><a href="#RecyclerView-使用" class="headerlink" title="RecyclerView 使用"></a>RecyclerView 使用</h1></li>
+</ol>
+<p>首先现在布局文件中加入 RecylcerView，设置 id，便于后面寻找</p>
+<p>设置一个 RecyclerView<strong>Item</strong>（Layout）顾名思义就是一个个 item 的样式。</p>
+<p>新建一个 Java 类（命名方式：**Adapter）</p>
+<p>使其 extends 自 RecyclerView.Adapter&lt;**Adapter.ViewHolder&gt;</p>
+<p>他将会要求你重写以下 3 个方法</p>
+<p><img src="/Android%E7%9B%B8%E5%85%B3/%E9%83%A8%E5%88%86%E5%8A%9F%E8%83%BD%E7%AC%94%E8%AE%B0.assets/Image.png" srcset="/img/loading.gif" lazyload alt="Image.png"></p>
+<p>::在适配器中实现一个<strong>静态类（static class）</strong>这个静态类继承自 RecyclerView.ViewHolder::</p>
+<p><strong>::（类似于 ArrayList&lt;&gt;）泛型（泛型就是一个类）::</strong></p>
+<p>这个类是没有被定义的，那我们就需要实现一个静态类</p>
+<p>关于静态类的解释如下，那么为什么我们需要将这个 ViewHolder 实现为静态类呢，我们可以看下面的解释。</p>
+<ul>
+<li>首先由于其不能被实例化，因此也就不需要 new，而可以直接使用类名进行创建。而且其静态成员可以直接通过类名来访问。</li>
+<li>但是你会发现在代码中，使用到了 new ViewHolder，这是为了创建 ViewHolder 的实例对象以便在 RecyclerView 中使用。</li>
+</ul>
+<blockquote>
+<p>静态类是指在编程中，被定义为静态的类。静态类是一种特殊的类，它不能被实例化，也不能被继承。它只能包含静态成员，即静态字段和静态方法。</p>
+</blockquote>
+<blockquote>
+<p>静态类的特点是：</p>
+</blockquote>
+<ol>
+<li><blockquote>
+<p><strong>不能实例化：由于静态类不能被实例化，因此不能使用 new 关键字创建其对象。</strong></p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>不能被继承：由于静态类不能被继承，因此不能用作其他类的基类。</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>只能包含静态成员：静态类只能包含静态成员，包括静态字段和静态方法。<strong>静态成员可以通过类名直接访问，无需创建类的实例。</strong></p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>静态类的使用场景：</p>
+</blockquote>
+<ol>
+<li><blockquote>
+<p>工具类：静态类常常用于定义工具类，其中包含一些静态方法，这些方法可以被其他类直接调用。</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>静态工厂方法：静态类可以定义静态工厂方法，用于创建类的实例。</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>常量类：静态类可以用于定义一组常量，这样可以方便地在代码中使用这些常量。</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>总之，静态类是一种特殊的类，只能包含静态成员，不能被实例化和继承。它常常用于定义工具类、静态工厂方法和常量类。</p>
+</blockquote>
+<p>然后他将会要求你写一个构造函数。</p>
+<p>你需要在这个构造函数中定义每一个 Item 内的元素。由于 super(itemView)说明其继承了 View，从 itemView 中去 findViewById()</p>
+<p>然后是记得写一个**Adapter 的构造函数，用于将数据类加载到一个私有变量中。</p>
+<p><strong>在 onCreateViewHolder 这个事件方法中，需要生成 ViewHolder</strong></p>
+<p><img src="/Android%E7%9B%B8%E5%85%B3/%E9%83%A8%E5%88%86%E5%8A%9F%E8%83%BD%E7%AC%94%E8%AE%B0.assets/Image%20(2).png" srcset="/img/loading.gif" lazyload alt="Image.png"></p>
+<p><code>LayoutInflater.from</code>需要传入一个 context 因此从<code>parent</code>中<code>getContext</code>，<code>inflate()</code> 是一个常用的方法，它用于将布局文件转换为视图对象，并将其添加到视图层次结构中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">LayoutInfater.from(parent.getContext()).inflate(R.layout.roomnameitem, parent, <span class="hljs-literal">false</span>);<br></code></pre></td></tr></table></figure>
+
+<p>然后使用这个视图对象 new 一个 ViewHolder 并返回。</p>
+<p><strong>在<code>onBindViewHolder</code>中，首先获取数据，然后使用 holder 获取布局 item 文件中的 View，然后再对其设置值。</strong></p>
+<p>最后，在 Fragment 或者 Activity 中，初始化数据，以及对 RecylcerView 设置<strong>布局管理器和适配器。</strong></p>
+<p>如果需要设置项目的点击事件，则需要在<strong>onCreateViewHolder 中设置，因为在 RecyclerView 中每一个 Item 都是一个 ViewHoder</strong></p>
+<p>完整代码（Fragment 中）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">RecyclerView</span> <span class="hljs-variable">RoomName_RV</span> <span class="hljs-operator">=</span> view.findViewById(R.id.RoomNameRecyclerView);<br>        initRoomName();<br>        <span class="hljs-type">LinearLayoutManager</span> <span class="hljs-variable">layoutManager</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinearLayoutManager</span>(getContext());<br>        layoutManager.setOrientation(HORIZONTAL);<br>        RoomName_RV.setLayoutManager(layoutManager);<br>        <span class="hljs-type">RoomNameAdapter</span> <span class="hljs-variable">myadapter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RoomNameAdapter</span>(roomNameArrayList);<br>        RoomName_RV.setAdapter(myadapter);<br></code></pre></td></tr></table></figure>
+
+<p>完整代码（Adapter）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RoomNameAdapter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">RecyclerView</span>.Adapter&lt;RoomNameAdapter.ViewHolder&gt; &#123;<br><br>    <span class="hljs-keyword">private</span> ArrayList&lt;RoomName&gt; mRoomNameArrayList;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">RoomNameAdapter</span><span class="hljs-params">(ArrayList&lt;RoomName&gt; mdata)</span> &#123;<br>        <span class="hljs-built_in">this</span>.mRoomNameArrayList = mdata;<br>    &#125;<br><br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ViewHolder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">RecyclerView</span>.ViewHolder&#123;<br>        Button RoomNames;<br>        <span class="hljs-keyword">public</span> <span class="hljs-title function_">ViewHolder</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> View itemView)</span> &#123;<br>            <span class="hljs-built_in">super</span>(itemView);<br>            RoomNames = itemView.findViewById(R.id.RoomNameItem);<br>        &#125;<br>    &#125;<br>    <span class="hljs-meta">@NonNull</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> RoomNameAdapter.ViewHolder <span class="hljs-title function_">onCreateViewHolder</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> ViewGroup parent, <span class="hljs-type">int</span> viewType)</span> &#123;<br>        <span class="hljs-type">View</span> <span class="hljs-variable">view</span> <span class="hljs-operator">=</span> LayoutInflater.from(parent.getContext()).inflate(R.layout.roomnameitem,parent,<span class="hljs-literal">false</span>);<br>        <span class="hljs-type">ViewHolder</span> <span class="hljs-variable">holder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ViewHolder</span>(view);<br>        holder.RoomNames.setOnClickListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">View</span>.OnClickListener() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onClick</span><span class="hljs-params">(View v)</span> &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">position</span> <span class="hljs-operator">=</span> holder.getAdapterPosition();<br><br>                Log.d(<span class="hljs-string">&quot;tags_fromButton&quot;</span>, (String) holder.RoomNames.getText());<br>                Log.d(<span class="hljs-string">&quot;tags_fromArrayList&quot;</span>, mRoomNameArrayList.get(position).getRoomname());<br>            &#125;<br>        &#125;);<br>        <span class="hljs-keyword">return</span> holder;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onBindViewHolder</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> RoomNameAdapter.ViewHolder holder, <span class="hljs-type">int</span> position)</span> &#123;<br>        <span class="hljs-type">RoomName</span> <span class="hljs-variable">roomName</span> <span class="hljs-operator">=</span> mRoomNameArrayList.get(position);<br>        holder.RoomNames.setText(roomName.getRoomname());<br><br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getItemCount</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> mRoomNameArrayList.size();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><h1 id="ViewPager-的使用"><a href="#ViewPager-的使用" class="headerlink" title="ViewPager 的使用"></a>ViewPager 的使用</h1></li>
+</ol>
+<p>它允许用户在一系列的视图或片段之间水平滑动。ViewPager 常用于创建选项卡或类似幻灯片的用户界面。每个视图或片段代表一个独立的屏幕或页面。</p>
+<p>可以用来创建引导页，配合使用 SharedPreferences 可以实现引导页功能。</p>
+<p><strong>ViewPager 需要使用适配器，PagerAdapter。</strong></p>
+<p>新建一个类，使其继承自 PagerAdapter，你需要重写以下三个方法。</p>
+<blockquote>
+<p><code>instantiateItem(ViewGroup container, int position)</code></p>
+</blockquote>
+<blockquote>
+<p><code>destroyItem(ViewGroup container, int position, Object object)</code></p>
+</blockquote>
+<blockquote>
+<p><code>isViewFromObject(View view, Object object)</code></p>
+</blockquote>
+<p><code>instantiateItem(ViewGroup container, int position)</code> 方法：</p>
+<p>该方法用于实例化给定位置的页面视图。它接收一个 ViewGroup 参数作为容器，该容器是 ViewPager 的父容器，在其中添加页面视图，<strong>可以使用<code>addView</code>加入一个 View，</strong>并返回该页面视图的引用。在此方法中，您需要根据<strong>position 参数（通过在存放 View 的数组中获取元素）</strong>创建页面的视图，并将其添加到 container 中。通常，您可以使用 LayoutInflater 来填充布局资源，并返回填充后的视图。</p>
+<p><code>destroyItem(ViewGroup container, int position, Object object)</code> 方法：</p>
+<p>该方法用于销毁给定位置的页面视图。它接收一个 ViewGroup 参数作为容器，以及要销毁的页面的位置和对象。在此方法中，您需要从 container 中移除该位置的页面视图。</p>
+<p><code>isViewFromObject(View view, Object object)</code> 方法：</p>
+<p>该方法用于判断给定的视图是否来自给定的对象。它接收一个 View 参数作为视图，以及一个 Object 参数作为对象。在此方法中，您需要判断视图是否与对象关联。通常，<strong>您可以使用<code>view == object</code>来判断视图是否与对象相等</strong>。</p>
+<p><strong>::如何把布局文件转换为视图（View）::</strong></p>
+<p>使用 LayoutInflater，共有两种方法可以获取 LayoutInflater</p>
+<p><code>LayoutInflater.from(context)</code> 和 <code>getLayoutInflater()</code> 都是用于获取 LayoutInflater 实例的方法，但它们在调用时略有不同。</p>
+<p><code>LayoutInflater.from(context)：</code></p>
+<p>这是 LayoutInflater 类的静态方法，将给定的上下文对象作为参数，并返回与该上下文关联的 LayoutInflater 实例。这种方法通常用于获取应用程序级别的 LayoutInflater 实例。可以使用以下代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">LayoutInflater</span> <span class="hljs-variable">inflater</span> <span class="hljs-operator">=</span> LayoutInflater.from(context);<br><span class="hljs-type">View</span> <span class="hljs-variable">view</span> <span class="hljs-operator">=</span> inflater.inflate(R.layout.my_layout, <span class="hljs-literal">null</span>);<br></code></pre></td></tr></table></figure>
+
+<p>通过从上下文获取 LayoutInflater 实例，您可以在任何位置使用它来解析布局资源并创建视图。这种方法适用于 Activity、Fragment 和自定义 View。</p>
+<p><code>getLayoutInflater()：</code></p>
+<p>getLayoutInflater() 是 Context 类的实例方法，<strong>用于在 Activity 或 Fragment 中获取 LayoutInflater 实例</strong>。这个方法<strong>从当前上下文返回一个 LayoutInflater 对象</strong>。可以使用以下代码示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">LayoutInflater</span> <span class="hljs-variable">inflater</span> <span class="hljs-operator">=</span> getLayoutInflater();<br><span class="hljs-type">View</span> <span class="hljs-variable">view</span> <span class="hljs-operator">=</span> inflater.inflate(R.layout.my_layout, <span class="hljs-literal">null</span>);<br></code></pre></td></tr></table></figure>
+
+<p>这个方法更适合在 Activity 或 Fragment 中使用。它简化了代码，因为不需要显式地获取上下文对象来调用 LayoutInflater.from(context)。</p>
+<p>如果需要在底部需要实现指示点的功能，则需要添加一个 ArrayList，在 ViewPager 触发了 addOnPageChangeListener 的 onPageSelected 事件中，添加一个设置当前位置的 dots 颜色或者样式改变。</p>
+<p>可以通过<code>setCurrentItem()</code>或者<code>getCurrentItem()</code>来设置或者得到当前所选中的 position 位置。</p>
+<ol start="7">
+<li><h1 id="登录的一系列逻辑实现"><a href="#登录的一系列逻辑实现" class="headerlink" title="登录的一系列逻辑实现"></a>登录的一系列逻辑实现</h1></li>
+</ol>
+<p><strong>“清空按钮”</strong></p>
+<p>设置输入框的内容为空，这个不难。</p>
+<p><strong>“显示密码&#x2F;隐藏密码”</strong></p>
+<p>首先需要设置密码输入框<code>inputType=&quot;textPassword&quot;</code>这样在一开始输入的时候，密码就是密文。</p>
+<p>然后当点击“小眼睛”后，小眼睛状态改变，使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">setTransformationMethod(PasswordTransformationMethod.getInstance());<br><span class="hljs-comment">// 将明文密码变为密文显示</span><br>setTransformationMethod(HideReturnsTransformationMethod.getInstance())<br><span class="hljs-comment">// 将密文返回为明文</span><br></code></pre></td></tr></table></figure>
+
+<p>如何记忆，如果想要文本变成<strong>密码</strong>就用<strong>Password</strong>…，如果想要<strong>密码返回</strong>为文本<strong>HideReturns</strong>…</p>
+<p>在用户输入用户名和密码后，点击登录按钮后，需要做的事情。</p>
+<ol>
+<li>判空（判断是否输入为空，为空就提示，并 return 终止当前方法，提前结束）</li>
+<li>账号或密码错误（根据返回结果 code 判断，清空输入框并显示 msg）</li>
+<li>账号或密码输入正确，判断是否勾选了“记住密码”，如果勾选，则将<strong>账号，密码，记住密码状态</strong>保存至 SharedPreferences，并修改 isRemember 的值为 ture；否则不做操作。</li>
+<li>然后将请求获得的 token 用 SharedPreferences 保存起来。</li>
+<li>当用户再次打开主页的时候检查 SharedPreference 是否有保存的 token，如果有，直接登录，如果没有，那就跳转至登录页。</li>
+<li>当用户再次打开登录页面的时候，判断 SharedPreferences 中的 isRemember 的值，如果为 true，则读取 SharedPreferences 中的用户名和密码，并勾选“记住密码”选项。否则则不做操作。</li>
+</ol>
+<p>如何实现一个简单的提示区域，在界面准备一个 TextView。并写一个 sendMessage 函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendMessage</span><span class="hljs-params">(TextView v, String text, <span class="hljs-type">int</span> duration)</span> &#123;<br>        v.setText(text);<br>        <span class="hljs-type">Timer</span> <span class="hljs-variable">timer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Timer</span>();<br>        timer.schedule(<span class="hljs-keyword">new</span> <span class="hljs-title class_">TimerTask</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>                runOnUiThread(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;<br>                    <span class="hljs-meta">@Override</span><br>                    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>                        v.setText(<span class="hljs-string">&quot;&quot;</span>);<br>                    &#125;<br>                &#125;);<br>                timer.cancel();<br>            &#125;<br>        &#125;, duration);<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>这个函数需要传入三个参数，一个是需要显示的 TextView 的对象，然后是需要显示的文本，再是一个持续时间，通过一个计时器，在指定时间后将 TextView 的对象，清空。</p>
+<p><strong>::很多时候，在使用 okhttp 发送请求的时候，client 是可以共用的，因此，建议将 client 定义为类的成员变量，并立刻初始化。::</strong></p>
+<p>然后每一个 Request 在具体方法中去定义，通过调用<code>new Request.Builder()</code>创建一个<code>Requeat.Builder</code>对象，并调用其内部方法设置 url 和其他信息，最后调用<code>build()</code>方法构建实际的 Request 对象。</p>
+<ol start="8">
+<li><h1 id="当需要显示的头像为网络图片"><a href="#当需要显示的头像为网络图片" class="headerlink" title="当需要显示的头像为网络图片"></a>当需要显示的头像为网络图片</h1></li>
+</ol>
+<p>配合使用之前创建圆形头像的方式，需要将网络图片设置为 ImageView 的 background，所以则需要对目标 ImageView 设置 setBackground，这个方法需要传入一个参数 Drawable，需要 createFormStream。这样就可以完成网络图片的显示。在创建完一个 Thread 后不要忘记 start 一下。</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;<br>                    <span class="hljs-meta">@Override</span><br>                    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>                        <span class="hljs-keyword">try</span> &#123;<br>                            <span class="hljs-type">InputStream</span> <span class="hljs-variable">is</span> <span class="hljs-operator">=</span> (InputStream) <span class="hljs-keyword">new</span> <span class="hljs-title class_">URL</span>(url + <span class="hljs-string">&quot;/&quot;</span> + avatarurl).getContent();<br>                            <span class="hljs-keyword">final</span> <span class="hljs-type">Drawable</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> Drawable.createFromStream(is,<span class="hljs-string">&quot;src&quot;</span>);<br>                            is.close();<br>                            runOnUiThread(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Runnable</span>() &#123;<br>                                <span class="hljs-meta">@Override</span><br>                                <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>                                    avator_view.setBackground(d);<br>                                &#125;<br>                            &#125;);<br>                        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                            e.printStackTrace();<br>                        &#125;<br>                    &#125;<br>                &#125;).start();<br></code></pre></td></tr></table></figure>
+
+<ol start="9">
+<li><h1 id="Gson-的使用方法"><a href="#Gson-的使用方法" class="headerlink" title="Gson 的使用方法"></a>Gson 的使用方法</h1></li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;200&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;verifySuccess&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;userInfo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>                <span class="hljs-punctuation">&#123;</span><br>                    <span class="hljs-attr">&quot;time&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2022/12/12&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;南方航空&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;starttime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;19:35&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;endtime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;23:45&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;number&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;CZ1360&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;lowestprice&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1000&quot;</span><br>                <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>                <span class="hljs-punctuation">&#123;</span><br>                    <span class="hljs-attr">&quot;time&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2022/12/12&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;南方航空&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;starttime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;10:25&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;endtime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;11:45&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;number&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;CZ3380&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;lowestprice&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;14025&quot;</span><br>                <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>                <span class="hljs-punctuation">&#123;</span><br>                    <span class="hljs-attr">&quot;time&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2022/12/12&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;山东航空&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;starttime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;10:35&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;endtime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;21:55&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;number&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;SC1234&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;lowestprice&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;950&quot;</span><br>                <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>                <span class="hljs-punctuation">&#123;</span><br>                    <span class="hljs-attr">&quot;time&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2022/12/12&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;深圳航空&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;starttime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;11:35&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;endtime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;13:15&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;number&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ZH7581&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;lowestprice&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;720&quot;</span><br>                <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>                <span class="hljs-punctuation">&#123;</span><br>                    <span class="hljs-attr">&quot;time&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2022/12/12&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;四川航空&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;starttime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;15:35&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;endtime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;17:42&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;number&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;3U1025&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;lowestprice&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;789&quot;</span><br>                <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>                <span class="hljs-punctuation">&#123;</span><br>                    <span class="hljs-attr">&quot;time&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2022/12/12&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;厦门航空&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;starttime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;16:15&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;endtime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;18:15&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;number&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;MF8517&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;lowestprice&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2100&quot;</span><br>                <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>                <span class="hljs-punctuation">&#123;</span><br>                    <span class="hljs-attr">&quot;time&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2022/12/12&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;春秋航空&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;starttime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;23:35&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;endtime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;01:45&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;number&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;9C2917&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-attr">&quot;lowestprice&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;350&quot;</span><br>                <span class="hljs-punctuation">&#125;</span><br>            <span class="hljs-punctuation">]</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>如上，是一组示例数据，数据量其实并不大，但是由于层级关系复杂，我们并不能快速反序列化到我们想要的数据，我们想要<strong>子 data</strong>中的每一个数据的信息。先进行一下分析。我们可以看到，他的最外层，是由一个 code 和一个 data 组成的，data 是被作为一个嵌套的 json 数据被存储的，因此我们将 data 类型定义为<code>JsonObject</code>类型，然后创建 Getter 和 Setter 方法，代码如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Search</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> code;<br>    <span class="hljs-keyword">private</span> JsonObject data;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Search</span><span class="hljs-params">(<span class="hljs-type">int</span> code, JsonObject data)</span> &#123;<br>        <span class="hljs-built_in">this</span>.code = code;<br>        <span class="hljs-built_in">this</span>.data = data;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getCode</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> code;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setCode</span><span class="hljs-params">(<span class="hljs-type">int</span> code)</span> &#123;<br>        <span class="hljs-built_in">this</span>.code = code;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> JsonObject <span class="hljs-title function_">getData</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> data;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setData</span><span class="hljs-params">(JsonObject data)</span> &#123;<br>        <span class="hljs-built_in">this</span>.data = data;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>接下来，由于子 data 中的信息才是我们最终想要获取的，因此我们还需要建立一个类，用于存放子 data 的数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">UserInfoData</span>&#123;<br>    <span class="hljs-keyword">private</span> String time,name,starttime,endtime,number,lowestprice;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getTime</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> time;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setTime</span><span class="hljs-params">(String time)</span> &#123;<br>        <span class="hljs-built_in">this</span>.time = time;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getStarttime</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> starttime;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setStarttime</span><span class="hljs-params">(String starttime)</span> &#123;<br>        <span class="hljs-built_in">this</span>.starttime = starttime;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getEndtime</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> endtime;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setEndtime</span><span class="hljs-params">(String endtime)</span> &#123;<br>        <span class="hljs-built_in">this</span>.endtime = endtime;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getNumber</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> number;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setNumber</span><span class="hljs-params">(String number)</span> &#123;<br>        <span class="hljs-built_in">this</span>.number = number;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getLowestprice</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> lowestprice;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setLowestprice</span><span class="hljs-params">(String lowestprice)</span> &#123;<br>        <span class="hljs-built_in">this</span>.lowestprice = lowestprice;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">UserInfoData</span><span class="hljs-params">(String time, String name, String starttime, String endtime, String number, String lowestprice)</span> &#123;<br>        <span class="hljs-built_in">this</span>.time = time;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.starttime = starttime;<br>        <span class="hljs-built_in">this</span>.endtime = endtime;<br>        <span class="hljs-built_in">this</span>.number = number;<br>        <span class="hljs-built_in">this</span>.lowestprice = lowestprice;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>格式如上，接下来，就是使用 Gson 转换的部分。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Search</span> <span class="hljs-variable">data</span> <span class="hljs-operator">=</span> gson.fromJson(result,Search.class);<br>                        Log.d(<span class="hljs-string">&quot;tags_root&quot;</span>,result);<br>                        Log.d(<span class="hljs-string">&quot;tags_code&quot;</span>,String.valueOf(data.getCode()));<br>                        ArrayList&lt;UserInfoData&gt; userInfoDataArrayList = gson.fromJson(data.getData().getAsJsonObject(<span class="hljs-string">&quot;userInfo&quot;</span>).get(<span class="hljs-string">&quot;data&quot;</span>),<span class="hljs-keyword">new</span> <span class="hljs-title class_">TypeToken</span>&lt;ArrayList&lt;UserInfoData&gt;&gt;()&#123;&#125;.getType());<br>                        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i &lt; userInfoDataArrayList.size();i++)&#123;<br>                            Log.d(<span class="hljs-string">&quot;tags_name&quot;</span>,userInfoDataArrayList.get(i).getName());<br>                        &#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="10">
+<li><h1 id="如何调用-GPS-定位服务"><a href="#如何调用-GPS-定位服务" class="headerlink" title="如何调用 GPS 定位服务"></a>如何调用 GPS 定位服务</h1></li>
+</ol>
+<p>首先，我们在调用定位服务之前，需要在 AndroidManifest.xml 清单列表中添加以下权限</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.INTERNET&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACCESS_FINE_LOCATION&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;android.permission.ACCESS_COARSE_LOCATION&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>分别为网络权限，精准定位权限，粗略定位权限。</p>
+<p>在 Android 6.0（API 级别 23）开始，对于一些敏感权限，应用程序需要在运行时请求用户授予这些权限。这个机制被称为运行时权限系统。</p>
+<p>在运行时权限系统中，您需要在代码中请求权限，并在用户授予或拒绝权限后处理相应的逻辑。</p>
+<p><strong>你可以将权限检查前置，如果不符合则请求权限。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &amp;&amp; checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) &#123;<br>            String[] permission = &#123;Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION&#125;;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">requestCode</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>            requestPermissions(permission, requestCode);<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<p>在此之后，你可以定义一个</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">LocationManager</span> <span class="hljs-variable">locationManager</span> <span class="hljs-operator">=</span> (LocationManager) <span class="hljs-built_in">this</span>.getSystemService(Context.LOCATION_SERVICE);<br></code></pre></td></tr></table></figure>
+
+<p>得到一个 LocationManager 对象。在次之前，你还需要再做一个操作“确保用户的 GPS 已经开启”方法体如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insureGPSisOpen</span><span class="hljs-params">(LocationManager locationManager)</span> &#123;<br>        <span class="hljs-keyword">if</span>(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))&#123;<br>            Toast.makeText(<span class="hljs-built_in">this</span>,<span class="hljs-string">&quot;请开启GPS导航&quot;</span>,Toast.LENGTH_SHORT).show();<br>            <span class="hljs-type">Intent</span> <span class="hljs-variable">intent</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Intent</span>(Settings.ACTION_LOCATION_SOURCE_SETTINGS);<br>            startActivity(intent);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        Log.d(<span class="hljs-string">&quot;tags_open&quot;</span>,<span class="hljs-string">&quot;ture&quot;</span>);<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>这是一个方法，会通过 isProviderEnable，检查 GPS_PROVIDER 是否开启，如果如果没开启，会提示，并跳转到设置页面。</p>
+<p>然后再创建一个 LocationListener，位置监听器，在这里可以重写一些事件接口，在这里我是这样定义的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">LocationListener</span> <span class="hljs-variable">locationListener</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">LocationListener</span>() &#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onLocationChanged</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> Location location)</span> &#123;<br>                Log.d(<span class="hljs-string">&quot;tag_location&quot;</span>,<span class="hljs-string">&quot;经度：&quot;</span> + location.getLongitude());<br>                Log.d(<span class="hljs-string">&quot;tag_location&quot;</span>,<span class="hljs-string">&quot;纬度：&quot;</span> + location.getLatitude());<br>                <span class="hljs-comment">// getAddress(location);</span><br>            &#125;<br><br>        &#125;;<br></code></pre></td></tr></table></figure>
+
+<p>当位置信息发生改变的时候，将会输出位置的经纬度。</p>
+<p>然后需要做最后一步操作，调用<code>LocationManager</code>类的内部方法，<code>requestLocationUpdates</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,<span class="hljs-number">1000</span>,<span class="hljs-number">1</span>,locationListener);<br></code></pre></td></tr></table></figure>
+
+<p><code>locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, locationListener)</code> 是通过 <code>LocationManager</code> 请求位置更新的方法调用。该方法的参数含义如下：</p>
+<blockquote>
+<p><code>LocationManager.GPS_PROVIDER</code>：指定了<code>位置提供者为 GPSPROVIDER</code>，即使用 GPS 定位设备的位置信息。您也可以使用其他位置提供者，如 NETWORKPROVIDER 或 PASSIVE_PROVIDER，根据您的需求和可用的位置服务来选择合适的提供者。</p>
+</blockquote>
+<blockquote>
+<p><code>1000</code>：指定了<code>位置更新的最小时间间隔（以毫秒为单位）</code>。在本例中，时间间隔设置为 1000 毫秒（1 秒），表示每隔 1 秒获取一次位置更新。</p>
+</blockquote>
+<blockquote>
+<p><code>1</code>：指定了<code>位置更新的最小距离间隔（以米为单位）</code>。在本例中，距离间隔设置为 1 米，表示只有位置偏移大于或等于 1 米时才会触发位置更新。</p>
+</blockquote>
+<blockquote>
+<p><code>locationListener</code>：传入<code>实现了 LocationListener 接口的对象</code>，用于<strong>接收位置更新回调和处理位置信息变化</strong>。</p>
+</blockquote>
+<blockquote>
+<p>通过调用 <code>requestLocationUpdates()</code> 方法并传递适当的参数，您可以让 LocationManager 开始监听指定位置提供者的位置变化，并在满足时间间隔和距离间隔条件时调用 <code>onLocationChanged()</code> 方法，向 <code>locationListener</code> 对象传递最新的位置信息。</p>
+</blockquote>
+<ol start="11">
+<li><h1 id="SQLite-的相关操作"><a href="#SQLite-的相关操作" class="headerlink" title="SQLite 的相关操作"></a>SQLite 的相关操作</h1></li>
+</ol>
+<p>SQLite 是一种嵌入式数据库管理系统，它是轻量级且开源的。它提供了一个在本地设备上存储和访问数据的简单方法，适用于移动应用和小型项目。SQLite 支持标准的 SQL 查询语句，并提供事务处理和数据完整性。使用 SQLite，开发者可以方便地管理和操作本地的数据。</p>
+<p>在 Android 中使用 SQLite 首先需要新建一个自定义类，在这个类当中继承一个<code>SQLiteOpenHelper</code>这个类，接下来，在这个类当中，会让我们实现两个方法 onCreate 和 onUpgrade</p>
+<ol start="12">
+<li><h1 id="发送通知-📢"><a href="#发送通知-📢" class="headerlink" title="发送通知 📢"></a>发送通知 📢</h1></li>
+</ol>
+<p>代写（等待）</p>
+<ol start="13">
+<li><h1 id="BaseAdapter-的使用"><a href="#BaseAdapter-的使用" class="headerlink" title="BaseAdapter 的使用"></a>BaseAdapter 的使用</h1></li>
+</ol>
+<p>首先什么是 Adapter，Adapter 就是 View 和数据的桥梁。他会帮助你自动绘制 view 并且填充数据。</p>
+<p>首先我们需要新建一个类，这个类继承自 BaseAdapter，并且实现它的四个基础方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyBaseAdapter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseAdapter</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getCount</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">getItem</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">long</span> <span class="hljs-title function_">getItemId</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> View <span class="hljs-title function_">getView</span><span class="hljs-params">(<span class="hljs-type">int</span> position, View convertView, ViewGroup parent)</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>下面将具体介绍这些方法的作用。</p>
+<ul>
+<li><strong>getCount : 要绑定的条目的数目，比如格子的数量</strong></li>
+<li>getItem : 根据一个索引（位置）获得该位置的对象</li>
+<li>getItemId : 获取条目的 id</li>
+<li><strong>getView : 获取该条目要显示的界面</strong></li>
+</ul>
+<p>可以简单理解为，adapter 首先需要从 getCount 中获取数量，然后循环执行 getView 来将一个个 View 绘制出来。因此我们必须重新这两个方法。</p>
+<p>那么我们该如何显示一个自定义布局呢，首先创建一个 layout，使用 LayoutInflater 来加载布局，其中的 inflate 就可以将 item 布局绘制出来。<strong>用 inflate 方法绘制好后的 view 最后 return 返回给 getView 方法就可以了。</strong></p>
+<p>其中 getView 方法中的三个参数</p>
+<ul>
+<li>position 是指现在是第几个条目；</li>
+<li>::convertView 是旧视图，就是绘制好了的视图；::</li>
+<li>parent 是父级视图，类似于 ListView 这类；</li>
+</ul>
+<h3 id="🌟-BaseAdapter-的优化使用"><a href="#🌟-BaseAdapter-的优化使用" class="headerlink" title="::🌟 BaseAdapter 的优化使用::"></a>::🌟 BaseAdapter 的优化使用::</h3><p>为什么要优化呢，是他不好用么？那倒不至于，只是可以让他更好用。首先理解一下::convertView::是旧视图是什么意思呢。就是 ListView 如果超出了屏幕（视口），滑动隐藏的部分，就会被隐藏一部分，那么这一部分就会被保存到 convertView 中。如果是之前的写法，我们没有使用 convertView，<strong>重新创建一个 View，这样很浪费资源</strong>，那么该怎么修改呢？</p>
+<p>首先新建一个 ViewHolder 类，用来标记我们的控件。接下来在 getView 方法中，Adapte 先使用 inflate 方法创建一个 view 对象，然后在这个 view 中找到每一个控件。当我们第一次创建 convertView 对象的时候，就把这些控件找出来，然后使用 setTag 将其设置到 Tag 中，便于系统第二次绘制的时候，可以直接从 Tag 中取出。</p>
+<p>下面是源代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">myBaseAdapter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">android</span>.widget.BaseAdapter &#123;<br>    <span class="hljs-keyword">private</span> ArrayList&lt;Map&lt;String, Object&gt;&gt; mlist;<br>    <span class="hljs-comment">// 数据信息</span><br>    <span class="hljs-keyword">private</span> Context context;<br>    <span class="hljs-keyword">private</span> ImageView iv;<br><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">myBaseAdapter</span><span class="hljs-params">(Context context, ArrayList&lt;Map&lt;String, Object&gt;&gt; mlist)</span> &#123;<br>        <span class="hljs-built_in">this</span>.context = context;<br>        <span class="hljs-built_in">this</span>.mlist = mlist;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getCount</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> mlist.size();<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">getItem</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> &#123;<br>        <span class="hljs-keyword">return</span> mlist.get(position);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">long</span> <span class="hljs-title function_">getItemId</span><span class="hljs-params">(<span class="hljs-type">int</span> position)</span> &#123;<br>        <span class="hljs-keyword">return</span> position;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> View <span class="hljs-title function_">getView</span><span class="hljs-params">(<span class="hljs-type">int</span> position, View convertView, ViewGroup parent)</span> &#123;<br>        <span class="hljs-type">View</span> <span class="hljs-variable">view</span> <span class="hljs-operator">=</span> LayoutInflater.from(context).inflate(R.layout.item_devicetemp, <span class="hljs-literal">null</span>);<br>        <span class="hljs-type">TextView</span> <span class="hljs-variable">tv</span> <span class="hljs-operator">=</span> view.findViewById(R.id.item_device_name_tv);<br><br>        <span class="hljs-comment">// 使用ViewHolder 解决滑动后 图片需要重新载入</span><br>        <span class="hljs-type">ViewHolder</span> <span class="hljs-variable">holder</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">if</span> (convertView == <span class="hljs-literal">null</span>) &#123;<br>            convertView = LayoutInflater.from(context).inflate(R.layout.item_devicetemp, <span class="hljs-literal">null</span>);<br>            holder = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ViewHolder</span>();<br>            holder.imageView = convertView.findViewById(R.id.item_device_image_im);<br>            holder.tv = convertView.findViewById(R.id.item_device_name_tv);<br>            convertView.setTag(holder);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            holder = (ViewHolder)convertView.getTag();<br>        &#125;<br>        <span class="hljs-comment">// 用while循环等待一会，解决bitmap数据不全</span><br>        <span class="hljs-keyword">while</span> (mlist.get(position).get(<span class="hljs-string">&quot;icon&quot;</span>) == <span class="hljs-literal">null</span>)&#123;<br>        &#125;<br>        holder.imageView.setImageBitmap((Bitmap) mlist.get(position).get(<span class="hljs-string">&quot;icon&quot;</span>));<br>        holder.tv.setText((String) mlist.get(position).get(<span class="hljs-string">&quot;device_name&quot;</span>));<br>        <span class="hljs-keyword">return</span> convertView;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ViewHolder</span> &#123;<br>        <span class="hljs-keyword">public</span> ImageView imageView;<br>        <span class="hljs-keyword">public</span> TextView tv;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果你需要在 GridView 或者 ListView 中加载图片，但是由于图片是从网络请求的结果，导致显示不全或者说显示部分，需要通过刷新或者滚动才能继续显示，那么你可以尝试 while 循环来进行等待。并且使用优化，来使得其更加流畅。</p>
+<ol start="14">
+<li><h1 id="页面跳转动画-—-overridePendingTransition"><a href="#页面跳转动画-—-overridePendingTransition" class="headerlink" title="页面跳转动画 — overridePendingTransition"></a>页面跳转动画 — overridePendingTransition</h1></li>
+</ol>
+<p>很长的名字，解析一下</p>
+<ul>
+<li>override 是重写&#x2F;覆盖的意思</li>
+<li>pending 表示即将到来的</li>
+<li>transtition 表示过渡，转换</li>
+</ul>
+<p>即 <strong>覆盖即将到来的跳转动画</strong> 也就是可以通过这个方法来设置页面之间的跳转动画。</p>
+<p>Activity 的切换动画从业务层面上来说可以分为两种，一种是<strong>Activity 启动时的动画</strong>，一种是从<strong>Activity 返回时的动画</strong>，它们**::都可以通过 overridePendingTransition()::**来设置。</p>
+<p>页面跳转到动画，必须在 startActivity(intent)之后执行，但是这样<strong>第一个进入的 Activity（主 Activity）则无法实现进入动画效果</strong>。经试验发现::只在 onCreate 方法的 super.onCreate(savedInstanceState)；方法之前调用 overridePendingTransition 就可以生效。::</p>
+<ol start="15">
+<li><h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2></li>
+</ol>
+<p>Android 将所有的权限归为了两类，包括了<strong>普通权限和危险权限，</strong>其实准确来说应该包含三类，还有一类是特殊权限。但是其实一般用不到，普通权限可以在 AndroidManifest.xml 直接申请，系统会自动帮我们进行授权，危险权限包括了那些可能触及用户隐私或者对设备安全造成威胁的权限，这些权限需要用户手动点击授权才行，否则将无法运行。</p>
+<p><strong>除了危险权限的就是普通权限，下面列出了危险权限。</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>权限组名</strong></th>
+<th><strong>权限名称</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CALENDAR（日历）</td>
+<td>READ_CALENDAR</td>
+</tr>
+<tr>
+<td></td>
+<td>WRITE_CALENDAR</td>
+</tr>
+<tr>
+<td>CAMERA（相机）</td>
+<td>CAMERA</td>
+</tr>
+<tr>
+<td>CONTACTS（联系人）</td>
+<td>READ_CONTACTS</td>
+</tr>
+<tr>
+<td></td>
+<td>WRITE_CONTACTS</td>
+</tr>
+<tr>
+<td></td>
+<td>GET_ACCOUNTS</td>
+</tr>
+<tr>
+<td>LOCATION（位置）</td>
+<td>ACCESS_FINE_LOCATION</td>
+</tr>
+<tr>
+<td></td>
+<td>ACCESS_COARSE_LOCATION</td>
+</tr>
+<tr>
+<td>MICROPHONE（麦克风）</td>
+<td>RECORD_AUDIO</td>
+</tr>
+<tr>
+<td>PHONE（手机）</td>
+<td>READ_PHONE_STATE</td>
+</tr>
+<tr>
+<td></td>
+<td>CALL_PHONE</td>
+</tr>
+<tr>
+<td></td>
+<td>ERAD_CALL_LOG</td>
+</tr>
+<tr>
+<td></td>
+<td>WRITE_CALL_LOG</td>
+</tr>
+<tr>
+<td></td>
+<td>ADD_VOICEMAIL</td>
+</tr>
+<tr>
+<td></td>
+<td>USE_SIP</td>
+</tr>
+<tr>
+<td></td>
+<td>PROCESS_OUTGOING_CALLS</td>
+</tr>
+<tr>
+<td>SENSORS（传感器）</td>
+<td>BODY_SENSORS</td>
+</tr>
+<tr>
+<td>SMS（短信）</td>
+<td>SEND_SMS</td>
+</tr>
+<tr>
+<td></td>
+<td>RECEIVE_SMS</td>
+</tr>
+<tr>
+<td></td>
+<td>READ_SMS</td>
+</tr>
+<tr>
+<td></td>
+<td>RECEIVE_WAP_PUSH</td>
+</tr>
+<tr>
+<td></td>
+<td>RECEIVE_MMS</td>
+</tr>
+<tr>
+<td>STORAGE（存储卡）</td>
+<td>READ_EXTERNAL_STORAGE</td>
+</tr>
+<tr>
+<td></td>
+<td>WRITE_EXTERNAL_STORAGE</td>
+</tr>
+</tbody></table>
+<p>其实，你都能懂，因为危险权限就是你不希望 APP 在使用的时候被使用的，或者说侵犯你个人隐私 🙅 的权限。</p>
+<p><strong>注意一下：每一个危险权限都属于一个权限组，我们在运行权限的时使用的是权限名，当用户一旦同意授权，那么该权限所对应的权限组的所有其他权限都会被同时授权。</strong></p>
+<p>接下来则需要在程序运行时申请权限，我们将写一个获取定位信息的 Demo</p>
+<ol start="16">
+<li><h1 id="如何在平板中隐藏-Dock-栏"><a href="#如何在平板中隐藏-Dock-栏" class="headerlink" title="如何在平板中隐藏 Dock 栏"></a>如何在平板中隐藏 Dock 栏</h1></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);<br></code></pre></td></tr></table></figure>
+
+<p>通过此方法隐藏 dock 栏</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 隐藏状态栏</span><br>getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);<br><span class="hljs-comment">// 显示状态栏</span><br>getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);<br></code></pre></td></tr></table></figure>
+
+<p>通过这些方法隐藏&#x2F;显示状态栏</p>
+<ol start="17">
+<li><h1 id="下拉刷新怎么实现～"><a href="#下拉刷新怎么实现～" class="headerlink" title="下拉刷新怎么实现～"></a>下拉刷新怎么实现～</h1></li>
+</ol>
+<p>下拉属性可以使用 SwipeRefreshLayout 可以实现，可以搭配 RecyclerView 去实现，</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Android%E6%95%99%E7%A8%8B/" class="category-chain-item">Android教程</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%99%E7%A8%8B/" class="print-no-link">#教程</a>
+      
+        <a href="/tags/Android/" class="print-no-link">#Android</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>部分功能笔记</div>
+      <div>https://srcandy.top/2024/02/24/部分功能笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Candy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年2月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/02/24/%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E7%AC%94%E8%AE%B0/" title="功能实现笔记">
+                        <span class="hidden-mobile">功能实现笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      浙ICP备2023031974号
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
