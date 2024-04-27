@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%BC%B9%E6%80%A7%E7%9B%92%E5%B8%83%E5%B1%80/%E5%BC%B9%E6%80%A7%E7%9B%92%E5%B8%83%E5%B1%80-20240106143416555.png">
 <meta property="article:published_time" content="2024-02-23T14:09:00.000Z">
-<meta property="article:modified_time" content="2024-02-23T14:34:14.646Z">
+<meta property="article:modified_time" content="2024-04-26T03:20:43.460Z">
 <meta property="article:author" content="Candy">
 <meta property="article:tag" content="CSS布局">
 <meta name="twitter:card" content="summary_large_image">
@@ -317,7 +317,7 @@
 </ul>
 <p>在此之前，我们需要了解<strong>可用空间</strong>这个概念，这些概念其实就是改变了 flex 容器中可用空间的行为。<br>假设，在 1 个 500px 的容器中，我们有 3 个 100px 宽的元素，那么这 3 个元素需要占用 300px 的宽，剩下的 200px 的可用空间。在默认情况下，flexbox 将会把这 200px 的空间留在最后一个元素的后面。<br><br>如果期望这些元素能够自动地扩展去填充满剩下的空间，那我们需要去控制可用空间在这几个元素之间如何分配，这就是元素上 flex 属性需要做的事情。</p>
 <h2 id="Flex-元素属性：flex-basis"><a href="#Flex-元素属性：flex-basis" class="headerlink" title="Flex 元素属性：flex-basis"></a>Flex 元素属性：<code>flex-basis</code></h2><p><code>flex-basis</code>  定义了该元素的<strong>空间大小</strong>（<strong>the size of that item in terms of the space</strong>），flex 容器里除了元素所占的空间以外的富余空间就是<strong>可用空间</strong> available space。该属性的默认值是  <code>auto</code> 。此时，浏览器会检测这个元素是否具有确定的尺寸。在上面的例子中，所有元素都设定了宽度（width）为 100px，所以  <code>flex-basis</code>  的值为 100px。(也就是会自动覆盖 width)<br>如果没有给元素设定尺寸，<code>flex-basis</code>  的值采用元素内容的尺寸。这就解释了：我们给只要给 Flex 元素的父元素声明  <code>display: flex</code> ，所有子元素就会排成一行，且自动分配小大以充分展示元素的内容。</p>
-<h2 id="Flex-元素：-flex-grow"><a href="#Flex-元素：-flex-grow" class="headerlink" title="Flex 元素：&#96;flex-grow"></a>Flex 元素：&#96;flex-grow</h2><p>可以简单理解为 Android 开发中 <code>layout_weight</code> 一致。<br><br><code>flex-grow</code>  若被赋值为一个正整数，flex 元素会以  <code>flex-basis</code>  为基础，沿<strong>主轴方向增长</strong>尺寸。这会使该元素延展，并占据此方向轴上的可用空间（available space）。如果有其他元素也被允许延展，那么他们会各自占据可用空间的一部分。</p>
+<h2 id="Flex-元素：flex-grow"><a href="#Flex-元素：flex-grow" class="headerlink" title="Flex 元素：flex-grow"></a>Flex 元素：<code>flex-grow</code></h2><p>可以简单理解为 Android 开发中 <code>layout_weight</code> 一致。<br><br><code>flex-grow</code>  若被赋值为一个正整数，flex 元素会以  <code>flex-basis</code>  为基础，沿<strong>主轴方向增长</strong>尺寸。这会使该元素延展，并占据此方向轴上的可用空间（available space）。如果有其他元素也被允许延展，那么他们会各自占据可用空间的一部分。</p>
 <p>如果我们给上例中的所有元素设定  <code>flex-grow</code>  值为 1，容器中的可用空间会被这些元素<strong>平分</strong>。它们会延展以填满容器主轴方向上的空间。</p>
 <p>flex-grow 属性可以按比例分配空间。如果第一个元素  <code>flex-grow</code>  值为 2，其他元素值为 1，则第一个元素将占有 2&#x2F;4（上例中，即为 200px 中的 100px）, 另外两个元素各占有 1&#x2F;4（各 50px）。</p>
 <h2 id="Flex-元素：flex-shrink"><a href="#Flex-元素：flex-shrink" class="headerlink" title="Flex 元素：flex-shrink"></a>Flex 元素：<code>flex-shrink</code></h2><p>会以 <code>flex-basis</code> 为基础，沿着主轴方向收缩尺寸。会使得该元素收缩。<br>如果设置不同的容器大小，则会按照比例均分<code>flex-basis</code>。</p>

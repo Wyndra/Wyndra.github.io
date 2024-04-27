@@ -16,25 +16,24 @@
   <meta name="author" content="Candy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="浅析VO、DTO、DO、PO的概念和区别概念： VO（View Object）：视图对象，用于展示层，它的作用是把某个指定页面或者组件的数据进行封装。 DTO（Data Transfer Object）：数据传输对象，泛指用于展示层（View）和服务层（Service）之间的数据传输对象。 DO（Domain Object）：领域对象，就是从现实世界中抽象出来的有形或无形的业务实体。 PO（Per">
+    <meta name="description" content="lsoflsof 是一个常用的命令行工具，用于列出系统中打开的文件和网络连接。它的名字是 “list open files” 的缩写。lsof 常见的使用方法包括：    命令 解释    lsof 列出所有打开的文件和网络连接   lsof -p &lt;PID&gt; 列出指定进程打开的文件和网络连接   lsof -u &lt;username&gt; 列出指定用户打开的文件和网络连接">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅析VO、DTO、DO、PO的概念和区别">
-<meta property="og:url" content="https://srcandy.top/2024/04/22/%E6%B5%85%E6%9E%90VO%E3%80%81DTO%E3%80%81DO%E3%80%81PO%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:title" content="Linux 常用命令及解析">
+<meta property="og:url" content="https://srcandy.top/2024/04/26/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E8%A7%A3%E6%9E%90/index.html">
 <meta property="og:site_name" content="Candy&#39;s Blog">
-<meta property="og:description" content="浅析VO、DTO、DO、PO的概念和区别概念： VO（View Object）：视图对象，用于展示层，它的作用是把某个指定页面或者组件的数据进行封装。 DTO（Data Transfer Object）：数据传输对象，泛指用于展示层（View）和服务层（Service）之间的数据传输对象。 DO（Domain Object）：领域对象，就是从现实世界中抽象出来的有形或无形的业务实体。 PO（Per">
+<meta property="og:description" content="lsoflsof 是一个常用的命令行工具，用于列出系统中打开的文件和网络连接。它的名字是 “list open files” 的缩写。lsof 常见的使用方法包括：    命令 解释    lsof 列出所有打开的文件和网络连接   lsof -p &lt;PID&gt; 列出指定进程打开的文件和网络连接   lsof -u &lt;username&gt; 列出指定用户打开的文件和网络连接">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-22T02:30:39.000Z">
-<meta property="article:modified_time" content="2024-04-26T03:15:31.050Z">
+<meta property="article:published_time" content="2024-04-26T04:23:07.000Z">
+<meta property="article:modified_time" content="2024-04-27T10:18:42.970Z">
 <meta property="article:author" content="Candy">
-<meta property="article:tag" content="比赛">
-<meta property="article:tag" content="软件测试">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>浅析VO、DTO、DO、PO的概念和区别 - Candy&#39;s Blog</title>
+  <title>Linux 常用命令及解析 - Candy&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="浅析VO、DTO、DO、PO的概念和区别"></span>
+            <span id="subtitle" data-typed-text="Linux 常用命令及解析"></span>
           
         </div>
 
@@ -211,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-22 10:30" pubdate>
-          2024年4月22日 上午
+        <time datetime="2024-04-26 12:23" pubdate>
+          2024年4月26日 中午
         </time>
       </span>
     
@@ -223,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          542 字
         
       </span>
     
@@ -234,7 +233,7 @@
         
         
         
-          13 分钟
+          5 分钟
         
       </span>
     
@@ -279,32 +278,103 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">浅析VO、DTO、DO、PO的概念和区别</h1>
+            <h1 id="seo-header">Linux 常用命令及解析</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="浅析VO、DTO、DO、PO的概念和区别"><a href="#浅析VO、DTO、DO、PO的概念和区别" class="headerlink" title="浅析VO、DTO、DO、PO的概念和区别"></a>浅析VO、DTO、DO、PO的概念和区别</h1><h4 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h4><ul>
-<li>VO（View Object）：视图对象，用于展示层，它的作用是把某个指定页面或者组件的数据进行封装。</li>
-<li>DTO（Data Transfer Object）：数据传输对象，泛指用于展示层（View）和服务层（Service）之间的数据传输对象。</li>
-<li>DO（Domain Object）：领域对象，就是从现实世界中抽象出来的有形或无形的业务实体。</li>
-<li>PO（Persistent Object）： 持久化对象，和持久层的数据结构形成一一对应的映射关系，如果持久层是关系型数据库，那么，数据表中每个字段（或若干个）就对应PO的一个（或若干个）属性。</li>
-</ul>
-<h4 id="VO和DTO的区别"><a href="#VO和DTO的区别" class="headerlink" title="VO和DTO的区别"></a>VO和DTO的区别</h4><p>在绝大部分应用场景中，<strong>DTO和VO的属性值基本上一致，而且通常都是POJO</strong>，因此没有必要多次一举，但是这是在实现层面的思维，在对于设计层面上来说，概念上还是应该存在VO和DTO，因为这两者之间有着本质区别，DTO代表服务层需要接受的数据和返回的数据，而VO代表展示层需要显示的数据。</p>
-<p>例如服务层有一个getUser的方法返回一个系统用户，其中有一个属性是gender(性别)，<strong>对于服务层来说，它只从语义上定义：1-男性，2-女性，0-未指定，而对于展示层来说，它可能需要用“帅哥”代表男性，用“美女”代表女性，用“秘密”代表未指定</strong>。说到这里，可能你还会反驳，在服务层直接就返回“帅哥美女”不就行了吗？</p>
-<p>对于大部分应用来说，这不是问题，但设想一下，如果需求允许客户可以定制风格，而不同风格对于“性别”的表现方式不一样，又或者这个服务同时供多个客户端使用（不同门户），而不同的客户端对于表现层的要求有所不同。</p>
-<p>回到设计层面上进行分析，<strong>从职责单一原则来看，服务层只负责业务，与具体的表现形式无关，因此，返回的DTO，不应该出现和表现形式的耦合。</strong></p>
-<h4 id="DTO和DO的区别"><a href="#DTO和DO的区别" class="headerlink" title="DTO和DO的区别"></a>DTO和DO的区别</h4><p>首先是概念上的区别，<strong>DTO是展示层和服务层之间的数据传输对象</strong>（可以认为是两者之间的协议），而DO是对现实世界各种业务角色的抽象，这就引出了两者在数据上的区别，例如<strong>UserInfo（DO，领域对象)和User(DTO，数据传输对象)<strong>，对于一个getUser方法来说，本质上它永远不应该返回用户的密码，因此UserInfo至少比User少一个password的数据。而在领域驱动设计中，</strong>DO不是简单的POJO，它具有领域业务逻辑</strong>。</p>
-<h4 id="DTO和DO的应用"><a href="#DTO和DO的应用" class="headerlink" title="DTO和DO的应用"></a>DTO和DO的应用</h4><p>既然getUser方法返回的UserInfo不应该包含password，那么就不应该存在password这个属性定义，但如果同时有一个createUser的方法，传入的UserInfo需要包含用户的password，怎么办？（会导致需要创建的“O”比较多）</p>
-<p>在设计层面，展示层向服务层传递的DTO与服务层返回给展示层的DTO在概念上是不同的，但是在实现层面，很少会这样做。我们可以设计一个<strong>完全兼容</strong>的DTO，在服务层接收数据的时候，<strong>不该由展示层设置的属性（如订单的总价应该由其单价、数量、折扣等决定），无论展示层是否设置，服务层都一概忽略</strong>，而在服务层返回数据时，不该返回的数据（如用户密码），就不设置对应的属性。</p>
-<h4 id="DO和PO的区别"><a href="#DO和PO的区别" class="headerlink" title="DO和PO的区别"></a>DO和PO的区别</h4><p><strong>DO（领域对象）和PO（持久化对象）在绝大部分情况下是一一对应的，PO是只含有get&#x2F;set方法的POJO</strong>。</p>
-<h4 id="DO和PO的应用"><a href="#DO和PO的应用" class="headerlink" title="DO和PO的应用"></a>DO和PO的应用</h4><p>由于ORM框架的功能非常强大而大行其道，而且JavaEE也推出了JPA规范，现在的业务应用开发，基本上不需要区分DO与PO，PO完全可以通过JPA，Hibernate Annotations&#x2F;hbm隐藏在DO之中。虽然如此，但有些问题我们还必须注意。</p>
-<ul>
-<li>对于DO中不需要持久化的属性，需要通过ORM显式声明，如，在JPA中，可以利用@Transient声明。</li>
-<li>对于PO中为了某种持久化策略而存在的属性，例如version，由于DO、PO合并了，必须在DO中声明，但由于这个属性对DO是没有任何业务意义的，需要让该属性对外隐藏起来，最常见的做法是把该属性的get&#x2F;set方法私有化，甚至不提供get&#x2F;set方法，但对于Hibernate来说，这需要特别注意，由于Hibernate从数据库读取数据转换为DO时，是利用反射机制先调用DO的空参数构造函数构造DO实例，然后再利用JavaBean的规范反射出set方法来为每个属性设值，如果不显式声明set方法，或把set方法设置为private，都会导致Hibernate无法初始化DO，从而出现运行时异常，可行的做法是把属性的set方法设置为protected。</li>
-<li>对于一个DO对应多个PO，或者一个PO对应多个DO的场景，以及属性级别的延迟加载，Hibernate都提供了很好的支持</li>
-</ul>
-<p><strong>分析设计层面和实现层面完全是两个独立的层面，即使实现层面通过某种技术手段可以将两个完全独立的概念合二为一，在分析设计层面，我们还是应该吧概念上独立的东西清晰的区分开来，这样对做好分析设计非常重要。</strong></p>
+                <h2 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a>lsof</h2><p><code>lsof</code> 是一个常用的命令行工具，用于列出系统中打开的文件和网络连接。它的名字是 “list open files” 的缩写。<code>lsof</code> 常见的使用方法包括：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>lsof</code></td>
+<td>列出所有打开的文件和网络连接</td>
+</tr>
+<tr>
+<td><code>lsof -p &lt;PID&gt;</code></td>
+<td>列出指定进程打开的文件和网络连接</td>
+</tr>
+<tr>
+<td><code>lsof -u &lt;username&gt;</code></td>
+<td>列出指定用户打开的文件和网络连接</td>
+</tr>
+<tr>
+<td><code>lsof i :&lt;port&gt;</code></td>
+<td>查找正在使用某个端口的进程</td>
+</tr>
+<tr>
+<td><code>lsof -i[TCP/UDP]</code></td>
+<td>查看所有TCP&#x2F;UDP连接</td>
+</tr>
+</tbody></table>
+<p>这些只是 <code>lsof</code> 命令的一些常见用法。你可以通过 <code>man lsof</code> 命令查看完整的用法和选项列表。</p>
+<h2 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h2><p><code>ps</code>是用于显示系统中当前正在运行的进程信息。可以显示各种信息，如进程的PID（进程标识符）、PPID（父进程标识符）、CPU使用情况、内存使用情况。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ps</code></td>
+<td>显示当前用户的所有进程</td>
+</tr>
+<tr>
+<td><code>ps -ef</code></td>
+<td>显示所有进程的详细信息，会配合grep进行搜索</td>
+</tr>
+<tr>
+<td><code>ps -u &lt;username&gt;</code></td>
+<td>显示指定用户的所有进程</td>
+</tr>
+<tr>
+<td><code>ps -p PID</code></td>
+<td>显示指定进程的详细信息</td>
+</tr>
+<tr>
+<td><code>ps -ejH</code></td>
+<td>显示所有进程的树状结构</td>
+</tr>
+<tr>
+<td><code>ps -ejf</code></td>
+<td><strong>显示所有进程的树状结构和命令行参数。</strong></td>
+</tr>
+</tbody></table>
+<h2 id="nohup"><a href="#nohup" class="headerlink" title="nohup"></a>nohup</h2><p>这是一个常用的命令，用于在后台运行命令，即使终端关闭或者用户退出登录，命令仍然会继续执行。通常，<code>nohup</code>都会将命令的输出重定向到一个名为<code>nohup.out</code>的文件中，以防止输出被终端关闭。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>nohup command &amp;</code></td>
+<td><code>command</code>命令以后台进程的方式运行，同时将输出重定向 <code>nohup.out</code>。</td>
+</tr>
+<tr>
+<td><code>nohup command &gt; output.log &amp;</code></td>
+<td>指定输出重定向的文件中。</td>
+</tr>
+<tr>
+<td><code>nohup command &gt; /dev/null &amp;</code></td>
+<td>禁止输出重定向。</td>
+</tr>
+<tr>
+<td><code>nohup command &gt; output.log 2&gt;&amp;1 &amp;</code></td>
+<td>后台运行并禁止终端退出信号。</td>
+</tr>
+<tr>
+<td>在 Unix 和类 Unix 系统中，<code>&amp;</code> 符号用于将命令放入后台执行。当你在终端中运行一个命令时，如果在命令末尾加上 <code>&amp;</code> 符号，那么该命令就会在后台运行，而不会阻塞当前终端。</td>
+<td></td>
+</tr>
+</tbody></table>
 
                 
               </div>
@@ -323,7 +393,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%BD%AF%E6%B5%8B/" class="category-chain-item">软测</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
   
   
 
@@ -338,9 +408,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%AF%94%E8%B5%9B/" class="print-no-link">#比赛</a>
-      
-        <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" class="print-no-link">#软件测试</a>
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
       
     </div>
   
@@ -352,8 +420,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>浅析VO、DTO、DO、PO的概念和区别</div>
-      <div>https://srcandy.top/2024/04/22/浅析VO、DTO、DO、PO的概念和区别/</div>
+      <div>Linux 常用命令及解析</div>
+      <div>https://srcandy.top/2024/04/26/Linux-常用命令及解析/</div>
     </div>
     <div class="license-meta">
       
@@ -365,7 +433,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年4月22日</div>
+          <div>2024年4月26日</div>
         </div>
       
       
@@ -397,9 +465,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/26/Linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8F%8A%E8%A7%A3%E6%9E%90/" title="Linux 常用命令及解析">
+                      <a href="/2024/04/27/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/Pasted/" title="">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Linux 常用命令及解析</span>
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -407,8 +475,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/03/18/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" title="自动化测试常见问题">
-                        <span class="hidden-mobile">自动化测试常见问题</span>
+                      <a href="/2024/04/22/%E6%B5%85%E6%9E%90VO%E3%80%81DTO%E3%80%81DO%E3%80%81PO%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E5%8C%BA%E5%88%AB/" title="浅析VO、DTO、DO、PO的概念和区别">
+                        <span class="hidden-mobile">浅析VO、DTO、DO、PO的概念和区别</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
