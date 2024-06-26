@@ -19,56 +19,56 @@
     <meta name="description" content="文件操作文件管理&#x2F;IO操作字符编码  一、首先，计算机三大核心硬件       **CPU 内存 硬盘**       所有文件都被存在硬盘中，然后在读取到内存，再进行操作    二、文本编辑器读取文件的三个步骤       启动文本编辑器       将文件内容读取至内存       将数据显示到屏幕上    三、运行python程序的步骤       启动python解释器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件操作">
-<meta property="og:url" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:url" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="Candy&#39;s Blog">
 <meta property="og:description" content="文件操作文件管理&#x2F;IO操作字符编码  一、首先，计算机三大核心硬件       **CPU 内存 硬盘**       所有文件都被存在硬盘中，然后在读取到内存，再进行操作    二、文本编辑器读取文件的三个步骤       启动文本编辑器       将文件内容读取至内存       将数据显示到屏幕上    三、运行python程序的步骤       启动python解释器">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image.png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(2).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(3).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(4).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(5).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(6).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(7).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(8).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(9).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(10).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(11).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(12).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(13).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(14).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(15).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(16).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(17).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(18).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(19).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(20).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(21).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(22).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(23).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(24).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(25).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(26).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(27).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(28).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(29).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(30).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(31).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(32).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(33).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(34).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(35).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(36).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(37).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(38).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(39).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(40).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image.png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(2).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(3).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(4).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(5).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(6).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(7).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(8).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(9).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(10).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(11).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(12).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(13).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(14).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(15).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(16).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(17).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(18).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(19).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(20).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(21).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(22).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(23).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(24).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(25).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(26).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(27).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(28).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(29).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(30).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(31).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(32).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(33).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(34).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(35).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(36).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(37).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(38).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(39).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image(40).png">
 <meta property="article:published_time" content="2024-02-23T14:49:43.000Z">
 <meta property="article:modified_time" content="2024-02-23T16:00:22.649Z">
 <meta property="article:author" content="Candy">
 <meta property="article:tag" content="教程">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image.png">
+<meta name="twitter:image" content="https://blog.srcandy.top/2024/02/23/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/Image.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -112,7 +112,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"srcandy.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#b4b6f3","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"blog.srcandy.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#b4b6f3","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -871,7 +871,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>文件操作</div>
-      <div>https://srcandy.top/2024/02/23/文件操作/</div>
+      <div>https://blog.srcandy.top/2024/02/23/文件操作/</div>
     </div>
     <div class="license-meta">
       

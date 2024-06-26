@@ -19,17 +19,17 @@
     <meta name="description" content="弹性盒布局特性弹性盒布局又叫做 Flexible Box，通常被叫做为 flexbox，是一种一维的布局模型。flexbox 是一种一维的布局，是因为一个 flexbox 一次只能处理一个维度上的元素布局，一行或者一列。作为对比的是另外一个二维布局  CSS Grid Layout，可以同时处理行和列上的布局。 FlexBox 的两根轴线首先在 flex 布局中，我们有两根轴线——主轴和交叉轴，主">
 <meta property="og:type" content="article">
 <meta property="og:title" content="弹性盒布局">
-<meta property="og:url" content="https://srcandy.top/2024/02/23/%E5%BC%B9%E6%80%A7%E7%9B%92%E5%B8%83%E5%B1%80/index.html">
+<meta property="og:url" content="https://blog.srcandy.top/2024/02/23/%E5%BC%B9%E6%80%A7%E7%9B%92%E5%B8%83%E5%B1%80/index.html">
 <meta property="og:site_name" content="Candy&#39;s Blog">
 <meta property="og:description" content="弹性盒布局特性弹性盒布局又叫做 Flexible Box，通常被叫做为 flexbox，是一种一维的布局模型。flexbox 是一种一维的布局，是因为一个 flexbox 一次只能处理一个维度上的元素布局，一行或者一列。作为对比的是另外一个二维布局  CSS Grid Layout，可以同时处理行和列上的布局。 FlexBox 的两根轴线首先在 flex 布局中，我们有两根轴线——主轴和交叉轴，主">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%BC%B9%E6%80%A7%E7%9B%92%E5%B8%83%E5%B1%80/%E5%BC%B9%E6%80%A7%E7%9B%92%E5%B8%83%E5%B1%80-20240106143416555.png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%BC%B9%E6%80%A7%E7%9B%92%E5%B8%83%E5%B1%80/%E5%BC%B9%E6%80%A7%E7%9B%92%E5%B8%83%E5%B1%80-20240106143416555.png">
 <meta property="article:published_time" content="2024-02-23T14:09:00.000Z">
 <meta property="article:modified_time" content="2024-04-26T03:20:43.460Z">
 <meta property="article:author" content="Candy">
 <meta property="article:tag" content="CSS布局">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://srcandy.top/2024/02/23/%E5%BC%B9%E6%80%A7%E7%9B%92%E5%B8%83%E5%B1%80/%E5%BC%B9%E6%80%A7%E7%9B%92%E5%B8%83%E5%B1%80-20240106143416555.png">
+<meta name="twitter:image" content="https://blog.srcandy.top/2024/02/23/%E5%BC%B9%E6%80%A7%E7%9B%92%E5%B8%83%E5%B1%80/%E5%BC%B9%E6%80%A7%E7%9B%92%E5%B8%83%E5%B1%80-20240106143416555.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -73,7 +73,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"srcandy.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#b4b6f3","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"blog.srcandy.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#b4b6f3","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -394,7 +394,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>弹性盒布局</div>
-      <div>https://srcandy.top/2024/02/23/弹性盒布局/</div>
+      <div>https://blog.srcandy.top/2024/02/23/弹性盒布局/</div>
     </div>
     <div class="license-meta">
       

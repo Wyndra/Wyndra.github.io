@@ -19,31 +19,31 @@
     <meta name="description" content="变量和基本数据类型变量与内存在一个变量被赋值时，Python将会向内存申请一块内存空间来存放新的值，只要是赋值操作，产生新值都会新申请一块内存空间。那么我们要用一个变量，申请一个内存空间，这个问题不大，但是内存是有限的，我们不可能无限制申请，那我们申请的变量但是不用的变量，就要考虑释放内存，这个操作就是内存管理。内存管理是个很复杂的问题，但是Python为我们做了一个机制。 ::Python中还有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="变量和基本数据类型">
-<meta property="og:url" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:url" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Candy&#39;s Blog">
 <meta property="og:description" content="变量和基本数据类型变量与内存在一个变量被赋值时，Python将会向内存申请一块内存空间来存放新的值，只要是赋值操作，产生新值都会新申请一块内存空间。那么我们要用一个变量，申请一个内存空间，这个问题不大，但是内存是有限的，我们不可能无限制申请，那我们申请的变量但是不用的变量，就要考虑释放内存，这个操作就是内存管理。内存管理是个很复杂的问题，但是Python为我们做了一个机制。 ::Python中还有">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image.png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(2).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(3).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(4).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(5).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(6).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(7).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(8).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(9).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(10).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(11).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(12).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(13).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(14).png">
-<meta property="og:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(15).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image.png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(2).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(3).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(4).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(5).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(6).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(7).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(8).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(9).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(10).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(11).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(12).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(13).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(14).png">
+<meta property="og:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(15).png">
 <meta property="article:published_time" content="2024-02-23T14:48:47.000Z">
 <meta property="article:modified_time" content="2024-02-23T15:59:56.928Z">
 <meta property="article:author" content="Candy">
 <meta property="article:tag" content="教程">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image.png">
+<meta name="twitter:image" content="https://blog.srcandy.top/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -87,7 +87,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"srcandy.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#b4b6f3","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"blog.srcandy.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#b4b6f3","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -526,7 +526,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>变量和基本数据类型</div>
-      <div>https://srcandy.top/2024/02/23/变量和基本数据类型/</div>
+      <div>https://blog.srcandy.top/2024/02/23/变量和基本数据类型/</div>
     </div>
     <div class="license-meta">
       
