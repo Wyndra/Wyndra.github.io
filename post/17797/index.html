@@ -16,25 +16,27 @@
   <meta name="author" content="Candy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Xpath 怎么写？1. 标签名&#x2F;&#x2F;标签名 例如：&#x2F;&#x2F;button，所有标签名为button的元素 即：&lt;button&gt;我是一个按钮&lt;&#x2F;button&gt;  2. 标签名+节点属性定位&#x2F;&#x2F;标签名[@属性名&#x3D;属性值] 例如：&#x2F;&#x2F;button[@id&#x3D;username]，id为username的button标签 即：&lt;button id&#x3D;&quot;username&amp;quot">
+    <meta name="description" content="PO测试模式Page Object Model（页面对象模型）是一种分层设计模式，核心是通过页面层封装所有的页面元素以及操作。对于2022年国赛题，首先将页面基本操作全部封装在BasePage中。然后再设置各个页面继承自BasePage，其中包括各个元素和操作，并定义测试方法。首先看一下当前目录，Page页面封装着具体页面的操作，test页面封装了测试用例。   BasePage.py首先是因为P">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XPath怎么写？">
-<meta property="og:url" content="https://blog.srcandy.top/18945/index.html">
+<meta property="og:title" content="自动化测试PO测试模式">
+<meta property="og:url" content="https://blog.srcandy.top/post/17797/index.html">
 <meta property="og:site_name" content="Candy&#39;s Blog">
-<meta property="og:description" content="Xpath 怎么写？1. 标签名&#x2F;&#x2F;标签名 例如：&#x2F;&#x2F;button，所有标签名为button的元素 即：&lt;button&gt;我是一个按钮&lt;&#x2F;button&gt;  2. 标签名+节点属性定位&#x2F;&#x2F;标签名[@属性名&#x3D;属性值] 例如：&#x2F;&#x2F;button[@id&#x3D;username]，id为username的button标签 即：&lt;button id&#x3D;&quot;username&amp;quot">
+<meta property="og:description" content="PO测试模式Page Object Model（页面对象模型）是一种分层设计模式，核心是通过页面层封装所有的页面元素以及操作。对于2022年国赛题，首先将页面基本操作全部封装在BasePage中。然后再设置各个页面继承自BasePage，其中包括各个元素和操作，并定义测试方法。首先看一下当前目录，Page页面封装着具体页面的操作，test页面封装了测试用例。   BasePage.py首先是因为P">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-13T10:37:31.000Z">
-<meta property="article:modified_time" content="2024-07-03T04:42:12.710Z">
+<meta property="og:image" content="https://blog.srcandy.top/post/17797/path.png">
+<meta property="article:published_time" content="2024-02-29T08:36:42.000Z">
+<meta property="article:modified_time" content="2024-07-03T04:42:12.721Z">
 <meta property="article:author" content="Candy">
 <meta property="article:tag" content="软件测试">
-<meta property="article:tag" content="教程">
+<meta property="article:tag" content="比赛">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.srcandy.top/post/17797/path.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>XPath怎么写？ - Candy&#39;s Blog</title>
+  <title>自动化测试PO测试模式 - Candy&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -212,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="XPath怎么写？"></span>
+            <span id="subtitle" data-typed-text="自动化测试PO测试模式"></span>
           
         </div>
 
@@ -223,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-13 18:37" pubdate>
-          2024年5月13日 晚上
+        <time datetime="2024-02-29 16:36" pubdate>
+          2024年2月29日 下午
         </time>
       </span>
     
@@ -235,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          867 字
         
       </span>
     
@@ -246,7 +248,7 @@
         
         
         
-          9 分钟
+          8 分钟
         
       </span>
     
@@ -291,118 +293,156 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">XPath怎么写？</h1>
+            <h1 id="seo-header">自动化测试PO测试模式</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="Xpath-怎么写？"><a href="#Xpath-怎么写？" class="headerlink" title="Xpath 怎么写？"></a>Xpath 怎么写？</h3><h5 id="1-标签名"><a href="#1-标签名" class="headerlink" title="1. 标签名"></a>1. 标签名</h5><div class="code-wrapper"><pre><code class="hljs html">//标签名
-例如：//button，所有标签名为button的元素
-即：<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>我是一个按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre></div>
+                <h3 id="PO测试模式"><a href="#PO测试模式" class="headerlink" title="PO测试模式"></a>PO测试模式</h3><p>Page Object Model（页面对象模型）是一种<strong>分层设计</strong>模式，核心是通过页面层封装所有的页面元素以及操作。<br>对于2022年国赛题，首先将页面基本操作全部封装在BasePage中。然后再设置各个页面继承自BasePage，其中包括各个元素和操作，并定义测试方法。<br>首先看一下当前目录，Page页面封装着具体页面的操作，test页面封装了测试用例。</p>
+<img src="/post/17797/path.png" srcset="/img/loading.gif" lazyload class="">
 
-<h5 id="2-标签名-节点属性定位"><a href="#2-标签名-节点属性定位" class="headerlink" title="2. 标签名+节点属性定位"></a>2. 标签名+节点属性定位</h5><div class="code-wrapper"><pre><code class="hljs html">//标签名[@属性名=属性值]
-例如：//button[@id=username]，id为username的button标签
-即：<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span>我是一个按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre></div>
-
-<h5 id="3-得到某个元素的所有子元素"><a href="#3-得到某个元素的所有子元素" class="headerlink" title="3. 得到某个元素的所有子元素"></a>3. 得到某个元素的所有子元素</h5><p>例如有如下的HTML内容。</p>
-<div class="code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>C<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>C++<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>Java<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;4&quot;</span>&gt;</span>Python<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;5&quot;</span>&gt;</span>PHP<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>JavaScript<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;7&quot;</span>&gt;</span>HTML<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>CSS<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
-
-<p>我只需要使用 <code>*</code> 这个通配符即可完成匹配。下面的XPATH即为匹配 <code>select</code> 下的所有子元素。</p>
-<div class="code-wrapper"><pre><code class="hljs html">//select/*</code></pre></div>
-
-<h5 id="4-得到某个索引值下的元素"><a href="#4-得到某个索引值下的元素" class="headerlink" title="4. 得到某个索引值下的元素"></a>4. 得到某个索引值下的元素</h5><p>如上例，想要得到第3个选项的 <code>&lt;option value=&quot;3&quot;&gt;Java&lt;/option&gt;</code> 即这个元素</p>
-<div class="code-wrapper"><pre><code class="hljs 1c"><span class="hljs-comment">//select/*[3]</span></code></pre></div>
-
-<p><strong>请注意XPATH语法的索引值是从1开始的！</strong></p>
-<p>那么，我想要得到最后一个 <code>&lt;option&gt;</code>  元素？</p>
-<div class="code-wrapper"><pre><code class="hljs html">//select/*[last()]</code></pre></div>
-
-<p>只要在下标索引的地方 <code>last()</code> 即可，但是需要<strong>注意，没有first()</strong></p>
-<p>那我想要多个匹配呢？？例如，我想要匹配前两个 <code>&lt;option&gt;</code> 元素。</p>
-<div class="code-wrapper"><pre><code class="hljs html">//select/*[position() &lt; 3]</code></pre></div>
-
-<p>位置函数 <code>position()</code> 匹配，位置小于3的元素。</p>
-<h5 id="5-元素的条件定位"><a href="#5-元素的条件定位" class="headerlink" title="5. 元素的条件定位"></a>5. 元素的条件定位</h5><p>在XPATH的语法中，我们可以使用 <code>!</code> 、<code>and</code> 、<code>or</code> 这三个基础逻辑运算符来进行定位元素。</p>
-<p>你可以尝试做做下面的这些题目</p>
+<h4 id="BasePage-py"><a href="#BasePage-py" class="headerlink" title="BasePage.py"></a>BasePage.py</h4><p>首先是因为Python是弱类型语言，IDE不知道实际的对象类型。因此就要在代码指定变量的类型。<br>通过使用<code>:</code>来指定类型，webdriver.Chrome<br>有如下步骤</p>
 <ol>
-<li><p><code>//select/*[@value=1 or @value=2]</code></p>
-<p>请问会有多少个元素被选中呢？</p>
-<ul>
-<li><input disabled="" type="checkbox"> A、1个</li>
-<li><input checked="" disabled="" type="checkbox"> B、2个</li>
-<li><input disabled="" type="checkbox"> C、不确定</li>
-</ul>
-</li>
-<li><p><code>//select/*[@value and  @value!=2]</code></p>
-<p>这样呢？</p>
-<ul>
-<li><input disabled="" type="checkbox"> A、0个</li>
-<li><input disabled="" type="checkbox"> B、1个</li>
-<li><input checked="" disabled="" type="checkbox"> C、7个</li>
-<li><input disabled="" type="checkbox"> D、不确定</li>
-</ul>
-</li>
+<li>首先通过<code>__init__</code>来初始化页面基本信息，例如base_url等。</li>
+<li>定义一个<code>find_Element</code>函数，其中需要对其进行解包。</li>
 </ol>
-<h5 id="6-任意属性值的匹配"><a href="#6-任意属性值的匹配" class="headerlink" title="6. 任意属性值的匹配"></a>6. 任意属性值的匹配</h5><p>如果你只想要匹配值为3的元素，而不关心其的属性名。那你可以</p>
-<div class="code-wrapper"><pre><code class="hljs 1c"><span class="hljs-comment">//select/*[@*=3]</span></code></pre></div>
+<h6 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h6><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep
+<span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
 
-<p>在这里，我们用一个通配符来匹配其属性名，这样我们可以只关心其<strong>属性值</strong>。</p>
-<h5 id="7-使用文本内容匹配"><a href="#7-使用文本内容匹配" class="headerlink" title="7. 使用文本内容匹配"></a>7. 使用文本内容匹配</h5><p>这里有一个新的函数，<code>text()</code> 可以用其来匹配所有文本。</p>
-<p>例如我想要匹配到 <code>&lt;option value=&quot;7&quot;&gt;HTML&lt;/option&gt;</code> 这个元素，那么我就可以。</p>
-<div class="code-wrapper"><pre><code class="hljs html">//option[text()=&#x27;HTML&#x27;]</code></pre></div>
 
-<p>这里我换了一种写法，使用 <code>option</code> 去定位子元素。</p>
-<p>这是全部匹配，那我只想匹配所有以P开头的编程语言元素呢？</p>
-<div class="code-wrapper"><pre><code class="hljs html">//option[contains(text(),&#x27;P&#x27;)]</code></pre></div>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Page</span>:
+    <span class="hljs-comment"># 指定类型</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, driver: webdriver.Chrome</span>):
+        self.driver: webdriver.Chrome = driver
+        self.base_url = <span class="hljs-string">&quot;http://172.20.4.250/ams&quot;</span>
+        self.timeout = <span class="hljs-number">10</span>
 
-<p>真的是这样么？还是</p>
-<div class="code-wrapper"><pre><code class="hljs html">//option[starts-with(text(),&#x27;P&#x27;)]</code></pre></div>
+    <span class="hljs-comment"># 私有函数</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_open</span>(<span class="hljs-params">self, url</span>):
+        <span class="hljs-comment"># url拼接</span>
+        <span class="hljs-comment"># url这个参数相当于资源地址</span>
+        url_ = self.base_url + url
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Test page is %s&#x27;</span>, url_)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(self.timeout)
+        self.driver.get(url_)
+        sleep(<span class="hljs-number">1</span>)
 
-<p>还是像上面那样呢？正确答案是第二个 ✅。</p>
-<p>我们要匹配的是以P开头的元素。那既然如此肯定也有 <code>ends-with</code> 啦，没错，这个真的有。</p>
-<p>那就不做示例了。</p>
-<p>同理，也可以匹配某个属性值的任意值。</p>
-<div class="code-wrapper"><pre><code class="hljs html">//标签名[contains（@属性名，部分属性值）]
-//标签名[starts-with（@属性名，部分属性值）]
-//标签名[ends-with（@属性名，部分属性值）]
-a.starts-with      例子： //input[starts-with(@id,&#x27;ctrl&#x27;)]      解析：匹配以 ctrl开始的属性值
-b.ends-with        例子：//input[ends-with(@id,&#x27;_userName&#x27;)]    解析：匹配以 userName 结尾的属性值
-c.contains()       例子：//input[contains(@id,&#x27;userName&#x27;)]      解析：匹配含有 userName 属性值</code></pre></div>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">open</span>(<span class="hljs-params">self, url</span>):
+        <span class="hljs-comment"># 暴露的open函数</span>
+        self._<span class="hljs-built_in">open</span>(url)
 
-<h5 id="8-轴定位表达式（一般不用）"><a href="#8-轴定位表达式（一般不用）" class="headerlink" title="8. 轴定位表达式（一般不用）"></a>8. 轴定位表达式（一般不用）</h5><div class="code-wrapper"><pre><code class="hljs html">* ancestor：祖先节点，包括父节点
-* parent：父节点
-* child：子节点
-* descendant：所有后代（儿子、孙子、曾孙子...）
-* preceding：当前元素节点标签之前的所有节点（HTML页面之前的）
-* preceding-sibling：当前元素节点标签之前的所有兄弟节点（同级）
-* following：当前元素节点标签之后的所有节点
-* following-sibling：当前元素节点标签之后的所有兄弟节点（同级）
-* 使用语法：轴名称::节点名称前后的定位与之前一致，用/隔开即可</code></pre></div>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">find_Element</span>(<span class="hljs-params">self, *loc</span>):
+        <span class="hljs-comment"># 解包</span>
+        <span class="hljs-keyword">return</span> self.driver.find_element(*loc)</code></pre></div>
 
-<h3 id="XPATH定位验证"><a href="#XPATH定位验证" class="headerlink" title="XPATH定位验证"></a>XPATH定位验证</h3><ol>
-<li>使用Google下的 <code>Elements</code> 选项卡内的，搜索（ <code>Ctrl + F</code> ）功能。</li>
-<li>使用Google下的 <code>Console</code> 选项卡内的，<code>$x(“your_xpath_selector”)</code> 这样去搜索。</li>
-</ol>
+<h4 id="对于页面的封装（具体）"><a href="#对于页面的封装（具体）" class="headerlink" title="对于页面的封装（具体）"></a>对于页面的封装（具体）</h4><p>首先需要导入BasePage，需要将其添加到环境变量中。<br>因此需要如下代码，<strong>不然会找不到BasePage</strong>。</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<span class="hljs-keyword">import</span> os
+path = os.path.abspath(os.path.join(os.getcwd(), <span class="hljs-string">&quot;..&quot;</span>)) + <span class="hljs-string">&quot;/Page&quot;</span>
+sys.path.append(path)</code></pre></div>
+<p>因为是在test文件夹内运行，因此运行目录是test目录下，这也就导致在LoginPage中无法找到BasePage。<br>所以首先需要<code>os.path.join(os.getcwd(), &quot;..&quot;)</code>得到test的上一级目录，也就是PoTest目录下，然后得到其绝对路径，然后将Page目录拼接上去。<br>最后将这个路径添加到sys.path中去。</p>
+<p>然后就是定义一个具体”页面”，让其继承自BasePage.Page，定义页面的相关操作。最后写一个测试方法，传入页面相关操作的参数。</p>
+<h6 id="LoginPage-py"><a href="#LoginPage-py" class="headerlink" title="LoginPage.py"></a>LoginPage.py</h6><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os.path
+<span class="hljs-keyword">import</span> time
 
+<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> sys
+
+<span class="hljs-comment"># os.getcwd() 当前运行文件的目录</span>
+path = os.path.abspath(os.path.join(os.getcwd(), <span class="hljs-string">&quot;..&quot;</span>)) + <span class="hljs-string">&quot;/Page&quot;</span>
+sys.path.append(path)
+<span class="hljs-keyword">import</span> BasePage
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">loginPage</span>(BasePage.Page):
+    taskId_loc = (By.ID, <span class="hljs-string">&quot;taskId&quot;</span>)
+    username_loc = (By.NAME, <span class="hljs-string">&quot;loginName&quot;</span>)
+    password_loc = (By.NAME, <span class="hljs-string">&quot;password&quot;</span>)
+    submit_loc = (By.TAG_NAME, <span class="hljs-string">&quot;button&quot;</span>)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_username</span>(<span class="hljs-params">self, username</span>):
+        self.find_Element(*self.username_loc).clear()
+        self.find_Element(*self.username_loc).send_keys(username)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_password</span>(<span class="hljs-params">self, password</span>):
+        self.find_Element(*self.password_loc).clear()
+        self.find_Element(*self.password_loc).send_keys(password)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_submit</span>(<span class="hljs-params">self</span>):
+        self.find_Element(*self.submit_loc).click()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_taskid</span>(<span class="hljs-params">self, ids</span>):
+        self.find_Element(*self.taskId_loc).clear()
+        self.find_Element(*self.taskId_loc).send_keys(ids)
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_user_login</span>(<span class="hljs-params">driver, username, password, ids</span>):
+    login_page = loginPage(driver)
+    <span class="hljs-comment"># 调用的是BasePage里的open方法</span>
+    login_page.<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;/front/login.do&quot;</span>)
+    login_page.type_username(username)
+    login_page.type_password(password)
+    login_page.type_taskid(ids)
+    time.sleep(<span class="hljs-number">3</span>)
+    login_page.type_submit()</code></pre></div>
+
+
+<h6 id="AddPage-py"><a href="#AddPage-py" class="headerlink" title="AddPage.py"></a>AddPage.py</h6><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time
+
+<span class="hljs-keyword">from</span> PoTest.Page.BasePage <span class="hljs-keyword">import</span> *
+<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
+<span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AddC</span>(<span class="hljs-title class_ inherited__">Page</span>):
+    bumen_loc = (By.LINK_TEXT, <span class="hljs-string">&quot;部门管理&quot;</span>)
+    add_loc = (By.XPATH, <span class="hljs-string">&#x27;/html/body/div[2]/div[2]/div/div[2]/div/div[1]/button&#x27;</span>)
+    name_loc = (By.ID, <span class="hljs-string">&quot;title&quot;</span>)
+    bianma_loc = (By.ID, <span class="hljs-string">&quot;code&quot;</span>)
+    baocun_loc = (By.XPATH, <span class="hljs-string">&#x27;/html/body/div[4]/div[1]/div[2]/div[2]/div[1]/div/div[3]/button[1]&#x27;</span>)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_bumen</span>(<span class="hljs-params">self</span>):
+        self.find_Element(*self.bumen_loc).click()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_add</span>(<span class="hljs-params">self</span>):
+        self.find_Element(*self.add_loc).click()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_name</span>(<span class="hljs-params">self, name</span>):
+        self.find_Element(*self.name_loc).clear()
+        self.find_Element(*self.name_loc).send_keys(name)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_bianma</span>(<span class="hljs-params">self, bianma</span>):
+        self.find_Element(*self.bianma_loc).clear()
+        self.find_Element(*self.bianma_loc).send_keys(bianma)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_baocun</span>(<span class="hljs-params">self</span>):
+        self.find_Element(*self.baocun_loc).click()
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_user_add</span>(<span class="hljs-params">driver, Name, Bianma</span>):
+    add_page = AddC(driver)
+    add_page.type_bumen()
+    add_page.type_add()
+    time.sleep(<span class="hljs-number">1</span>)
+    add_page.type_name(Name)
+    add_page.type_bianma(Bianma)
+    add_page.type_baocun()</code></pre></div>
+
+<h4 id="test目录下的测试方法"><a href="#test目录下的测试方法" class="headerlink" title="test目录下的测试方法"></a>test目录下的测试方法</h4><p>在这里将对应页面的操作组合起来。</p>
+<h6 id="test-Add-py"><a href="#test-Add-py" class="headerlink" title="test_Add.py"></a>test_Add.py</h6><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
+<span class="hljs-keyword">from</span> PoTest.Page.LoginPage <span class="hljs-keyword">import</span> *
+<span class="hljs-keyword">from</span> PoTest.Page.AddPage <span class="hljs-keyword">import</span> *
+<span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep
+
+driver = webdriver.Chrome()
+test_user_login(driver, <span class="hljs-string">&quot;223030246&quot;</span>, <span class="hljs-string">&quot;223030246&quot;</span>, <span class="hljs-string">&quot;39&quot;</span>)
+sleep(<span class="hljs-number">3</span>)
+test_user_add(driver, <span class="hljs-string">&quot;测试数据&quot;</span>, <span class="hljs-string">&quot;BM00032&quot;</span>)
+sleep(<span class="hljs-number">3</span>)
+driver.quit()
+</code></pre></div>
                 
               </div>
             
@@ -420,7 +460,7 @@ c.contains()       例子：//input[contains(@id,&#x27;userName&#x27;)]      解
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%BD%AF%E6%B5%8B/" class="category-chain-item">软测</a>
+  <a href="/categories/Python%E6%95%99%E7%A8%8B/" class="category-chain-item">Python教程</a>
   
   
 
@@ -437,7 +477,7 @@ c.contains()       例子：//input[contains(@id,&#x27;userName&#x27;)]      解
       
         <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" class="print-no-link">#软件测试</a>
       
-        <a href="/tags/%E6%95%99%E7%A8%8B/" class="print-no-link">#教程</a>
+        <a href="/tags/%E6%AF%94%E8%B5%9B/" class="print-no-link">#比赛</a>
       
     </div>
   
@@ -449,8 +489,8 @@ c.contains()       例子：//input[contains(@id,&#x27;userName&#x27;)]      解
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>XPath怎么写？</div>
-      <div>https://blog.srcandy.top/18945/</div>
+      <div>自动化测试PO测试模式</div>
+      <div>https://blog.srcandy.top/post/17797/</div>
     </div>
     <div class="license-meta">
       
@@ -462,7 +502,7 @@ c.contains()       例子：//input[contains(@id,&#x27;userName&#x27;)]      解
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年5月13日</div>
+          <div>2024年2月29日</div>
         </div>
       
       
@@ -494,12 +534,18 @@ c.contains()       例子：//input[contains(@id,&#x27;userName&#x27;)]      解
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/post/38699/" title="自动化测试常见问题">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">自动化测试常见问题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/16661/" title="面向对象（OOP）理解">
-                        <span class="hidden-mobile">面向对象（OOP）理解</span>
+                      <a href="/post/44266/" title="单元测试笔记">
+                        <span class="hidden-mobile">单元测试笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

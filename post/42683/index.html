@@ -16,27 +16,24 @@
   <meta name="author" content="Candy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="PO测试模式Page Object Model（页面对象模型）是一种分层设计模式，核心是通过页面层封装所有的页面元素以及操作。对于2022年国赛题，首先将页面基本操作全部封装在BasePage中。然后再设置各个页面继承自BasePage，其中包括各个元素和操作，并定义测试方法。首先看一下当前目录，Page页面封装着具体页面的操作，test页面封装了测试用例。   BasePage.py首先是因为P">
+    <meta name="description" content="浅析VO、DTO、DO、PO的概念和区别概念： VO（View Object）：视图对象，用于展示层，它的作用是把某个指定页面或者组件的数据进行封装。 DTO（Data Transfer Object）：数据传输对象，泛指用于展示层（View）和服务层（Service）之间的数据传输对象。 DO（Domain Object）：领域对象，就是从现实世界中抽象出来的有形或无形的业务实体。 PO（Per">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自动化测试PO测试模式">
-<meta property="og:url" content="https://blog.srcandy.top/17797/index.html">
+<meta property="og:title" content="浅析VO、DTO、DO、PO的概念和区别">
+<meta property="og:url" content="https://blog.srcandy.top/post/42683/index.html">
 <meta property="og:site_name" content="Candy&#39;s Blog">
-<meta property="og:description" content="PO测试模式Page Object Model（页面对象模型）是一种分层设计模式，核心是通过页面层封装所有的页面元素以及操作。对于2022年国赛题，首先将页面基本操作全部封装在BasePage中。然后再设置各个页面继承自BasePage，其中包括各个元素和操作，并定义测试方法。首先看一下当前目录，Page页面封装着具体页面的操作，test页面封装了测试用例。   BasePage.py首先是因为P">
+<meta property="og:description" content="浅析VO、DTO、DO、PO的概念和区别概念： VO（View Object）：视图对象，用于展示层，它的作用是把某个指定页面或者组件的数据进行封装。 DTO（Data Transfer Object）：数据传输对象，泛指用于展示层（View）和服务层（Service）之间的数据传输对象。 DO（Domain Object）：领域对象，就是从现实世界中抽象出来的有形或无形的业务实体。 PO（Per">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.srcandy.top/17797/path.png">
-<meta property="article:published_time" content="2024-02-29T08:36:42.000Z">
-<meta property="article:modified_time" content="2024-07-03T04:42:12.721Z">
+<meta property="article:published_time" content="2024-04-22T02:30:39.000Z">
+<meta property="article:modified_time" content="2024-07-03T04:42:12.723Z">
 <meta property="article:author" content="Candy">
-<meta property="article:tag" content="比赛">
-<meta property="article:tag" content="软件测试">
+<meta property="article:tag" content="好文摘录">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.srcandy.top/17797/path.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>自动化测试PO测试模式 - Candy&#39;s Blog</title>
+  <title>浅析VO、DTO、DO、PO的概念和区别 - Candy&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="自动化测试PO测试模式"></span>
+            <span id="subtitle" data-typed-text="浅析VO、DTO、DO、PO的概念和区别"></span>
           
         </div>
 
@@ -225,8 +222,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-29 16:36" pubdate>
-          2024年2月29日 下午
+        <time datetime="2024-04-22 10:30" pubdate>
+          2024年4月22日 上午
         </time>
       </span>
     
@@ -237,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          867 字
+          1.4k 字
         
       </span>
     
@@ -248,7 +245,7 @@
         
         
         
-          8 分钟
+          13 分钟
         
       </span>
     
@@ -293,156 +290,33 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">自动化测试PO测试模式</h1>
+            <h1 id="seo-header">浅析VO、DTO、DO、PO的概念和区别</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="PO测试模式"><a href="#PO测试模式" class="headerlink" title="PO测试模式"></a>PO测试模式</h3><p>Page Object Model（页面对象模型）是一种<strong>分层设计</strong>模式，核心是通过页面层封装所有的页面元素以及操作。<br>对于2022年国赛题，首先将页面基本操作全部封装在BasePage中。然后再设置各个页面继承自BasePage，其中包括各个元素和操作，并定义测试方法。<br>首先看一下当前目录，Page页面封装着具体页面的操作，test页面封装了测试用例。</p>
-<img src="/17797/path.png" srcset="/img/loading.gif" lazyload class="">
+                <h1 id="浅析VO、DTO、DO、PO的概念和区别"><a href="#浅析VO、DTO、DO、PO的概念和区别" class="headerlink" title="浅析VO、DTO、DO、PO的概念和区别"></a>浅析VO、DTO、DO、PO的概念和区别</h1><h4 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h4><ul>
+<li>VO（View Object）：视图对象，用于展示层，它的作用是把某个指定页面或者组件的数据进行封装。</li>
+<li>DTO（Data Transfer Object）：数据传输对象，泛指用于展示层（View）和服务层（Service）之间的数据传输对象。</li>
+<li>DO（Domain Object）：领域对象，就是从现实世界中抽象出来的有形或无形的业务实体。</li>
+<li>PO（Persistent Object）： 持久化对象，和持久层的数据结构形成一一对应的映射关系，如果持久层是关系型数据库，那么，数据表中每个字段（或若干个）就对应PO的一个（或若干个）属性。</li>
+</ul>
+<h4 id="VO和DTO的区别"><a href="#VO和DTO的区别" class="headerlink" title="VO和DTO的区别"></a>VO和DTO的区别</h4><p>在绝大部分应用场景中，<strong>DTO和VO的属性值基本上一致，而且通常都是POJO</strong>，因此没有必要多次一举，但是这是在实现层面的思维，在对于设计层面上来说，概念上还是应该存在VO和DTO，因为这两者之间有着本质区别，DTO代表服务层需要接受的数据和返回的数据，而VO代表展示层需要显示的数据。</p>
+<p>例如服务层有一个getUser的方法返回一个系统用户，其中有一个属性是gender(性别)，<strong>对于服务层来说，它只从语义上定义：1-男性，2-女性，0-未指定，而对于展示层来说，它可能需要用“帅哥”代表男性，用“美女”代表女性，用“秘密”代表未指定</strong>。说到这里，可能你还会反驳，在服务层直接就返回“帅哥美女”不就行了吗？</p>
+<p>对于大部分应用来说，这不是问题，但设想一下，如果需求允许客户可以定制风格，而不同风格对于“性别”的表现方式不一样，又或者这个服务同时供多个客户端使用（不同门户），而不同的客户端对于表现层的要求有所不同。</p>
+<p>回到设计层面上进行分析，<strong>从职责单一原则来看，服务层只负责业务，与具体的表现形式无关，因此，返回的DTO，不应该出现和表现形式的耦合。</strong></p>
+<h4 id="DTO和DO的区别"><a href="#DTO和DO的区别" class="headerlink" title="DTO和DO的区别"></a>DTO和DO的区别</h4><p>首先是概念上的区别，<strong>DTO是展示层和服务层之间的数据传输对象</strong>（可以认为是两者之间的协议），而DO是对现实世界各种业务角色的抽象，这就引出了两者在数据上的区别，例如<strong>UserInfo（DO，领域对象)和User(DTO，数据传输对象)<strong>，对于一个getUser方法来说，本质上它永远不应该返回用户的密码，因此UserInfo至少比User少一个password的数据。而在领域驱动设计中，</strong>DO不是简单的POJO，它具有领域业务逻辑</strong>。</p>
+<h4 id="DTO和DO的应用"><a href="#DTO和DO的应用" class="headerlink" title="DTO和DO的应用"></a>DTO和DO的应用</h4><p>既然getUser方法返回的UserInfo不应该包含password，那么就不应该存在password这个属性定义，但如果同时有一个createUser的方法，传入的UserInfo需要包含用户的password，怎么办？（会导致需要创建的“O”比较多）</p>
+<p>在设计层面，展示层向服务层传递的DTO与服务层返回给展示层的DTO在概念上是不同的，但是在实现层面，很少会这样做。我们可以设计一个<strong>完全兼容</strong>的DTO，在服务层接收数据的时候，<strong>不该由展示层设置的属性（如订单的总价应该由其单价、数量、折扣等决定），无论展示层是否设置，服务层都一概忽略</strong>，而在服务层返回数据时，不该返回的数据（如用户密码），就不设置对应的属性。</p>
+<h4 id="DO和PO的区别"><a href="#DO和PO的区别" class="headerlink" title="DO和PO的区别"></a>DO和PO的区别</h4><p><strong>DO（领域对象）和PO（持久化对象）在绝大部分情况下是一一对应的，PO是只含有get&#x2F;set方法的POJO</strong>。</p>
+<h4 id="DO和PO的应用"><a href="#DO和PO的应用" class="headerlink" title="DO和PO的应用"></a>DO和PO的应用</h4><p>由于ORM框架的功能非常强大而大行其道，而且JavaEE也推出了JPA规范，现在的业务应用开发，基本上不需要区分DO与PO，PO完全可以通过JPA，Hibernate Annotations&#x2F;hbm隐藏在DO之中。虽然如此，但有些问题我们还必须注意。</p>
+<ul>
+<li>对于DO中不需要持久化的属性，需要通过ORM显式声明，如，在JPA中，可以利用@Transient声明。</li>
+<li>对于PO中为了某种持久化策略而存在的属性，例如version，由于DO、PO合并了，必须在DO中声明，但由于这个属性对DO是没有任何业务意义的，需要让该属性对外隐藏起来，最常见的做法是把该属性的get&#x2F;set方法私有化，甚至不提供get&#x2F;set方法，但对于Hibernate来说，这需要特别注意，由于Hibernate从数据库读取数据转换为DO时，是利用反射机制先调用DO的空参数构造函数构造DO实例，然后再利用JavaBean的规范反射出set方法来为每个属性设值，如果不显式声明set方法，或把set方法设置为private，都会导致Hibernate无法初始化DO，从而出现运行时异常，可行的做法是把属性的set方法设置为protected。</li>
+<li>对于一个DO对应多个PO，或者一个PO对应多个DO的场景，以及属性级别的延迟加载，Hibernate都提供了很好的支持</li>
+</ul>
+<p><strong>分析设计层面和实现层面完全是两个独立的层面，即使实现层面通过某种技术手段可以将两个完全独立的概念合二为一，在分析设计层面，我们还是应该吧概念上独立的东西清晰的区分开来，这样对做好分析设计非常重要。</strong></p>
 
-<h4 id="BasePage-py"><a href="#BasePage-py" class="headerlink" title="BasePage.py"></a>BasePage.py</h4><p>首先是因为Python是弱类型语言，IDE不知道实际的对象类型。因此就要在代码指定变量的类型。<br>通过使用<code>:</code>来指定类型，webdriver.Chrome<br>有如下步骤</p>
-<ol>
-<li>首先通过<code>__init__</code>来初始化页面基本信息，例如base_url等。</li>
-<li>定义一个<code>find_Element</code>函数，其中需要对其进行解包。</li>
-</ol>
-<h6 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h6><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep
-<span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
-
-
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">Page</span>:
-    <span class="hljs-comment"># 指定类型</span>
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, driver: webdriver.Chrome</span>):
-        self.driver: webdriver.Chrome = driver
-        self.base_url = <span class="hljs-string">&quot;http://172.20.4.250/ams&quot;</span>
-        self.timeout = <span class="hljs-number">10</span>
-
-    <span class="hljs-comment"># 私有函数</span>
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_open</span>(<span class="hljs-params">self, url</span>):
-        <span class="hljs-comment"># url拼接</span>
-        <span class="hljs-comment"># url这个参数相当于资源地址</span>
-        url_ = self.base_url + url
-        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Test page is %s&#x27;</span>, url_)
-        self.driver.maximize_window()
-        self.driver.implicitly_wait(self.timeout)
-        self.driver.get(url_)
-        sleep(<span class="hljs-number">1</span>)
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">open</span>(<span class="hljs-params">self, url</span>):
-        <span class="hljs-comment"># 暴露的open函数</span>
-        self._<span class="hljs-built_in">open</span>(url)
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">find_Element</span>(<span class="hljs-params">self, *loc</span>):
-        <span class="hljs-comment"># 解包</span>
-        <span class="hljs-keyword">return</span> self.driver.find_element(*loc)</code></pre></div>
-
-<h4 id="对于页面的封装（具体）"><a href="#对于页面的封装（具体）" class="headerlink" title="对于页面的封装（具体）"></a>对于页面的封装（具体）</h4><p>首先需要导入BasePage，需要将其添加到环境变量中。<br>因此需要如下代码，<strong>不然会找不到BasePage</strong>。</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
-<span class="hljs-keyword">import</span> os
-path = os.path.abspath(os.path.join(os.getcwd(), <span class="hljs-string">&quot;..&quot;</span>)) + <span class="hljs-string">&quot;/Page&quot;</span>
-sys.path.append(path)</code></pre></div>
-<p>因为是在test文件夹内运行，因此运行目录是test目录下，这也就导致在LoginPage中无法找到BasePage。<br>所以首先需要<code>os.path.join(os.getcwd(), &quot;..&quot;)</code>得到test的上一级目录，也就是PoTest目录下，然后得到其绝对路径，然后将Page目录拼接上去。<br>最后将这个路径添加到sys.path中去。</p>
-<p>然后就是定义一个具体”页面”，让其继承自BasePage.Page，定义页面的相关操作。最后写一个测试方法，传入页面相关操作的参数。</p>
-<h6 id="LoginPage-py"><a href="#LoginPage-py" class="headerlink" title="LoginPage.py"></a>LoginPage.py</h6><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os.path
-<span class="hljs-keyword">import</span> time
-
-<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
-<span class="hljs-keyword">import</span> os
-<span class="hljs-keyword">import</span> sys
-
-<span class="hljs-comment"># os.getcwd() 当前运行文件的目录</span>
-path = os.path.abspath(os.path.join(os.getcwd(), <span class="hljs-string">&quot;..&quot;</span>)) + <span class="hljs-string">&quot;/Page&quot;</span>
-sys.path.append(path)
-<span class="hljs-keyword">import</span> BasePage
-
-
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">loginPage</span>(BasePage.Page):
-    taskId_loc = (By.ID, <span class="hljs-string">&quot;taskId&quot;</span>)
-    username_loc = (By.NAME, <span class="hljs-string">&quot;loginName&quot;</span>)
-    password_loc = (By.NAME, <span class="hljs-string">&quot;password&quot;</span>)
-    submit_loc = (By.TAG_NAME, <span class="hljs-string">&quot;button&quot;</span>)
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_username</span>(<span class="hljs-params">self, username</span>):
-        self.find_Element(*self.username_loc).clear()
-        self.find_Element(*self.username_loc).send_keys(username)
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_password</span>(<span class="hljs-params">self, password</span>):
-        self.find_Element(*self.password_loc).clear()
-        self.find_Element(*self.password_loc).send_keys(password)
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_submit</span>(<span class="hljs-params">self</span>):
-        self.find_Element(*self.submit_loc).click()
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_taskid</span>(<span class="hljs-params">self, ids</span>):
-        self.find_Element(*self.taskId_loc).clear()
-        self.find_Element(*self.taskId_loc).send_keys(ids)
-
-
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_user_login</span>(<span class="hljs-params">driver, username, password, ids</span>):
-    login_page = loginPage(driver)
-    <span class="hljs-comment"># 调用的是BasePage里的open方法</span>
-    login_page.<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;/front/login.do&quot;</span>)
-    login_page.type_username(username)
-    login_page.type_password(password)
-    login_page.type_taskid(ids)
-    time.sleep(<span class="hljs-number">3</span>)
-    login_page.type_submit()</code></pre></div>
-
-
-<h6 id="AddPage-py"><a href="#AddPage-py" class="headerlink" title="AddPage.py"></a>AddPage.py</h6><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time
-
-<span class="hljs-keyword">from</span> PoTest.Page.BasePage <span class="hljs-keyword">import</span> *
-<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
-<span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep
-
-
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">AddC</span>(<span class="hljs-title class_ inherited__">Page</span>):
-    bumen_loc = (By.LINK_TEXT, <span class="hljs-string">&quot;部门管理&quot;</span>)
-    add_loc = (By.XPATH, <span class="hljs-string">&#x27;/html/body/div[2]/div[2]/div/div[2]/div/div[1]/button&#x27;</span>)
-    name_loc = (By.ID, <span class="hljs-string">&quot;title&quot;</span>)
-    bianma_loc = (By.ID, <span class="hljs-string">&quot;code&quot;</span>)
-    baocun_loc = (By.XPATH, <span class="hljs-string">&#x27;/html/body/div[4]/div[1]/div[2]/div[2]/div[1]/div/div[3]/button[1]&#x27;</span>)
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_bumen</span>(<span class="hljs-params">self</span>):
-        self.find_Element(*self.bumen_loc).click()
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_add</span>(<span class="hljs-params">self</span>):
-        self.find_Element(*self.add_loc).click()
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_name</span>(<span class="hljs-params">self, name</span>):
-        self.find_Element(*self.name_loc).clear()
-        self.find_Element(*self.name_loc).send_keys(name)
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_bianma</span>(<span class="hljs-params">self, bianma</span>):
-        self.find_Element(*self.bianma_loc).clear()
-        self.find_Element(*self.bianma_loc).send_keys(bianma)
-
-    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_baocun</span>(<span class="hljs-params">self</span>):
-        self.find_Element(*self.baocun_loc).click()
-
-
-<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_user_add</span>(<span class="hljs-params">driver, Name, Bianma</span>):
-    add_page = AddC(driver)
-    add_page.type_bumen()
-    add_page.type_add()
-    time.sleep(<span class="hljs-number">1</span>)
-    add_page.type_name(Name)
-    add_page.type_bianma(Bianma)
-    add_page.type_baocun()</code></pre></div>
-
-<h4 id="test目录下的测试方法"><a href="#test目录下的测试方法" class="headerlink" title="test目录下的测试方法"></a>test目录下的测试方法</h4><p>在这里将对应页面的操作组合起来。</p>
-<h6 id="test-Add-py"><a href="#test-Add-py" class="headerlink" title="test_Add.py"></a>test_Add.py</h6><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
-<span class="hljs-keyword">from</span> PoTest.Page.LoginPage <span class="hljs-keyword">import</span> *
-<span class="hljs-keyword">from</span> PoTest.Page.AddPage <span class="hljs-keyword">import</span> *
-<span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep
-
-driver = webdriver.Chrome()
-test_user_login(driver, <span class="hljs-string">&quot;223030246&quot;</span>, <span class="hljs-string">&quot;223030246&quot;</span>, <span class="hljs-string">&quot;39&quot;</span>)
-sleep(<span class="hljs-number">3</span>)
-test_user_add(driver, <span class="hljs-string">&quot;测试数据&quot;</span>, <span class="hljs-string">&quot;BM00032&quot;</span>)
-sleep(<span class="hljs-number">3</span>)
-driver.quit()
-</code></pre></div>
                 
               </div>
             
@@ -460,7 +334,7 @@ driver.quit()
     
       <span class="category-chain">
         
-  <a href="/categories/Python%E6%95%99%E7%A8%8B/" class="category-chain-item">Python教程</a>
+  <a href="/categories/Java%E7%9F%A5%E8%AF%86/" class="category-chain-item">Java知识</a>
   
   
 
@@ -475,9 +349,7 @@ driver.quit()
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%AF%94%E8%B5%9B/" class="print-no-link">#比赛</a>
-      
-        <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" class="print-no-link">#软件测试</a>
+        <a href="/tags/%E5%A5%BD%E6%96%87%E6%91%98%E5%BD%95/" class="print-no-link">#好文摘录</a>
       
     </div>
   
@@ -489,8 +361,8 @@ driver.quit()
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>自动化测试PO测试模式</div>
-      <div>https://blog.srcandy.top/17797/</div>
+      <div>浅析VO、DTO、DO、PO的概念和区别</div>
+      <div>https://blog.srcandy.top/post/42683/</div>
     </div>
     <div class="license-meta">
       
@@ -502,7 +374,7 @@ driver.quit()
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年2月29日</div>
+          <div>2024年4月22日</div>
         </div>
       
       
@@ -534,9 +406,9 @@ driver.quit()
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/38699/" title="自动化测试常见问题">
+                      <a href="/post/38269/" title="Linux 常用命令及解析">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">自动化测试常见问题</span>
+                        <span class="hidden-mobile">Linux 常用命令及解析</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -544,8 +416,8 @@ driver.quit()
                   <article class="post-next col-6">
                     
                     
-                      <a href="/44266/" title="单元测试笔记">
-                        <span class="hidden-mobile">单元测试笔记</span>
+                      <a href="/post/38699/" title="自动化测试常见问题">
+                        <span class="hidden-mobile">自动化测试常见问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
