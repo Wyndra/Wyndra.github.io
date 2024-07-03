@@ -332,11 +332,30 @@
 <p>因此“张xx”这个值将会被内存回收释放。</p>
 <p>但是，垃圾回收机制只依靠引用计数是会产生问题的，因为有一些方法会欺骗到引用计数。</p>
 <p>例如我们来看一个例子（循环引用）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br><br>l1 = [<span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;是&#x27;</span>]<br>l2 = [<span class="hljs-string">&#x27;是&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>]<br><span class="hljs-comment"># 接下来我们在l1的末尾，加上l2</span><br>l1.append(l2)<br><span class="hljs-built_in">print</span>(l1)  <span class="hljs-comment"># 内存中，2号索引放的就是l2的内存地址</span><br><span class="hljs-comment"># 在l2的末尾加上l1</span><br>l2.append(l1)<br><span class="hljs-built_in">print</span>(l2)  <span class="hljs-comment"># 内存中，2号索引放的就是l1的内存地址</span><br><span class="hljs-comment"># 上面这番操作后，我们的l1和l2就形成了你中有我，我中有你的关系</span><br><span class="hljs-comment"># 这两个列表存在相互引用的关系，这就是循环引用</span><br><span class="hljs-comment"># 我们来看它们的引用计数</span><br><span class="hljs-built_in">print</span>(sys.getrefcount(l1) - <span class="hljs-number">1</span>)  <span class="hljs-comment"># 2 一个是变量l1 一个是列表l2</span><br><span class="hljs-built_in">print</span>(sys.getrefcount(l2) - <span class="hljs-number">1</span>)  <span class="hljs-comment"># 2 一个是变量l2 一个是列表l1</span><br><span class="hljs-comment"># 引用计数都是2次，于是我们再做一个操作</span><br><span class="hljs-keyword">del</span> l1<br><span class="hljs-keyword">del</span> l2<br><span class="hljs-comment"># 我们将这两个变量捆绑的关系取消，也就是说明，我们再也无法通过l1，l2访问到这个两个列表了</span><br><span class="hljs-comment"># 它们的引用计数-1了，但是他们之间列表的相互引用还存在，这就会导致这片内存不会被 垃圾回收机制 回收</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+
+l1 = [<span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;是&#x27;</span>]
+l2 = [<span class="hljs-string">&#x27;是&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>]
+<span class="hljs-comment"># 接下来我们在l1的末尾，加上l2</span>
+l1.append(l2)
+<span class="hljs-built_in">print</span>(l1)  <span class="hljs-comment"># 内存中，2号索引放的就是l2的内存地址</span>
+<span class="hljs-comment"># 在l2的末尾加上l1</span>
+l2.append(l1)
+<span class="hljs-built_in">print</span>(l2)  <span class="hljs-comment"># 内存中，2号索引放的就是l1的内存地址</span>
+<span class="hljs-comment"># 上面这番操作后，我们的l1和l2就形成了你中有我，我中有你的关系</span>
+<span class="hljs-comment"># 这两个列表存在相互引用的关系，这就是循环引用</span>
+<span class="hljs-comment"># 我们来看它们的引用计数</span>
+<span class="hljs-built_in">print</span>(sys.getrefcount(l1) - <span class="hljs-number">1</span>)  <span class="hljs-comment"># 2 一个是变量l1 一个是列表l2</span>
+<span class="hljs-built_in">print</span>(sys.getrefcount(l2) - <span class="hljs-number">1</span>)  <span class="hljs-comment"># 2 一个是变量l2 一个是列表l1</span>
+<span class="hljs-comment"># 引用计数都是2次，于是我们再做一个操作</span>
+<span class="hljs-keyword">del</span> l1
+<span class="hljs-keyword">del</span> l2
+<span class="hljs-comment"># 我们将这两个变量捆绑的关系取消，也就是说明，我们再也无法通过l1，l2访问到这个两个列表了</span>
+<span class="hljs-comment"># 它们的引用计数-1了，但是他们之间列表的相互引用还存在，这就会导致这片内存不会被 垃圾回收机制 回收</span></code></pre></div>
 
 <p>所以只靠引用计数是不行的，我们继续了解 垃圾回收机制 的第二解决方案</p>
 <h4 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h4><p>在将标记清除之前，我们先来了解一下变量名在内存的存储方式，首先毫无疑问，变量名肯定也是存在内存里的</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">name = <span class="hljs-string">&#x27;张xx&#x27;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python">name = <span class="hljs-string">&#x27;张xx&#x27;</span></code></pre></div>
 
 <p>我们来看它在内存中是怎么样的</p>
 <img src="/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(4).png" srcset="/img/loading.gif" lazyload class="" title="This is a picture">
@@ -351,13 +370,56 @@
 <img src="/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(6).png" srcset="/img/loading.gif" lazyload class="" title="This is a picture">
 
 <p>我们刚开学的时候，老师肯定会检查作业，第一天，老师肯定会全部检查一遍，那些不做作业的同学，肯定就是垃圾了，然后我们每一次完成作业的，老师都标记🌸，比如当集齐5个🌸，就会被标记为良好的同学，这些同学检查作业的频次就会变成一个星期一次，又比如集齐10个🌸，就会被标记为优秀的同学，检查作业的频次就会变成一个月一次，这样看来，我们检查频次是在依次降低的。这样可以大大解决引用计数的效率问题。</p>
-<h2 id="基础算术运算符"><a href="#基础算术运算符" class="headerlink" title="基础算术运算符"></a>基础算术运算符</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">Python中基础的算术运算符如下<br>a = <span class="hljs-number">13</span><br>b = <span class="hljs-number">3</span><br>c = a + b  <span class="hljs-comment"># 加</span><br>c = a - b  <span class="hljs-comment"># 减</span><br>c = a * b  <span class="hljs-comment"># 乘</span><br>c = a / b  <span class="hljs-comment"># 除法 得到一个浮点数</span><br>c = a // b  <span class="hljs-comment"># 除法 得到一个整数</span><br>c = a % b  <span class="hljs-comment"># 取余数</span><br>c = a ** b  <span class="hljs-comment"># 乘方</span><br></code></pre></td></tr></table></figure>
+<h2 id="基础算术运算符"><a href="#基础算术运算符" class="headerlink" title="基础算术运算符"></a>基础算术运算符</h2><div class="code-wrapper"><pre><code class="hljs python">Python中基础的算术运算符如下
+a = <span class="hljs-number">13</span>
+b = <span class="hljs-number">3</span>
+c = a + b  <span class="hljs-comment"># 加</span>
+c = a - b  <span class="hljs-comment"># 减</span>
+c = a * b  <span class="hljs-comment"># 乘</span>
+c = a / b  <span class="hljs-comment"># 除法 得到一个浮点数</span>
+c = a // b  <span class="hljs-comment"># 除法 得到一个整数</span>
+c = a % b  <span class="hljs-comment"># 取余数</span>
+c = a ** b  <span class="hljs-comment"># 乘方</span></code></pre></div>
 
-<h2 id="基础比较运算符"><a href="#基础比较运算符" class="headerlink" title="基础比较运算符"></a>基础比较运算符</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 比较运算符 == != &gt; &lt; &lt;= &gt;=</span><br><span class="hljs-comment"># 比较的结果是 True 和 False 其中的一个</span><br><span class="hljs-comment"># 注意 = 是赋值，== 才是表示等于</span><br><span class="hljs-comment"># 举个例子</span><br></code></pre></td></tr></table></figure>
+<h2 id="基础比较运算符"><a href="#基础比较运算符" class="headerlink" title="基础比较运算符"></a>基础比较运算符</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 比较运算符 == != &gt; &lt; &lt;= &gt;=</span>
+<span class="hljs-comment"># 比较的结果是 True 和 False 其中的一个</span>
+<span class="hljs-comment"># 注意 = 是赋值，== 才是表示等于</span>
+<span class="hljs-comment"># 举个例子</span></code></pre></div>
 
-<h3 id="基础逻辑运算符"><a href="#基础逻辑运算符" class="headerlink" title="基础逻辑运算符"></a>基础逻辑运算符</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 逻辑运算符 not and or</span><br><span class="hljs-comment"># 在程序中 会遇到很多很多的条件 到时候可能不只是一个条件可以解决的 所以就有了逻辑运算符</span><br><span class="hljs-comment"># not（非）and（与） or（或）</span><br><span class="hljs-comment"># 要记住这三个的优先级 是先not 然后是and 最后是or 可以记为NAO</span><br><span class="hljs-comment"># 我们前面不是说过么 True 是 1 False 是 0</span><br><span class="hljs-comment"># not的作用是逻辑取反</span><br><span class="hljs-built_in">print</span>(<span class="hljs-keyword">not</span> <span class="hljs-literal">True</span>)  <span class="hljs-comment"># False</span><br><br><span class="hljs-comment"># and的作用是 与 我们看一张表格吧😏（这个表格叫真值表）</span><br><span class="hljs-comment"># A     B</span><br><span class="hljs-comment"># 1 and 1 结果是 1</span><br><span class="hljs-comment"># 1 and 0 结果是 0</span><br><span class="hljs-comment"># 0 and 1 结果是 0</span><br><span class="hljs-comment"># 0 and 0 结果是 0</span><br><span class="hljs-comment"># 懂了么 只有当两个条件同时满足才会出 1</span><br><span class="hljs-built_in">print</span>(<span class="hljs-literal">True</span> <span class="hljs-keyword">and</span> <span class="hljs-literal">False</span>)  <span class="hljs-comment"># False</span><br><br><span class="hljs-comment"># or的作用是 或 我们还是来看真值表</span><br><span class="hljs-comment"># A     B</span><br><span class="hljs-comment"># 1 and 1 结果是 1</span><br><span class="hljs-comment"># 1 and 0 结果是 1</span><br><span class="hljs-comment"># 0 and 1 结果是 1</span><br><span class="hljs-comment"># 0 and 0 结果是 0</span><br><span class="hljs-comment"># 只要两个条件中的 其中一个 满足了 就可以出 1</span><br><span class="hljs-comment"># 是不是还是挺好理解的 🤩</span><br><span class="hljs-built_in">print</span>(<span class="hljs-literal">True</span> <span class="hljs-keyword">or</span> <span class="hljs-literal">False</span>)  <span class="hljs-comment"># True</span><br></code></pre></td></tr></table></figure>
+<h3 id="基础逻辑运算符"><a href="#基础逻辑运算符" class="headerlink" title="基础逻辑运算符"></a>基础逻辑运算符</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 逻辑运算符 not and or</span>
+<span class="hljs-comment"># 在程序中 会遇到很多很多的条件 到时候可能不只是一个条件可以解决的 所以就有了逻辑运算符</span>
+<span class="hljs-comment"># not（非）and（与） or（或）</span>
+<span class="hljs-comment"># 要记住这三个的优先级 是先not 然后是and 最后是or 可以记为NAO</span>
+<span class="hljs-comment"># 我们前面不是说过么 True 是 1 False 是 0</span>
+<span class="hljs-comment"># not的作用是逻辑取反</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-keyword">not</span> <span class="hljs-literal">True</span>)  <span class="hljs-comment"># False</span>
 
-<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 赋值运算符 = += -= *= /= //= %= **=</span><br><span class="hljs-comment"># 其实你最先接触到的赋值符号就是 =</span><br><span class="hljs-comment"># 赋值运算符就是算术运算符加个等号 就可以了</span><br>a = <span class="hljs-number">11</span><br>a += <span class="hljs-number">1</span>  <span class="hljs-comment"># 等价于 a = a + 1</span><br><span class="hljs-built_in">print</span>(a)  <span class="hljs-comment"># 12</span><br><span class="hljs-comment"># 那么其他的赋值运算符就是同理的 可以试试看</span><br></code></pre></td></tr></table></figure>
+<span class="hljs-comment"># and的作用是 与 我们看一张表格吧😏（这个表格叫真值表）</span>
+<span class="hljs-comment"># A     B</span>
+<span class="hljs-comment"># 1 and 1 结果是 1</span>
+<span class="hljs-comment"># 1 and 0 结果是 0</span>
+<span class="hljs-comment"># 0 and 1 结果是 0</span>
+<span class="hljs-comment"># 0 and 0 结果是 0</span>
+<span class="hljs-comment"># 懂了么 只有当两个条件同时满足才会出 1</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-literal">True</span> <span class="hljs-keyword">and</span> <span class="hljs-literal">False</span>)  <span class="hljs-comment"># False</span>
+
+<span class="hljs-comment"># or的作用是 或 我们还是来看真值表</span>
+<span class="hljs-comment"># A     B</span>
+<span class="hljs-comment"># 1 and 1 结果是 1</span>
+<span class="hljs-comment"># 1 and 0 结果是 1</span>
+<span class="hljs-comment"># 0 and 1 结果是 1</span>
+<span class="hljs-comment"># 0 and 0 结果是 0</span>
+<span class="hljs-comment"># 只要两个条件中的 其中一个 满足了 就可以出 1</span>
+<span class="hljs-comment"># 是不是还是挺好理解的 🤩</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-literal">True</span> <span class="hljs-keyword">or</span> <span class="hljs-literal">False</span>)  <span class="hljs-comment"># True</span></code></pre></div>
+
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 赋值运算符 = += -= *= /= //= %= **=</span>
+<span class="hljs-comment"># 其实你最先接触到的赋值符号就是 =</span>
+<span class="hljs-comment"># 赋值运算符就是算术运算符加个等号 就可以了</span>
+a = <span class="hljs-number">11</span>
+a += <span class="hljs-number">1</span>  <span class="hljs-comment"># 等价于 a = a + 1</span>
+<span class="hljs-built_in">print</span>(a)  <span class="hljs-comment"># 12</span>
+<span class="hljs-comment"># 那么其他的赋值运算符就是同理的 可以试试看</span></code></pre></div>
 
 <hr>
 <h2 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h2><p>首先，在Python中，并没有所谓的数字类型，数字类型被分为了 <strong>整型（int）和 浮点型（float）</strong></p>
@@ -370,20 +432,29 @@
 
 <hr>
 <h2 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h2><p>字符串可以使用单引号，双引号，三引号这都是可以的。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 字符串类型</span><br>a = <span class="hljs-string">&#x27;Python&#x27;</span><br>b = <span class="hljs-string">&quot;Python&quot;</span><br>c = <span class="hljs-string">&quot;&quot;&quot;Python&quot;&quot;&quot;</span> <span class="hljs-comment"># 这里的三引号并不是注释，当三引号的被给了一个变量，这个就会变成一个字符串</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 字符串类型</span>
+a = <span class="hljs-string">&#x27;Python&#x27;</span>
+b = <span class="hljs-string">&quot;Python&quot;</span>
+c = <span class="hljs-string">&quot;&quot;&quot;Python&quot;&quot;&quot;</span> <span class="hljs-comment"># 这里的三引号并不是注释，当三引号的被给了一个变量，这个就会变成一个字符串</span></code></pre></div>
 
 <p>那么，如果我们有一个需求，我们要打出“一起‘玩’Python”那么如果我们这样打</p>
 <img src="/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(9).png" srcset="/img/loading.gif" lazyload class="" title="This is a picture">
 
 <p>就出现了红色波浪线，这是因为，引号是成对出现的，那么那个“玩”所处的位置就很尴尬了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 我们可以这样做</span><br><span class="hljs-comment"># 在双引号内套上一个单引号，或者在单引号内套上双引号，这些都是被允许的</span><br><span class="hljs-comment"># 还有就是在引号前面加上\，表示转义，这样就可以正常显示了。</span><br>a = <span class="hljs-string">&quot;一起&#x27;玩&#x27;Python&quot;</span><br>a = <span class="hljs-string">&#x27;一起&quot;玩&quot;Python&#x27;</span><br>a = <span class="hljs-string">&#x27;一起\&#x27;玩\&#x27;Python&#x27;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 我们可以这样做</span>
+<span class="hljs-comment"># 在双引号内套上一个单引号，或者在单引号内套上双引号，这些都是被允许的</span>
+<span class="hljs-comment"># 还有就是在引号前面加上\，表示转义，这样就可以正常显示了。</span>
+a = <span class="hljs-string">&quot;一起&#x27;玩&#x27;Python&quot;</span>
+a = <span class="hljs-string">&#x27;一起&quot;玩&quot;Python&#x27;</span>
+a = <span class="hljs-string">&#x27;一起\&#x27;玩\&#x27;Python&#x27;</span></code></pre></div>
 
 <p>字符串是可以相加的，我们使用“+”可以将字符串连接起来。仅仅是字符串和字符串才能相加。字符串和数字是不能相加，但是可以相乘。举个例子，*** 相当于将字符串重复数次**。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">a = <span class="hljs-string">&#x27;人入&#x27;</span><br><span class="hljs-built_in">print</span>(a*<span class="hljs-number">5</span>) <span class="hljs-comment"># 人入人入人入人入人入</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python">a = <span class="hljs-string">&#x27;人入&#x27;</span>
+<span class="hljs-built_in">print</span>(a*<span class="hljs-number">5</span>) <span class="hljs-comment"># 人入人入人入人入人入</span></code></pre></div>
 
 <hr>
 <h2 id="列表类型"><a href="#列表类型" class="headerlink" title="列表类型"></a>列表类型</h2><p>前面的数字类型和字符串类型，都只能存一个值，但是如果我们的一个值想要包含多个信息，并且这些信息都可以被取到，那我们该使用什么类型呢？举个例子，比如我们想要保存一个人的爱好，应该使用字符串类型，就像下面这样</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">hobbies = <span class="hljs-string">&#x27;羽毛球，可乐，读书&#x27;</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python">hobbies = <span class="hljs-string">&#x27;羽毛球，可乐，读书&#x27;</span></code></pre></div>
 
 <p>这样也可以描述一个人的爱好，但是当我们想得到爱好的第二个值的时候，就没有办法了，这时候列表的概念就出现了，我们将这三个信息，放在一张表内，用索引和内容相互对应</p>
 <table>
@@ -407,17 +478,25 @@
 </tr>
 </tbody></table>
 <p>那比如我们想要拿到第二个爱好，是不是只要根据索引，就可以找到对应的值了，那么我们在Python中就要这样声明</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">hobbies = [<span class="hljs-string">&#x27;打羽毛球&#x27;</span>,<span class="hljs-string">&#x27;可乐&#x27;</span>,<span class="hljs-string">&#x27;读书&#x27;</span>]<br><span class="hljs-comment"># 如果想要得到第二个爱好只需要</span><br><span class="hljs-built_in">print</span>(hobbies[<span class="hljs-number">1</span>]) <span class="hljs-comment"># 可乐</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python">hobbies = [<span class="hljs-string">&#x27;打羽毛球&#x27;</span>,<span class="hljs-string">&#x27;可乐&#x27;</span>,<span class="hljs-string">&#x27;读书&#x27;</span>]
+<span class="hljs-comment"># 如果想要得到第二个爱好只需要</span>
+<span class="hljs-built_in">print</span>(hobbies[<span class="hljs-number">1</span>]) <span class="hljs-comment"># 可乐</span></code></pre></div>
 
 <p><strong>注意，在Python中，索引的开始是0，我们想要调用列表，需要 变量名[索引] 得到内容</strong></p>
 <p>列表内还可以存放其他的类型，我们可以在列表里放数字类型，字符类型，当然列表也是可以嵌套的</p>
 <p>比如，我们要一个persons列表，存每个人的信息（包括姓名，年龄，爱好）那么我们该如何声明？</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">persons = [[<span class="hljs-string">&#x27;张xx&#x27;</span>, <span class="hljs-number">23</span>, [<span class="hljs-string">&#x27;唱歌&#x27;</span>, <span class="hljs-string">&#x27;羽毛球&#x27;</span>, <span class="hljs-string">&#x27;篮球&#x27;</span>]], [<span class="hljs-string">&#x27;李xx&#x27;</span>, <span class="hljs-number">28</span>, [<span class="hljs-string">&#x27;打太极&#x27;</span>, <span class="hljs-string">&#x27;唱歌&#x27;</span>, <span class="hljs-string">&#x27;篮球&#x27;</span>]]]<br><span class="hljs-comment"># 实在不太会编名字</span><br><span class="hljs-comment"># 如果我们想要得到张xx的所有信息</span><br><span class="hljs-built_in">print</span>(persons[<span class="hljs-number">0</span>])  <span class="hljs-comment"># [&#x27;张xx&#x27;, 23, [&#x27;唱歌&#x27;, &#x27;羽毛球&#x27;, &#x27;篮球&#x27;]]</span><br><span class="hljs-comment"># 那比如我们想得到李xx的第二个爱好，我们应该</span><br><span class="hljs-built_in">print</span>(persons[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>][<span class="hljs-number">1</span>]) <span class="hljs-comment"># 唱歌</span><br><span class="hljs-comment"># 逐层嵌套，我们就用索引逐层去取</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python">persons = [[<span class="hljs-string">&#x27;张xx&#x27;</span>, <span class="hljs-number">23</span>, [<span class="hljs-string">&#x27;唱歌&#x27;</span>, <span class="hljs-string">&#x27;羽毛球&#x27;</span>, <span class="hljs-string">&#x27;篮球&#x27;</span>]], [<span class="hljs-string">&#x27;李xx&#x27;</span>, <span class="hljs-number">28</span>, [<span class="hljs-string">&#x27;打太极&#x27;</span>, <span class="hljs-string">&#x27;唱歌&#x27;</span>, <span class="hljs-string">&#x27;篮球&#x27;</span>]]]
+<span class="hljs-comment"># 实在不太会编名字</span>
+<span class="hljs-comment"># 如果我们想要得到张xx的所有信息</span>
+<span class="hljs-built_in">print</span>(persons[<span class="hljs-number">0</span>])  <span class="hljs-comment"># [&#x27;张xx&#x27;, 23, [&#x27;唱歌&#x27;, &#x27;羽毛球&#x27;, &#x27;篮球&#x27;]]</span>
+<span class="hljs-comment"># 那比如我们想得到李xx的第二个爱好，我们应该</span>
+<span class="hljs-built_in">print</span>(persons[<span class="hljs-number">1</span>][<span class="hljs-number">2</span>][<span class="hljs-number">1</span>]) <span class="hljs-comment"># 唱歌</span>
+<span class="hljs-comment"># 逐层嵌套，我们就用索引逐层去取</span></code></pre></div>
 
 <p><strong>列表可以相当于其他编程语言中的 数组</strong></p>
 <h2 id="字典类型"><a href="#字典类型" class="headerlink" title="字典类型"></a>字典类型</h2><p>列表类型只能通过 索引 去描述一个事物的位置。但如果我们要存张xx的身高，体重，薪水。那么虽然列表也可以存储，但是我们要去数索引，这是不是很麻烦。</p>
 <p>于是我们引入 key对应值 这个key通常为字符串类型，这样就赋予了其有描述性功能。我们按照以下方式定义</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">dic = &#123;<span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;张xx&#x27;</span>, <span class="hljs-string">&#x27;height&#x27;</span>: <span class="hljs-number">167</span>, <span class="hljs-string">&#x27;薪水&#x27;</span>: <span class="hljs-number">18000</span>&#125;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python">dic = &#123;<span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;张xx&#x27;</span>, <span class="hljs-string">&#x27;height&#x27;</span>: <span class="hljs-number">167</span>, <span class="hljs-string">&#x27;薪水&#x27;</span>: <span class="hljs-number">18000</span>&#125;</code></pre></div>
 
 <p>我们定义了一个字典，其结构就像下面一样。</p>
 <table>
@@ -457,7 +536,7 @@
 
 <p>说明我们访问的值是同一个，info[0]和name都指向了同一片内存空间。这就是间接引用和直接引用</p>
 <h2 id="列表在内存中的存储方式"><a href="#列表在内存中的存储方式" class="headerlink" title="列表在内存中的存储方式"></a>列表在内存中的存储方式</h2><p>我们来看一个列表</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">info = [<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>]<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python">info = [<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-string">&#x27;c&#x27;</span>]</code></pre></div>
 
 <p>我画了一张图来说明这个列表在内存中的存储方式</p>
 <img src="/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(13).png" srcset="/img/loading.gif" lazyload class="" title="This is a picture">
@@ -466,9 +545,9 @@
 <p>因此，字典在内存的存储方式也类似，只是把索引变成了key。</p>
 <h4 id="一个问题🤔-在如下代码的情况下，我们print-info-0-的结果是什么？"><a href="#一个问题🤔-在如下代码的情况下，我们print-info-0-的结果是什么？" class="headerlink" title="一个问题🤔 在如下代码的情况下，我们print(info[0])的结果是什么？"></a>一个问题🤔 在如下代码的情况下，我们print(info[0])的结果是什么？</h4><img src="/2024/02/23/%E5%8F%98%E9%87%8F%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Image(14).png" srcset="/img/loading.gif" lazyload class="" title="This is a picture">
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs other">张xx<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs other">张xx</code></pre></div>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs other">李xx<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs other">李xx</code></pre></div>
 
 <p>没错，答案仍然是“张xx”</p>
 <p><strong>分析：</strong>我们来看这个列表在内存的存放方式</p>
@@ -476,7 +555,20 @@
 
 <p>在代码还没执行到 <code>name=‘李xx‘</code> 的时候，我们“张xx”的引用计数就是2，当代码执行到 <code>name=’李xx‘</code>  的时候，我们name被重新指向了一个新的值，此时我们info内0索引位还存着原来“张xx”的内存地址，这个变量的引用计数就还是1，所以不会被<strong>垃圾回收机制</strong>回收。我们也没有在info的列表里修改其对应关系，所以 info[0] 指向的仍然还是“张xx”而不是“李xx”。</p>
 <h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>我们学过int类型，float类型，str类型，list类型，dict类型，我们都可以使用类型名(变量)，来实现类型转换，例如<code>int(‘221’)</code> 就是将字符串类型的221转成整型的221。当然其他类型转换也是大同小异。这里不详细展开了。</p>
-<h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Python的进制转换方法</span><br><span class="hljs-comment"># 十进制转二进制</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">bin</span>(<span class="hljs-number">222</span>))  <span class="hljs-comment"># 0b11011110</span><br><span class="hljs-comment"># 十进制转八进制</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">oct</span>(<span class="hljs-number">222</span>))  <span class="hljs-comment"># 0o336</span><br><span class="hljs-comment"># 十进制转十六进制</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">hex</span>(<span class="hljs-number">222</span>))  <span class="hljs-comment"># 0xde</span><br><br><span class="hljs-comment"># 二进制转十进制(传入第二个参数，说明我们传入的是二进制)</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>(<span class="hljs-string">&#x27;0b11011110&#x27;</span>, <span class="hljs-number">2</span>))  <span class="hljs-comment"># 222</span><br><span class="hljs-comment"># 二进制转八进制(传入第二个参数，说明我们传入的是八进制)</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>(<span class="hljs-string">&#x27;0o336&#x27;</span>, <span class="hljs-number">8</span>)) <span class="hljs-comment"># 222</span><br><span class="hljs-comment"># 二进制转十六进制(传入第二个参数，说明我们传入的是十六进制)</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>(<span class="hljs-string">&#x27;0xde&#x27;</span>, <span class="hljs-number">16</span>))  <span class="hljs-comment"># 222</span><br></code></pre></td></tr></table></figure>
+<h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># Python的进制转换方法</span>
+<span class="hljs-comment"># 十进制转二进制</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">bin</span>(<span class="hljs-number">222</span>))  <span class="hljs-comment"># 0b11011110</span>
+<span class="hljs-comment"># 十进制转八进制</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">oct</span>(<span class="hljs-number">222</span>))  <span class="hljs-comment"># 0o336</span>
+<span class="hljs-comment"># 十进制转十六进制</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">hex</span>(<span class="hljs-number">222</span>))  <span class="hljs-comment"># 0xde</span>
+
+<span class="hljs-comment"># 二进制转十进制(传入第二个参数，说明我们传入的是二进制)</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>(<span class="hljs-string">&#x27;0b11011110&#x27;</span>, <span class="hljs-number">2</span>))  <span class="hljs-comment"># 222</span>
+<span class="hljs-comment"># 二进制转八进制(传入第二个参数，说明我们传入的是八进制)</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>(<span class="hljs-string">&#x27;0o336&#x27;</span>, <span class="hljs-number">8</span>)) <span class="hljs-comment"># 222</span>
+<span class="hljs-comment"># 二进制转十六进制(传入第二个参数，说明我们传入的是十六进制)</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">int</span>(<span class="hljs-string">&#x27;0xde&#x27;</span>, <span class="hljs-number">16</span>))  <span class="hljs-comment"># 222</span></code></pre></div>
 
 <p>懂得进制转换就行了，这只是一种方式。</p>
 <p>至此Python变量和基本数据类型就讲完了，后面还有一份“[[基本数据类型（详）]]基本数据类型（详）”讲关于这些数据类型的操作。<strong>要着重理解变量在内存中的存储方式，这会对你对计算机的底层理解更加深刻。</strong></p>
