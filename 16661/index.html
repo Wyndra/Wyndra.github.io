@@ -16,25 +16,24 @@
   <meta name="author" content="Candy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Xpath 怎么写？1. 标签名&#x2F;&#x2F;标签名 例如：&#x2F;&#x2F;button，所有标签名为button的元素 即：&lt;button&gt;我是一个按钮&lt;&#x2F;button&gt;  2. 标签名+节点属性定位&#x2F;&#x2F;标签名[@属性名&#x3D;属性值] 例如：&#x2F;&#x2F;button[@id&#x3D;username]，id为username的button标签 即：&lt;button id&#x3D;&quot;username&amp;quot">
+    <meta name="description" content="基础知识 通过类来产生对象，类是对象的模板，对象是类的实现。类包括属性和方法（getter和setter）以及构造器（constructor）。 类可以被继承，子类可以有父类的所有属性或方法（公有的）。 抽象类（可以有抽象方法，也可以没有）被继承的时候，如果方法是抽象的，其继承类必须将其实现。只有方法才能被抽象，属性无法被抽象。抽象类只有方法签名（方法签名是指 类型和方法名以及参数，如果类型和方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XPath怎么写？">
-<meta property="og:url" content="https://blog.srcandy.top/posts/18945/index.html">
+<meta property="og:title" content="面向对象（OOP）理解">
+<meta property="og:url" content="https://blog.srcandy.top/16661/index.html">
 <meta property="og:site_name" content="Candy&#39;s Blog">
-<meta property="og:description" content="Xpath 怎么写？1. 标签名&#x2F;&#x2F;标签名 例如：&#x2F;&#x2F;button，所有标签名为button的元素 即：&lt;button&gt;我是一个按钮&lt;&#x2F;button&gt;  2. 标签名+节点属性定位&#x2F;&#x2F;标签名[@属性名&#x3D;属性值] 例如：&#x2F;&#x2F;button[@id&#x3D;username]，id为username的button标签 即：&lt;button id&#x3D;&quot;username&amp;quot">
+<meta property="og:description" content="基础知识 通过类来产生对象，类是对象的模板，对象是类的实现。类包括属性和方法（getter和setter）以及构造器（constructor）。 类可以被继承，子类可以有父类的所有属性或方法（公有的）。 抽象类（可以有抽象方法，也可以没有）被继承的时候，如果方法是抽象的，其继承类必须将其实现。只有方法才能被抽象，属性无法被抽象。抽象类只有方法签名（方法签名是指 类型和方法名以及参数，如果类型和方法">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-13T10:37:31.000Z">
-<meta property="article:modified_time" content="2024-07-03T04:42:12.710Z">
+<meta property="article:modified_time" content="2024-07-03T04:42:12.726Z">
 <meta property="article:author" content="Candy">
 <meta property="article:tag" content="教程">
-<meta property="article:tag" content="软件测试">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>XPath怎么写？ - Candy&#39;s Blog</title>
+  <title>面向对象（OOP）理解 - Candy&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -212,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="XPath怎么写？"></span>
+            <span id="subtitle" data-typed-text="面向对象（OOP）理解"></span>
           
         </div>
 
@@ -235,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          869 字
         
       </span>
     
@@ -246,7 +245,7 @@
         
         
         
-          9 分钟
+          8 分钟
         
       </span>
     
@@ -291,117 +290,115 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">XPath怎么写？</h1>
+            <h1 id="seo-header">面向对象（OOP）理解</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="Xpath-怎么写？"><a href="#Xpath-怎么写？" class="headerlink" title="Xpath 怎么写？"></a>Xpath 怎么写？</h3><h5 id="1-标签名"><a href="#1-标签名" class="headerlink" title="1. 标签名"></a>1. 标签名</h5><div class="code-wrapper"><pre><code class="hljs html">//标签名
-例如：//button，所有标签名为button的元素
-即：<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>我是一个按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre></div>
+                <h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ol>
+<li>通过类来产生对象，<strong>类是对象的模板，对象是类的实现</strong>。类包括属性和方法（getter和setter）以及<strong>构造器（constructor）</strong>。</li>
+<li>类可以被继承，子类可以有父类的所有属性或方法（公有的）。</li>
+<li>抽象类（可以有抽象方法，也可以没有）被继承的时候，如果方法是抽象的，其继承类必须将其实现。只有方法才能被抽象，属性无法被抽象。抽象类只有方法签名（方法签名是指 <strong>类型和方法名以及参数</strong>，如果类型和方法名以及参数完全相同，那么则说明这两个方法相同）</li>
+<li><strong>接口是一种特殊的抽象类</strong>（完全都是抽象方法和抽象类），接口是被实现（implements）的，被implement的时候需要，实现所有的方法。<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/* Ability */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">Ability</span> &#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">jump</span><span class="hljs-params">()</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">swim</span><span class="hljs-params">()</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fly</span><span class="hljs-params">()</span>;
+&#125;</code></pre></div>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/* 实现了Ability的类 */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Dog</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Animals</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Ability</span>&#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Dog</span><span class="hljs-params">(String name, <span class="hljs-type">int</span> age, String color)</span> &#123;
+        <span class="hljs-built_in">super</span>(name, age, color);
+    &#125;
 
-<h5 id="2-标签名-节点属性定位"><a href="#2-标签名-节点属性定位" class="headerlink" title="2. 标签名+节点属性定位"></a>2. 标签名+节点属性定位</h5><div class="code-wrapper"><pre><code class="hljs html">//标签名[@属性名=属性值]
-例如：//button[@id=username]，id为username的button标签
-即：<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span>我是一个按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre></div>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;
 
-<h5 id="3-得到某个元素的所有子元素"><a href="#3-得到某个元素的所有子元素" class="headerlink" title="3. 得到某个元素的所有子元素"></a>3. 得到某个元素的所有子元素</h5><p>例如有如下的HTML内容。</p>
-<div class="code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>C<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>C++<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>Java<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;4&quot;</span>&gt;</span>Python<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;5&quot;</span>&gt;</span>PHP<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>JavaScript<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;7&quot;</span>&gt;</span>HTML<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>CSS<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
+    &#125;
 
-<p>我只需要使用 <code>*</code> 这个通配符即可完成匹配。下面的XPATH即为匹配 <code>select</code> 下的所有子元素。</p>
-<div class="code-wrapper"><pre><code class="hljs html">//select/*</code></pre></div>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">jump</span><span class="hljs-params">()</span> &#123;
 
-<h5 id="4-得到某个索引值下的元素"><a href="#4-得到某个索引值下的元素" class="headerlink" title="4. 得到某个索引值下的元素"></a>4. 得到某个索引值下的元素</h5><p>如上例，想要得到第3个选项的 <code>&lt;option value=&quot;3&quot;&gt;Java&lt;/option&gt;</code> 即这个元素</p>
-<div class="code-wrapper"><pre><code class="hljs 1c"><span class="hljs-comment">//select/*[3]</span></code></pre></div>
+    &#125;
 
-<p><strong>请注意XPATH语法的索引值是从1开始的！</strong></p>
-<p>那么，我想要得到最后一个 <code>&lt;option&gt;</code>  元素？</p>
-<div class="code-wrapper"><pre><code class="hljs html">//select/*[last()]</code></pre></div>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">swim</span><span class="hljs-params">()</span> &#123;
 
-<p>只要在下标索引的地方 <code>last()</code> 即可，但是需要<strong>注意，没有first()</strong></p>
-<p>那我想要多个匹配呢？？例如，我想要匹配前两个 <code>&lt;option&gt;</code> 元素。</p>
-<div class="code-wrapper"><pre><code class="hljs html">//select/*[position() &lt; 3]</code></pre></div>
+    &#125;
 
-<p>位置函数 <code>position()</code> 匹配，位置小于3的元素。</p>
-<h5 id="5-元素的条件定位"><a href="#5-元素的条件定位" class="headerlink" title="5. 元素的条件定位"></a>5. 元素的条件定位</h5><p>在XPATH的语法中，我们可以使用 <code>!</code> 、<code>and</code> 、<code>or</code> 这三个基础逻辑运算符来进行定位元素。</p>
-<p>你可以尝试做做下面的这些题目</p>
-<ol>
-<li><p><code>//select/*[@value=1 or @value=2]</code></p>
-<p>请问会有多少个元素被选中呢？</p>
-<ul>
-<li><input disabled="" type="checkbox"> A、1个</li>
-<li><input checked="" disabled="" type="checkbox"> B、2个</li>
-<li><input disabled="" type="checkbox"> C、不确定</li>
-</ul>
-</li>
-<li><p><code>//select/*[@value and  @value!=2]</code></p>
-<p>这样呢？</p>
-<ul>
-<li><input disabled="" type="checkbox"> A、0个</li>
-<li><input disabled="" type="checkbox"> B、1个</li>
-<li><input checked="" disabled="" type="checkbox"> C、7个</li>
-<li><input disabled="" type="checkbox"> D、不确定</li>
-</ul>
-</li>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fly</span><span class="hljs-params">()</span> &#123;
+
+    &#125;
+&#125;
+</code></pre></div></li>
 </ol>
-<h5 id="6-任意属性值的匹配"><a href="#6-任意属性值的匹配" class="headerlink" title="6. 任意属性值的匹配"></a>6. 任意属性值的匹配</h5><p>如果你只想要匹配值为3的元素，而不关心其的属性名。那你可以</p>
-<div class="code-wrapper"><pre><code class="hljs 1c"><span class="hljs-comment">//select/*[@*=3]</span></code></pre></div>
+<h3 id="面向对象三大特性"><a href="#面向对象三大特性" class="headerlink" title="面向对象三大特性"></a>面向对象三大特性</h3><h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><p>利用抽象数据类型将<strong>数据和基于数据的操作封装</strong>在一起，使其构成一个不可分割的独立实体（也就是常说的类）。<strong>数据被保护在抽象数据类型的内部</strong>，尽可能地隐藏内部的细节，<strong>只保留一些对外接口使之与外部发生联系</strong>。用户无需知道对象内部的细节，但可以通过对象对外提供的接口来访问该对象。<br>在一个类中，只会有属性和方法。例如</p>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;
+    <span class="hljs-comment">// public 和 private 是访问修饰符</span>
+    <span class="hljs-comment">// public 表示任何类都可以访问（公有）</span>
+    <span class="hljs-comment">// private 表示只有本类（自己）可以访问（私有）</span>
+    <span class="hljs-comment">// 下面都是属性（私有）</span>
+    <span class="hljs-keyword">private</span> String name;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> gender;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> age;
 
-<p>在这里，我们用一个通配符来匹配其属性名，这样我们可以只关心其<strong>属性值</strong>。</p>
-<h5 id="7-使用文本内容匹配"><a href="#7-使用文本内容匹配" class="headerlink" title="7. 使用文本内容匹配"></a>7. 使用文本内容匹配</h5><p>这里有一个新的函数，<code>text()</code> 可以用其来匹配所有文本。</p>
-<p>例如我想要匹配到 <code>&lt;option value=&quot;7&quot;&gt;HTML&lt;/option&gt;</code> 这个元素，那么我就可以。</p>
-<div class="code-wrapper"><pre><code class="hljs html">//option[text()=&#x27;HTML&#x27;]</code></pre></div>
+    <span class="hljs-comment">// *对外接口，方法</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getName</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-keyword">return</span> name;
+    &#125;
+    <span class="hljs-comment">// *对外接口，方法</span>
+    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getGender</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-keyword">return</span> gender == <span class="hljs-number">0</span> ? <span class="hljs-string">&quot;man&quot;</span> : <span class="hljs-string">&quot;woman&quot;</span>;
+    &#125;
+    <span class="hljs-comment">// *对外接口，方法</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">work</span><span class="hljs-params">()</span> &#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-number">18</span> &lt;= age &amp;&amp; age &lt;= <span class="hljs-number">50</span>) &#123;
+            System.out.println(name + <span class="hljs-string">&quot; is working very hard!&quot;</span>);
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            System.out.println(name + <span class="hljs-string">&quot; can&#x27;t work any more!&quot;</span>);
+        &#125;
+    &#125;
+&#125;</code></pre></div>
+<p>在上面的代码中，简单的定义了三个属性(私有)，在外界无法通过<code>.</code>的方式来访问，于是写（封装）了三个public接口，让外界可以通过这个接口来对对象属性进行操作。</p>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>可以实现继承，子类对象必须能够替换掉所有的父类对象。<br>例如Cat和Animal就有从属关系，Cat 可以继承自 Animal，从而获得 Animal 非 private 的属性和方法。</p>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-type">Animal</span> <span class="hljs-variable">animal</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Cat</span>();</code></pre></div>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>多态分为编译时多态和运行时多态:</p>
+<ul>
+<li>编译时多态主要指方法的重载</li>
+<li>运行时多态指程序中定义的对象引用所指向的具体类型在运行期间才确定<br>运行时多态有三个条件:</li>
+<li>继承</li>
+<li>覆盖(重写)</li>
+<li>向上转型<br>下面的代码中，乐器类(Instrument)有两个子类: Wind 和 Percussion，它们都覆盖了父类的 play() 方法，并且在 main() 方法中使用父类 Instrument 来引用 Wind 和 Percussion 对象。在 Instrument 引用调用 play() 方法时，会执行实际引用对象所在类的 play() 方法，而不是 Instrument 类的方法。<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Instrument</span> &#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">play</span><span class="hljs-params">()</span> &#123;
+        System.out.println(<span class="hljs-string">&quot;Instrument is playing...&quot;</span>);
+    &#125;
+&#125;
 
-<p>这里我换了一种写法，使用 <code>option</code> 去定位子元素。</p>
-<p>这是全部匹配，那我只想匹配所有以P开头的编程语言元素呢？</p>
-<div class="code-wrapper"><pre><code class="hljs html">//option[contains(text(),&#x27;P&#x27;)]</code></pre></div>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Wind</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Instrument</span> &#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">play</span><span class="hljs-params">()</span> &#123;
+        System.out.println(<span class="hljs-string">&quot;Wind is playing...&quot;</span>);
+    &#125;
+&#125;
 
-<p>真的是这样么？还是</p>
-<div class="code-wrapper"><pre><code class="hljs html">//option[starts-with(text(),&#x27;P&#x27;)]</code></pre></div>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Percussion</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Instrument</span> &#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">play</span><span class="hljs-params">()</span> &#123;
+        System.out.println(<span class="hljs-string">&quot;Percussion is playing...&quot;</span>);
+    &#125;
+&#125;
 
-<p>还是像上面那样呢？正确答案是第二个 ✅。</p>
-<p>我们要匹配的是以P开头的元素。那既然如此肯定也有 <code>ends-with</code> 啦，没错，这个真的有。</p>
-<p>那就不做示例了。</p>
-<p>同理，也可以匹配某个属性值的任意值。</p>
-<div class="code-wrapper"><pre><code class="hljs html">//标签名[contains（@属性名，部分属性值）]
-//标签名[starts-with（@属性名，部分属性值）]
-//标签名[ends-with（@属性名，部分属性值）]
-a.starts-with      例子： //input[starts-with(@id,&#x27;ctrl&#x27;)]      解析：匹配以 ctrl开始的属性值
-b.ends-with        例子：//input[ends-with(@id,&#x27;_userName&#x27;)]    解析：匹配以 userName 结尾的属性值
-c.contains()       例子：//input[contains(@id,&#x27;userName&#x27;)]      解析：匹配含有 userName 属性值</code></pre></div>
-
-<h5 id="8-轴定位表达式（一般不用）"><a href="#8-轴定位表达式（一般不用）" class="headerlink" title="8. 轴定位表达式（一般不用）"></a>8. 轴定位表达式（一般不用）</h5><div class="code-wrapper"><pre><code class="hljs html">* ancestor：祖先节点，包括父节点
-* parent：父节点
-* child：子节点
-* descendant：所有后代（儿子、孙子、曾孙子...）
-* preceding：当前元素节点标签之前的所有节点（HTML页面之前的）
-* preceding-sibling：当前元素节点标签之前的所有兄弟节点（同级）
-* following：当前元素节点标签之后的所有节点
-* following-sibling：当前元素节点标签之后的所有兄弟节点（同级）
-* 使用语法：轴名称::节点名称前后的定位与之前一致，用/隔开即可</code></pre></div>
-
-<h3 id="XPATH定位验证"><a href="#XPATH定位验证" class="headerlink" title="XPATH定位验证"></a>XPATH定位验证</h3><ol>
-<li>使用Google下的 <code>Elements</code> 选项卡内的，搜索（ <code>Ctrl + F</code> ）功能。</li>
-<li>使用Google下的 <code>Console</code> 选项卡内的，<code>$x(“your_xpath_selector”)</code> 这样去搜索。</li>
-</ol>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Music</span> &#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;
+        List&lt;Instrument&gt; instruments = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+        instruments.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Wind</span>());
+        instruments.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Percussion</span>());
+        <span class="hljs-keyword">for</span>(Instrument instrument : instruments) &#123;
+            instrument.play();
+        &#125;
+    &#125;
+&#125;</code></pre></div></li>
+</ul>
 
                 
               </div>
@@ -420,7 +417,7 @@ c.contains()       例子：//input[contains(@id,&#x27;userName&#x27;)]      解
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%BD%AF%E6%B5%8B/" class="category-chain-item">软测</a>
+  <a href="/categories/Java%E7%9F%A5%E8%AF%86/" class="category-chain-item">Java知识</a>
   
   
 
@@ -437,8 +434,6 @@ c.contains()       例子：//input[contains(@id,&#x27;userName&#x27;)]      解
       
         <a href="/tags/%E6%95%99%E7%A8%8B/" class="print-no-link">#教程</a>
       
-        <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" class="print-no-link">#软件测试</a>
-      
     </div>
   
 </div>
@@ -449,8 +444,8 @@ c.contains()       例子：//input[contains(@id,&#x27;userName&#x27;)]      解
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>XPath怎么写？</div>
-      <div>https://blog.srcandy.top/posts/18945/</div>
+      <div>面向对象（OOP）理解</div>
+      <div>https://blog.srcandy.top/16661/</div>
     </div>
     <div class="license-meta">
       
@@ -494,12 +489,18 @@ c.contains()       例子：//input[contains(@id,&#x27;userName&#x27;)]      解
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/18945/" title="XPath怎么写？">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">XPath怎么写？</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/16661/" title="面向对象（OOP）理解">
-                        <span class="hidden-mobile">面向对象（OOP）理解</span>
+                      <a href="/38269/" title="Linux 常用命令及解析">
+                        <span class="hidden-mobile">Linux 常用命令及解析</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

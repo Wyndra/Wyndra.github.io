@@ -16,27 +16,27 @@
   <meta name="author" content="Candy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="元素定位方式 ID定位 NAME定位 CLASS_NAME定位 TAG_NAME定位 LINK_TEXT定位 PARTIAL_LINK_TEXT定位 XPATH定位 CSS_SELECTOR定位  元素定位不到1. 元素定位方式结果不唯一，可能找到其他元素首先是尝试更换元素的定位方式，优先使用ID或者XPATH等方式去定位，这样可以解决该问题。 2. 元素不可见，无法定位首先因为元素不可见，无法对">
+    <meta name="description" content="PO测试模式Page Object Model（页面对象模型）是一种分层设计模式，核心是通过页面层封装所有的页面元素以及操作。对于2022年国赛题，首先将页面基本操作全部封装在BasePage中。然后再设置各个页面继承自BasePage，其中包括各个元素和操作，并定义测试方法。首先看一下当前目录，Page页面封装着具体页面的操作，test页面封装了测试用例。   BasePage.py首先是因为P">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自动化测试常见问题">
-<meta property="og:url" content="https://blog.srcandy.top/posts/38699/index.html">
+<meta property="og:title" content="自动化测试PO测试模式">
+<meta property="og:url" content="https://blog.srcandy.top/17797/index.html">
 <meta property="og:site_name" content="Candy&#39;s Blog">
-<meta property="og:description" content="元素定位方式 ID定位 NAME定位 CLASS_NAME定位 TAG_NAME定位 LINK_TEXT定位 PARTIAL_LINK_TEXT定位 XPATH定位 CSS_SELECTOR定位  元素定位不到1. 元素定位方式结果不唯一，可能找到其他元素首先是尝试更换元素的定位方式，优先使用ID或者XPATH等方式去定位，这样可以解决该问题。 2. 元素不可见，无法定位首先因为元素不可见，无法对">
+<meta property="og:description" content="PO测试模式Page Object Model（页面对象模型）是一种分层设计模式，核心是通过页面层封装所有的页面元素以及操作。对于2022年国赛题，首先将页面基本操作全部封装在BasePage中。然后再设置各个页面继承自BasePage，其中包括各个元素和操作，并定义测试方法。首先看一下当前目录，Page页面封装着具体页面的操作，test页面封装了测试用例。   BasePage.py首先是因为P">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.srcandy.top/posts/38699/find_success.png">
-<meta property="article:published_time" content="2024-03-18T03:09:14.000Z">
-<meta property="article:modified_time" content="2024-07-03T04:42:12.724Z">
+<meta property="og:image" content="https://blog.srcandy.top/17797/path.png">
+<meta property="article:published_time" content="2024-02-29T08:36:42.000Z">
+<meta property="article:modified_time" content="2024-07-03T04:42:12.721Z">
 <meta property="article:author" content="Candy">
 <meta property="article:tag" content="软件测试">
 <meta property="article:tag" content="比赛">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.srcandy.top/posts/38699/find_success.png">
+<meta name="twitter:image" content="https://blog.srcandy.top/17797/path.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>自动化测试常见问题 - Candy&#39;s Blog</title>
+  <title>自动化测试PO测试模式 - Candy&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="自动化测试常见问题"></span>
+            <span id="subtitle" data-typed-text="自动化测试PO测试模式"></span>
           
         </div>
 
@@ -225,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-18 11:09" pubdate>
-          2024年3月18日 上午
+        <time datetime="2024-02-29 16:36" pubdate>
+          2024年2月29日 下午
         </time>
       </span>
     
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          595 字
+          867 字
         
       </span>
     
@@ -248,7 +248,7 @@
         
         
         
-          5 分钟
+          8 分钟
         
       </span>
     
@@ -293,37 +293,156 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">自动化测试常见问题</h1>
+            <h1 id="seo-header">自动化测试PO测试模式</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="元素定位方式"><a href="#元素定位方式" class="headerlink" title="元素定位方式"></a>元素定位方式</h3><ol>
-<li>ID定位</li>
-<li>NAME定位</li>
-<li>CLASS_NAME定位</li>
-<li>TAG_NAME定位</li>
-<li>LINK_TEXT定位</li>
-<li>PARTIAL_LINK_TEXT定位</li>
-<li>XPATH定位</li>
-<li>CSS_SELECTOR定位</li>
+                <h3 id="PO测试模式"><a href="#PO测试模式" class="headerlink" title="PO测试模式"></a>PO测试模式</h3><p>Page Object Model（页面对象模型）是一种<strong>分层设计</strong>模式，核心是通过页面层封装所有的页面元素以及操作。<br>对于2022年国赛题，首先将页面基本操作全部封装在BasePage中。然后再设置各个页面继承自BasePage，其中包括各个元素和操作，并定义测试方法。<br>首先看一下当前目录，Page页面封装着具体页面的操作，test页面封装了测试用例。</p>
+<img src="/17797/path.png" srcset="/img/loading.gif" lazyload class="">
+
+<h4 id="BasePage-py"><a href="#BasePage-py" class="headerlink" title="BasePage.py"></a>BasePage.py</h4><p>首先是因为Python是弱类型语言，IDE不知道实际的对象类型。因此就要在代码指定变量的类型。<br>通过使用<code>:</code>来指定类型，webdriver.Chrome<br>有如下步骤</p>
+<ol>
+<li>首先通过<code>__init__</code>来初始化页面基本信息，例如base_url等。</li>
+<li>定义一个<code>find_Element</code>函数，其中需要对其进行解包。</li>
 </ol>
-<h3 id="元素定位不到"><a href="#元素定位不到" class="headerlink" title="元素定位不到"></a>元素定位不到</h3><h5 id="1-元素定位方式结果不唯一，可能找到其他元素"><a href="#1-元素定位方式结果不唯一，可能找到其他元素" class="headerlink" title="1. 元素定位方式结果不唯一，可能找到其他元素"></a>1. 元素定位方式结果不唯一，可能找到其他元素</h5><p>首先是尝试更换元素的定位方式，优先使用ID或者XPATH等方式去定位，这样可以解决该问题。</p>
-<h5 id="2-元素不可见，无法定位"><a href="#2-元素不可见，无法定位" class="headerlink" title="2. 元素不可见，无法定位"></a>2. 元素不可见，无法定位</h5><p>首先因为元素不可见，无法对其定位，所以也没办法使用Selenium对其进行操作，因为根本返回不到元素。在这种情况下，可以考虑使用配合js语句，使用Selenium执行JavaScript语句对元素的属性值进行删除。示例如下</p>
-<div class="code-wrapper"><pre><code class="hljs python">js_script = <span class="hljs-string">&quot;arguments[0].removeAttribute(\&quot;target\&quot;)&quot;</span>  
-elem = self.driver.find_elements(By.TAG_NAME, <span class="hljs-string">&quot;button&quot;</span>)[<span class="hljs-number">4</span>].find_element(By.PARTIAL_LINK_TEXT, <span class="hljs-string">&quot;查看&quot;</span>)  
-self.driver.execute_script(js_script, elem)</code></pre></div>
-<h5 id="3-XPATH方式定位错误"><a href="#3-XPATH方式定位错误" class="headerlink" title="3. XPATH方式定位错误"></a>3. XPATH方式定位错误</h5><p>当使用XPATH方式定位的时候，需要检查当前浏览器和测试环境浏览器打开的页面是否一致，如果不一致，可能会存在XPATH方式定位不到的情况。<br>解决方案：<strong>将sleep时间设置的长一点，然后从Selenium打开的浏览器中去获取XPATH定位</strong>，这样获取到的XPATH正确率很高。</p>
-<h3 id="PO模式下的代码提示问题？"><a href="#PO模式下的代码提示问题？" class="headerlink" title="PO模式下的代码提示问题？"></a>PO模式下的代码提示问题？</h3><p>因为PO需要我们对Selenium的原生操作进行封装，例如封装页面操作find_element和open操作，但是在BasePage下编写代码的时候，是没有代码提示的。原因是因为，Python是弱类型语言，IDE（Pycharm）不知道实际的对象类型。因此就要在代码指定变量的类型。<br>示例如下：</p>
-<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, driver</span>):
+<h6 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h6><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep
+<span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Page</span>:
+    <span class="hljs-comment"># 指定类型</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, driver: webdriver.Chrome</span>):
         self.driver: webdriver.Chrome = driver
         self.base_url = <span class="hljs-string">&quot;http://172.20.4.250/ams&quot;</span>
-        self.timeout = <span class="hljs-number">10</span></code></pre></div>
-<p>但是不要忘记导包，这样其类型就被指定，然后就可以使用代码提示了。<br><strong>代码编写完，记得删掉: webdriver.Chrome，因为比赛的裁判可能只认正确答案，这样可能被判错。</strong></p>
-<h3 id="find-elements的下标确定方式"><a href="#find-elements的下标确定方式" class="headerlink" title="find_elements的下标确定方式"></a>find_elements的下标确定方式</h3><p>例题：使用By.TAG_NAME的方式定位button，让你定位页面的“新增”按钮。<br>那怎么知道“新增”按钮的下标呢？在“检查”中<code>Ctrl+F</code>使用XPATH方式查找，例如<code>//button</code><br>则会查找整个页面所有的button按钮，并且会在页面中高亮显示。</p>
-<img src="/posts/38699/find_success.png" srcset="/img/loading.gif" lazyload class="">
-<p><strong>但是不要忘记-1，因为下标是从1开始计数的。</strong></p>
+        self.timeout = <span class="hljs-number">10</span>
 
+    <span class="hljs-comment"># 私有函数</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_open</span>(<span class="hljs-params">self, url</span>):
+        <span class="hljs-comment"># url拼接</span>
+        <span class="hljs-comment"># url这个参数相当于资源地址</span>
+        url_ = self.base_url + url
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Test page is %s&#x27;</span>, url_)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(self.timeout)
+        self.driver.get(url_)
+        sleep(<span class="hljs-number">1</span>)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">open</span>(<span class="hljs-params">self, url</span>):
+        <span class="hljs-comment"># 暴露的open函数</span>
+        self._<span class="hljs-built_in">open</span>(url)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">find_Element</span>(<span class="hljs-params">self, *loc</span>):
+        <span class="hljs-comment"># 解包</span>
+        <span class="hljs-keyword">return</span> self.driver.find_element(*loc)</code></pre></div>
+
+<h4 id="对于页面的封装（具体）"><a href="#对于页面的封装（具体）" class="headerlink" title="对于页面的封装（具体）"></a>对于页面的封装（具体）</h4><p>首先需要导入BasePage，需要将其添加到环境变量中。<br>因此需要如下代码，<strong>不然会找不到BasePage</strong>。</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys
+<span class="hljs-keyword">import</span> os
+path = os.path.abspath(os.path.join(os.getcwd(), <span class="hljs-string">&quot;..&quot;</span>)) + <span class="hljs-string">&quot;/Page&quot;</span>
+sys.path.append(path)</code></pre></div>
+<p>因为是在test文件夹内运行，因此运行目录是test目录下，这也就导致在LoginPage中无法找到BasePage。<br>所以首先需要<code>os.path.join(os.getcwd(), &quot;..&quot;)</code>得到test的上一级目录，也就是PoTest目录下，然后得到其绝对路径，然后将Page目录拼接上去。<br>最后将这个路径添加到sys.path中去。</p>
+<p>然后就是定义一个具体”页面”，让其继承自BasePage.Page，定义页面的相关操作。最后写一个测试方法，传入页面相关操作的参数。</p>
+<h6 id="LoginPage-py"><a href="#LoginPage-py" class="headerlink" title="LoginPage.py"></a>LoginPage.py</h6><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os.path
+<span class="hljs-keyword">import</span> time
+
+<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">import</span> sys
+
+<span class="hljs-comment"># os.getcwd() 当前运行文件的目录</span>
+path = os.path.abspath(os.path.join(os.getcwd(), <span class="hljs-string">&quot;..&quot;</span>)) + <span class="hljs-string">&quot;/Page&quot;</span>
+sys.path.append(path)
+<span class="hljs-keyword">import</span> BasePage
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">loginPage</span>(BasePage.Page):
+    taskId_loc = (By.ID, <span class="hljs-string">&quot;taskId&quot;</span>)
+    username_loc = (By.NAME, <span class="hljs-string">&quot;loginName&quot;</span>)
+    password_loc = (By.NAME, <span class="hljs-string">&quot;password&quot;</span>)
+    submit_loc = (By.TAG_NAME, <span class="hljs-string">&quot;button&quot;</span>)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_username</span>(<span class="hljs-params">self, username</span>):
+        self.find_Element(*self.username_loc).clear()
+        self.find_Element(*self.username_loc).send_keys(username)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_password</span>(<span class="hljs-params">self, password</span>):
+        self.find_Element(*self.password_loc).clear()
+        self.find_Element(*self.password_loc).send_keys(password)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_submit</span>(<span class="hljs-params">self</span>):
+        self.find_Element(*self.submit_loc).click()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_taskid</span>(<span class="hljs-params">self, ids</span>):
+        self.find_Element(*self.taskId_loc).clear()
+        self.find_Element(*self.taskId_loc).send_keys(ids)
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_user_login</span>(<span class="hljs-params">driver, username, password, ids</span>):
+    login_page = loginPage(driver)
+    <span class="hljs-comment"># 调用的是BasePage里的open方法</span>
+    login_page.<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;/front/login.do&quot;</span>)
+    login_page.type_username(username)
+    login_page.type_password(password)
+    login_page.type_taskid(ids)
+    time.sleep(<span class="hljs-number">3</span>)
+    login_page.type_submit()</code></pre></div>
+
+
+<h6 id="AddPage-py"><a href="#AddPage-py" class="headerlink" title="AddPage.py"></a>AddPage.py</h6><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time
+
+<span class="hljs-keyword">from</span> PoTest.Page.BasePage <span class="hljs-keyword">import</span> *
+<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
+<span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">AddC</span>(<span class="hljs-title class_ inherited__">Page</span>):
+    bumen_loc = (By.LINK_TEXT, <span class="hljs-string">&quot;部门管理&quot;</span>)
+    add_loc = (By.XPATH, <span class="hljs-string">&#x27;/html/body/div[2]/div[2]/div/div[2]/div/div[1]/button&#x27;</span>)
+    name_loc = (By.ID, <span class="hljs-string">&quot;title&quot;</span>)
+    bianma_loc = (By.ID, <span class="hljs-string">&quot;code&quot;</span>)
+    baocun_loc = (By.XPATH, <span class="hljs-string">&#x27;/html/body/div[4]/div[1]/div[2]/div[2]/div[1]/div/div[3]/button[1]&#x27;</span>)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_bumen</span>(<span class="hljs-params">self</span>):
+        self.find_Element(*self.bumen_loc).click()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_add</span>(<span class="hljs-params">self</span>):
+        self.find_Element(*self.add_loc).click()
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_name</span>(<span class="hljs-params">self, name</span>):
+        self.find_Element(*self.name_loc).clear()
+        self.find_Element(*self.name_loc).send_keys(name)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_bianma</span>(<span class="hljs-params">self, bianma</span>):
+        self.find_Element(*self.bianma_loc).clear()
+        self.find_Element(*self.bianma_loc).send_keys(bianma)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">type_baocun</span>(<span class="hljs-params">self</span>):
+        self.find_Element(*self.baocun_loc).click()
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_user_add</span>(<span class="hljs-params">driver, Name, Bianma</span>):
+    add_page = AddC(driver)
+    add_page.type_bumen()
+    add_page.type_add()
+    time.sleep(<span class="hljs-number">1</span>)
+    add_page.type_name(Name)
+    add_page.type_bianma(Bianma)
+    add_page.type_baocun()</code></pre></div>
+
+<h4 id="test目录下的测试方法"><a href="#test目录下的测试方法" class="headerlink" title="test目录下的测试方法"></a>test目录下的测试方法</h4><p>在这里将对应页面的操作组合起来。</p>
+<h6 id="test-Add-py"><a href="#test-Add-py" class="headerlink" title="test_Add.py"></a>test_Add.py</h6><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
+<span class="hljs-keyword">from</span> PoTest.Page.LoginPage <span class="hljs-keyword">import</span> *
+<span class="hljs-keyword">from</span> PoTest.Page.AddPage <span class="hljs-keyword">import</span> *
+<span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep
+
+driver = webdriver.Chrome()
+test_user_login(driver, <span class="hljs-string">&quot;223030246&quot;</span>, <span class="hljs-string">&quot;223030246&quot;</span>, <span class="hljs-string">&quot;39&quot;</span>)
+sleep(<span class="hljs-number">3</span>)
+test_user_add(driver, <span class="hljs-string">&quot;测试数据&quot;</span>, <span class="hljs-string">&quot;BM00032&quot;</span>)
+sleep(<span class="hljs-number">3</span>)
+driver.quit()
+</code></pre></div>
                 
               </div>
             
@@ -341,7 +460,7 @@ self.driver.execute_script(js_script, elem)</code></pre></div>
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%BD%AF%E6%B5%8B/" class="category-chain-item">软测</a>
+  <a href="/categories/Python%E6%95%99%E7%A8%8B/" class="category-chain-item">Python教程</a>
   
   
 
@@ -370,8 +489,8 @@ self.driver.execute_script(js_script, elem)</code></pre></div>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>自动化测试常见问题</div>
-      <div>https://blog.srcandy.top/posts/38699/</div>
+      <div>自动化测试PO测试模式</div>
+      <div>https://blog.srcandy.top/17797/</div>
     </div>
     <div class="license-meta">
       
@@ -383,7 +502,7 @@ self.driver.execute_script(js_script, elem)</code></pre></div>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年3月18日</div>
+          <div>2024年2月29日</div>
         </div>
       
       
@@ -415,9 +534,9 @@ self.driver.execute_script(js_script, elem)</code></pre></div>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/42683/" title="浅析VO、DTO、DO、PO的概念和区别">
+                      <a href="/38699/" title="自动化测试常见问题">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">浅析VO、DTO、DO、PO的概念和区别</span>
+                        <span class="hidden-mobile">自动化测试常见问题</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -425,8 +544,8 @@ self.driver.execute_script(js_script, elem)</code></pre></div>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/17797/" title="自动化测试PO测试模式">
-                        <span class="hidden-mobile">自动化测试PO测试模式</span>
+                      <a href="/44266/" title="单元测试笔记">
+                        <span class="hidden-mobile">单元测试笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
