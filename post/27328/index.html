@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://s2.loli.net/2024/08/20/EhDP6TaWJ973r2F.png">
 <meta property="og:image" content="https://s2.loli.net/2024/08/20/mbgWuTQMIklxHrX.png">
 <meta property="article:published_time" content="2024-08-20T06:48:00.000Z">
-<meta property="article:modified_time" content="2024-08-20T08:04:51.995Z">
+<meta property="article:modified_time" content="2024-08-20T08:09:25.059Z">
 <meta property="article:author" content="Candy">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://s2.loli.net/2024/08/20/EhDP6TaWJ973r2F.png">
@@ -307,10 +307,10 @@
 <h1 id="基于Node-js实现WebSocket服务器"><a href="#基于Node-js实现WebSocket服务器" class="headerlink" title="基于Node.js实现WebSocket服务器"></a>基于Node.js实现WebSocket服务器</h1><h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><p>WebSocket是HTML5新增的协议，它的作用是在<strong>浏览器与服务器</strong>之间建立一个不受限制的<strong>双向通信</strong>的通道。注意，其中双方可以在连接后的任意时刻，进行消息的互相传递。</p>
 <p>HTTP协议是一个请求-响应的协议。请求必须由浏览器（或其他，例如Postman）发给服务器，然后服务器才能响应这个请求，将数据发送给浏览器。通俗一点说，如果浏览器不主动发送请求，服务器是不会主动发送数据给浏览器的。</p>
 <p>例如，以下的代码使用express框架给出了一个简单的HTTP请求处理。</p>
-<p><img src="https://s2.loli.net/2024/08/20/EhDP6TaWJ973r2F.png" srcset="/img/loading.gif" lazyload alt="xfiuhilu.png"></p>
+<p><img src="https://s2.loli.net/2024/08/20/EhDP6TaWJ973r2F.png" srcset="/img/loading.gif" lazyload alt="express框架HTTP请求处理"></p>
 <p><code>get</code> 函数接受两个参数，一个是path(访问路径)，然后是一个回调函数，回调函数接受两个参数，req代表收到的请求（request），res表示响应（response）。</p>
 <h3 id="WebSocket-协议"><a href="#WebSocket-协议" class="headerlink" title="WebSocket 协议"></a>WebSocket 协议</h3><p>为了方便调试，我们先使用Postman来做一个简单的请求发送，</p>
-<p><img src="https://s2.loli.net/2024/08/20/mbgWuTQMIklxHrX.png" srcset="/img/loading.gif" lazyload alt="opxiyueb.png"></p>
+<p><img src="https://s2.loli.net/2024/08/20/mbgWuTQMIklxHrX.png" srcset="/img/loading.gif" lazyload alt="Postman调试界面"></p>
 <p>差不多就是这样，我们可以看到右侧的连接状态是CONNECTED，表示已经连接成功。</p>
 <p>我们可以看到下面的控制台打印的请求参数，包括了请求URL等。</p>
 <p>WebSocket 是一种全双工通信协议，通常通过 <code>ws://</code> 或 <code>wss://</code>（加密的 WebSocket）协议进行通信。</p>
