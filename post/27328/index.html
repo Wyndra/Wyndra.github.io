@@ -16,25 +16,26 @@
   <meta name="author" content="Candy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Xpath 怎么写？1. 标签名&#x2F;&#x2F;标签名 例如：&#x2F;&#x2F;button，所有标签名为button的元素 即：&lt;button&gt;我是一个按钮&lt;&#x2F;button&gt;  2. 标签名+节点属性定位&#x2F;&#x2F;标签名[@属性名&#x3D;属性值] 例如：&#x2F;&#x2F;button[@id&#x3D;username]，id为username的button标签 即：&lt;button id&#x3D;&quot;username&amp;quot">
+    <meta name="description" content="基于Node.js实现WebSocket服务器WebSocketWebSocket是HTML5新增的协议，它的作用是在浏览器与服务器之间建立一个不受限制的双向通信的通道。注意，其中双方可以在连接后的任意时刻，进行消息的互相传递。 HTTP协议是一个请求-响应的协议。请求必须由浏览器（或其他，例如Postman）发给服务器，然后服务器才能响应这个请求，将数据发送给浏览器。通俗一点说，如果浏览器不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XPath怎么写？">
-<meta property="og:url" content="https://blog.srcandy.top/post/18945/index.html">
+<meta property="og:title" content="基于Node.js实现WebSocket服务器">
+<meta property="og:url" content="https://blog.srcandy.top/post/27328/index.html">
 <meta property="og:site_name" content="Candy&#39;s Blog">
-<meta property="og:description" content="Xpath 怎么写？1. 标签名&#x2F;&#x2F;标签名 例如：&#x2F;&#x2F;button，所有标签名为button的元素 即：&lt;button&gt;我是一个按钮&lt;&#x2F;button&gt;  2. 标签名+节点属性定位&#x2F;&#x2F;标签名[@属性名&#x3D;属性值] 例如：&#x2F;&#x2F;button[@id&#x3D;username]，id为username的button标签 即：&lt;button id&#x3D;&quot;username&amp;quot">
+<meta property="og:description" content="基于Node.js实现WebSocket服务器WebSocketWebSocket是HTML5新增的协议，它的作用是在浏览器与服务器之间建立一个不受限制的双向通信的通道。注意，其中双方可以在连接后的任意时刻，进行消息的互相传递。 HTTP协议是一个请求-响应的协议。请求必须由浏览器（或其他，例如Postman）发给服务器，然后服务器才能响应这个请求，将数据发送给浏览器。通俗一点说，如果浏览器不">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-13T10:37:31.000Z">
-<meta property="article:modified_time" content="2024-07-03T04:42:12.710Z">
+<meta property="og:image" content="https://s2.loli.net/2024/08/20/EhDP6TaWJ973r2F.png">
+<meta property="og:image" content="https://s2.loli.net/2024/08/20/mbgWuTQMIklxHrX.png">
+<meta property="article:published_time" content="2024-08-20T06:48:00.000Z">
+<meta property="article:modified_time" content="2024-08-20T08:04:51.995Z">
 <meta property="article:author" content="Candy">
-<meta property="article:tag" content="教程">
-<meta property="article:tag" content="软件测试">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2024/08/20/EhDP6TaWJ973r2F.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>XPath怎么写？ - Candy&#39;s Blog</title>
+  <title>基于Node.js实现WebSocket服务器 - Candy&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -212,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="XPath怎么写？"></span>
+            <span id="subtitle" data-typed-text="基于Node.js实现WebSocket服务器"></span>
           
         </div>
 
@@ -228,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-13 18:37" pubdate>
-          2024年5月13日 晚上
+        <time datetime="2024-08-20 14:48" pubdate>
+          2024年8月20日 下午
         </time>
       </span>
     
@@ -240,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          930 字
         
       </span>
     
@@ -251,7 +252,7 @@
         
         
         
-          9 分钟
+          8 分钟
         
       </span>
     
@@ -296,117 +297,51 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">XPath怎么写？</h1>
+            <h1 id="seo-header">基于Node.js实现WebSocket服务器</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="Xpath-怎么写？"><a href="#Xpath-怎么写？" class="headerlink" title="Xpath 怎么写？"></a>Xpath 怎么写？</h3><h5 id="1-标签名"><a href="#1-标签名" class="headerlink" title="1. 标签名"></a>1. 标签名</h5><div class="code-wrapper"><pre><code class="hljs html">//标签名
-例如：//button，所有标签名为button的元素
-即：<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>我是一个按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre></div>
+                <meta name="referrer" content="no-referrer"/>
 
-<h5 id="2-标签名-节点属性定位"><a href="#2-标签名-节点属性定位" class="headerlink" title="2. 标签名+节点属性定位"></a>2. 标签名+节点属性定位</h5><div class="code-wrapper"><pre><code class="hljs html">//标签名[@属性名=属性值]
-例如：//button[@id=username]，id为username的button标签
-即：<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span>我是一个按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre></div>
-
-<h5 id="3-得到某个元素的所有子元素"><a href="#3-得到某个元素的所有子元素" class="headerlink" title="3. 得到某个元素的所有子元素"></a>3. 得到某个元素的所有子元素</h5><p>例如有如下的HTML内容。</p>
-<div class="code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>C<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>C++<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>Java<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;4&quot;</span>&gt;</span>Python<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;5&quot;</span>&gt;</span>PHP<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>JavaScript<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;7&quot;</span>&gt;</span>HTML<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;8&quot;</span>&gt;</span>CSS<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre></div>
-
-<p>我只需要使用 <code>*</code> 这个通配符即可完成匹配。下面的XPATH即为匹配 <code>select</code> 下的所有子元素。</p>
-<div class="code-wrapper"><pre><code class="hljs html">//select/*</code></pre></div>
-
-<h5 id="4-得到某个索引值下的元素"><a href="#4-得到某个索引值下的元素" class="headerlink" title="4. 得到某个索引值下的元素"></a>4. 得到某个索引值下的元素</h5><p>如上例，想要得到第3个选项的 <code>&lt;option value=&quot;3&quot;&gt;Java&lt;/option&gt;</code> 即这个元素</p>
-<div class="code-wrapper"><pre><code class="hljs 1c"><span class="hljs-comment">//select/*[3]</span></code></pre></div>
-
-<p><strong>请注意XPATH语法的索引值是从1开始的！</strong></p>
-<p>那么，我想要得到最后一个 <code>&lt;option&gt;</code>  元素？</p>
-<div class="code-wrapper"><pre><code class="hljs html">//select/*[last()]</code></pre></div>
-
-<p>只要在下标索引的地方 <code>last()</code> 即可，但是需要<strong>注意，没有first()</strong></p>
-<p>那我想要多个匹配呢？？例如，我想要匹配前两个 <code>&lt;option&gt;</code> 元素。</p>
-<div class="code-wrapper"><pre><code class="hljs html">//select/*[position() &lt; 3]</code></pre></div>
-
-<p>位置函数 <code>position()</code> 匹配，位置小于3的元素。</p>
-<h5 id="5-元素的条件定位"><a href="#5-元素的条件定位" class="headerlink" title="5. 元素的条件定位"></a>5. 元素的条件定位</h5><p>在XPATH的语法中，我们可以使用 <code>!</code> 、<code>and</code> 、<code>or</code> 这三个基础逻辑运算符来进行定位元素。</p>
-<p>你可以尝试做做下面的这些题目</p>
-<ol>
-<li><p><code>//select/*[@value=1 or @value=2]</code></p>
-<p>请问会有多少个元素被选中呢？</p>
+<h1 id="基于Node-js实现WebSocket服务器"><a href="#基于Node-js实现WebSocket服务器" class="headerlink" title="基于Node.js实现WebSocket服务器"></a>基于Node.js实现WebSocket服务器</h1><h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><p>WebSocket是HTML5新增的协议，它的作用是在<strong>浏览器与服务器</strong>之间建立一个不受限制的<strong>双向通信</strong>的通道。注意，其中双方可以在连接后的任意时刻，进行消息的互相传递。</p>
+<p>HTTP协议是一个请求-响应的协议。请求必须由浏览器（或其他，例如Postman）发给服务器，然后服务器才能响应这个请求，将数据发送给浏览器。通俗一点说，如果浏览器不主动发送请求，服务器是不会主动发送数据给浏览器的。</p>
+<p>例如，以下的代码使用express框架给出了一个简单的HTTP请求处理。</p>
+<p><img src="https://s2.loli.net/2024/08/20/EhDP6TaWJ973r2F.png" srcset="/img/loading.gif" lazyload alt="xfiuhilu.png"></p>
+<p><code>get</code> 函数接受两个参数，一个是path(访问路径)，然后是一个回调函数，回调函数接受两个参数，req代表收到的请求（request），res表示响应（response）。</p>
+<h3 id="WebSocket-协议"><a href="#WebSocket-协议" class="headerlink" title="WebSocket 协议"></a>WebSocket 协议</h3><p>为了方便调试，我们先使用Postman来做一个简单的请求发送，</p>
+<p><img src="https://s2.loli.net/2024/08/20/mbgWuTQMIklxHrX.png" srcset="/img/loading.gif" lazyload alt="opxiyueb.png"></p>
+<p>差不多就是这样，我们可以看到右侧的连接状态是CONNECTED，表示已经连接成功。</p>
+<p>我们可以看到下面的控制台打印的请求参数，包括了请求URL等。</p>
+<p>WebSocket 是一种全双工通信协议，通常通过 <code>ws://</code> 或 <code>wss://</code>（加密的 WebSocket）协议进行通信。</p>
 <ul>
-<li><input disabled="" type="checkbox"> A、1个</li>
-<li><input checked="" disabled="" type="checkbox"> B、2个</li>
-<li><input disabled="" type="checkbox"> C、不确定</li>
+<li><strong>请求方式</strong>：WebSocket 使用 HTTP&#x2F;1.1 协议作为握手（Handshake）协议，客户端发起的初始连接请求是一个标准的 HTTP 请求，但带有一些特殊的头字段。</li>
+<li><strong>响应方式</strong>：服务器在收到 WebSocket 握手请求后，如果同意升级协议，会返回一个 101 Switching Protocols 的响应，表示协议升级成功。此后，通信改为 WebSocket 协议，而不再使用 HTTP。</li>
 </ul>
-</li>
-<li><p><code>//select/*[@value and  @value!=2]</code></p>
-<p>这样呢？</p>
-<ul>
-<li><input disabled="" type="checkbox"> A、0个</li>
-<li><input disabled="" type="checkbox"> B、1个</li>
-<li><input checked="" disabled="" type="checkbox"> C、7个</li>
-<li><input disabled="" type="checkbox"> D、不确定</li>
-</ul>
-</li>
-</ol>
-<h5 id="6-任意属性值的匹配"><a href="#6-任意属性值的匹配" class="headerlink" title="6. 任意属性值的匹配"></a>6. 任意属性值的匹配</h5><p>如果你只想要匹配值为3的元素，而不关心其的属性名。那你可以</p>
-<div class="code-wrapper"><pre><code class="hljs 1c"><span class="hljs-comment">//select/*[@*=3]</span></code></pre></div>
+<p><strong>那为什么WebSocket连接可以实现全双工通信而HTTP连接不行呢？</strong></p>
+<p>实际上HTTP协议是建立在TCP协议之上的，<strong>TCP协议本身就实现了全双工通信</strong>，但是，由于HTTP协议的请求-应答机制就限制了全双工通信。当WebSocket连接建立后，只是简单的规定（互相约定）了一下：接下来我们就不使用HTTP协议了，直接互相发数据吧。</p>
+<h3 id="浏览器层"><a href="#浏览器层" class="headerlink" title="浏览器层"></a>浏览器层</h3><p>目前，对于WebSocket协议来说，在浏览器层面，是作为客户端的。WebSocket目前 已经在绝大多数主流浏览器中得到了广泛的支持，无论是桌面浏览器还是移动端浏览器。只要用户使用的是较新的浏览器版本，WebSocket 功能通常都是可用的。对于极少数不支持 WebSocket 的旧版浏览器，可以考虑使用 Polyfill 或回退到轮询技术（如 AJAX 或 Long Polling）。</p>
+<h3 id="服务器层"><a href="#服务器层" class="headerlink" title="服务器层"></a>服务器层</h3><p>由于WebSocket是一个协议，准确来说是基于HTTP的协议，服务器层面如何实现，取决于所使用的编程语言和框架本身。目前Node.js支持TCP协议和HTTP协议，但是需要支持WebSocket协议，需要用到其他模块。</p>
+<h3 id="使用ws实现"><a href="#使用ws实现" class="headerlink" title="使用ws实现"></a>使用ws实现</h3><p>如果要使用WebSocket，关键在于服务器端支持。目前使用最为广泛的WebSocket模块是 <code>ws</code></p>
+<p>下面是基础代码</p>
+<div class="code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">WebSocket</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;ws&#x27;</span>);
 
-<p>在这里，我们用一个通配符来匹配其属性名，这样我们可以只关心其<strong>属性值</strong>。</p>
-<h5 id="7-使用文本内容匹配"><a href="#7-使用文本内容匹配" class="headerlink" title="7. 使用文本内容匹配"></a>7. 使用文本内容匹配</h5><p>这里有一个新的函数，<code>text()</code> 可以用其来匹配所有文本。</p>
-<p>例如我想要匹配到 <code>&lt;option value=&quot;7&quot;&gt;HTML&lt;/option&gt;</code> 这个元素，那么我就可以。</p>
-<div class="code-wrapper"><pre><code class="hljs html">//option[text()=&#x27;HTML&#x27;]</code></pre></div>
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">WebSocketServer</span> = <span class="hljs-title class_">WebSocket</span>.<span class="hljs-property">Server</span>;
 
-<p>这里我换了一种写法，使用 <code>option</code> 去定位子元素。</p>
-<p>这是全部匹配，那我只想匹配所有以P开头的编程语言元素呢？</p>
-<div class="code-wrapper"><pre><code class="hljs html">//option[contains(text(),&#x27;P&#x27;)]</code></pre></div>
+<span class="hljs-keyword">const</span> wss = <span class="hljs-keyword">new</span> <span class="hljs-title class_">WebSocketServer</span>(&#123;
+    <span class="hljs-attr">port</span>: <span class="hljs-number">4000</span>
+&#125;);
 
-<p>真的是这样么？还是</p>
-<div class="code-wrapper"><pre><code class="hljs html">//option[starts-with(text(),&#x27;P&#x27;)]</code></pre></div>
+wss.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;connection&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">ws</span>) =&gt;</span> &#123;
+    ws.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;message&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">message</span>) =&gt;</span> &#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Received: <span class="hljs-subst">$&#123;message&#125;</span>`</span>);
+        ws.<span class="hljs-title function_">send</span>(<span class="hljs-string">`Echo: <span class="hljs-subst">$&#123;message&#125;</span>`</span>);
+    &#125;);
+    ws.<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;Connected to server.&#x27;</span>);
+&#125;);</code></pre></div>
 
-<p>还是像上面那样呢？正确答案是第二个 ✅。</p>
-<p>我们要匹配的是以P开头的元素。那既然如此肯定也有 <code>ends-with</code> 啦，没错，这个真的有。</p>
-<p>那就不做示例了。</p>
-<p>同理，也可以匹配某个属性值的任意值。</p>
-<div class="code-wrapper"><pre><code class="hljs html">//标签名[contains（@属性名，部分属性值）]
-//标签名[starts-with（@属性名，部分属性值）]
-//标签名[ends-with（@属性名，部分属性值）]
-a.starts-with      例子： //input[starts-with(@id,&#x27;ctrl&#x27;)]      解析：匹配以 ctrl开始的属性值
-b.ends-with        例子：//input[ends-with(@id,&#x27;_userName&#x27;)]    解析：匹配以 userName 结尾的属性值
-c.contains()       例子：//input[contains(@id,&#x27;userName&#x27;)]      解析：匹配含有 userName 属性值</code></pre></div>
-
-<h5 id="8-轴定位表达式（一般不用）"><a href="#8-轴定位表达式（一般不用）" class="headerlink" title="8. 轴定位表达式（一般不用）"></a>8. 轴定位表达式（一般不用）</h5><div class="code-wrapper"><pre><code class="hljs html">* ancestor：祖先节点，包括父节点
-* parent：父节点
-* child：子节点
-* descendant：所有后代（儿子、孙子、曾孙子...）
-* preceding：当前元素节点标签之前的所有节点（HTML页面之前的）
-* preceding-sibling：当前元素节点标签之前的所有兄弟节点（同级）
-* following：当前元素节点标签之后的所有节点
-* following-sibling：当前元素节点标签之后的所有兄弟节点（同级）
-* 使用语法：轴名称::节点名称前后的定位与之前一致，用/隔开即可</code></pre></div>
-
-<h3 id="XPATH定位验证"><a href="#XPATH定位验证" class="headerlink" title="XPATH定位验证"></a>XPATH定位验证</h3><ol>
-<li>使用Google下的 <code>Elements</code> 选项卡内的，搜索（ <code>Ctrl + F</code> ）功能。</li>
-<li>使用Google下的 <code>Console</code> 选项卡内的，<code>$x(“your_xpath_selector”)</code> 这样去搜索。</li>
-</ol>
+<p>首先我们使用 <code>wss</code> 来保存 <code>WebSocketServer</code> 实例。然后我们开始对 <code>wss</code> 注册监听事件。</p>
+<p>当连接的时候，我们可以拿到 <code>ws</code> 实例对象，然后在其中进行当接收到消息的处理。我们也可以将消息返回给客户端。</p>
 
                 
               </div>
@@ -415,36 +350,6 @@ c.contains()       例子：//input[contains(@id,&#x27;userName&#x27;)]      解
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%BD%AF%E6%B5%8B/" class="category-chain-item">软测</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E6%95%99%E7%A8%8B/" class="print-no-link">#教程</a>
-      
-        <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" class="print-no-link">#软件测试</a>
-      
-    </div>
   
 </div>
 
@@ -456,18 +361,12 @@ c.contains()       例子：//input[contains(@id,&#x27;userName&#x27;)]      解
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/post/27328/" title="基于Node.js实现WebSocket服务器">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">基于Node.js实现WebSocket服务器</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/post/16661/" title="面向对象（OOP）理解">
-                        <span class="hidden-mobile">面向对象（OOP）理解</span>
+                      <a href="/post/18945/" title="XPath怎么写？">
+                        <span class="hidden-mobile">XPath怎么写？</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
