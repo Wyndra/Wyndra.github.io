@@ -1,0 +1,780 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/candy.png">
+  <link rel="icon" href="/img/candy.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Wyndra">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Pytest 学习笔记简介Pytest 是 Python 中最流行的测试框架之一，它功能强大、灵活且易于使用，适合编写单元测试和功能测试，同时支持复杂的测试场景。 注意：笔者这里的功能测试也包括了“自动化测试”。这里的分类方式是从测试实施方式的角度来划分的。本文主要讨论Pytest在自动化测试的应用。 技术栈：Pytest + Selenium + ChromeDirver + Allure 断言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wyndra&#39;s Blog">
+<meta property="og:url" content="https://blog.srcandy.top/post/0/index.html">
+<meta property="og:site_name" content="Wyndra&#39;s Blog">
+<meta property="og:description" content="Pytest 学习笔记简介Pytest 是 Python 中最流行的测试框架之一，它功能强大、灵活且易于使用，适合编写单元测试和功能测试，同时支持复杂的测试场景。 注意：笔者这里的功能测试也包括了“自动化测试”。这里的分类方式是从测试实施方式的角度来划分的。本文主要讨论Pytest在自动化测试的应用。 技术栈：Pytest + Selenium + ChromeDirver + Allure 断言">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-23T05:32:43.668Z">
+<meta property="article:modified_time" content="2024-11-23T11:08:30.213Z">
+<meta property="article:author" content="Wyndra">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Wyndra&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.srcandy.top","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#b4b6f3","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Wyndra&#39;s Blog 🍄</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="http://chat.srcandy.top" target="_self">
+                <i class="iconfont icon-xbox-fill"></i>
+                <span>聊天</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Wyndra
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-23 13:32" pubdate>
+          2024年11月23日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Pytest-学习笔记"><a href="#Pytest-学习笔记" class="headerlink" title="Pytest 学习笔记"></a>Pytest 学习笔记</h1><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Pytest 是 Python 中最流行的测试框架之一，它功能强大、灵活且易于使用，适合编写单元测试和功能测试，同时支持复杂的测试场景。</p>
+<p>注意：笔者这里的<strong>功能测试也包括了“自动化测试”</strong>。这里的分类方式是从<strong>测试实施方式</strong>的角度来划分的。本文主要讨论Pytest在自动化测试的应用。</p>
+<p>技术栈：Pytest + Selenium + ChromeDirver + Allure</p>
+<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><p>在pytest中，<code>assert</code> 是编写测试的最基础工具，其实就是可以直接看成判断语句，如果为True则说明“测试通过”，如果为False则为“测试失败”。</p>
+<h3 id="标记函数"><a href="#标记函数" class="headerlink" title="标记函数"></a>标记函数</h3><p>在学习标记函数之前，我们需要理解一个概念，<strong>测试函数</strong>和<strong>函数</strong>的区别。</p>
+<ul>
+<li>测试函数是用于验证被测代码是否按照预期运行的函数，通常由测试框架（如<code>pytest</code>）<strong>自动识别</strong>并调用。</li>
+<li>普通函数是为实现特定业务逻辑或辅助功能而定义的函数。</li>
+</ul>
+<p>那既然需要自动识别，那就要知道在怎么样的规则下，一个函数会被识别为测试函数呢？</p>
+<h4 id="查找测试策略"><a href="#查找测试策略" class="headerlink" title="查找测试策略"></a>查找测试策略</h4><p>在默认情况下，pytest会递归查找当前目录下所有以<code>test</code>开始或结束的Python脚本，并执行文件内所有以<code>test</code>开始或结束的函数和方法。</p>
+<h4 id="标记的作用"><a href="#标记的作用" class="headerlink" title="标记的作用"></a>标记的作用</h4><p>什么是标记，为什么要标记？一定是需要说明这个函数的特殊性，才需要标记对吧。</p>
+<p>在此之前，我们先提供一段测试代码，供解析。</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># @filename: test_login</span>
+<span class="hljs-keyword">import</span> time
+<span class="hljs-keyword">import</span> pytest
+<span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
+<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
+<span class="hljs-keyword">from</span> utils.csvv <span class="hljs-keyword">import</span> *
+
+
+<span class="hljs-meta">@pytest.fixture()</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">driver</span>():
+    driver = webdriver.Chrome()
+    driver.implicitly_wait(<span class="hljs-number">10</span>)
+    driver.maximize_window()
+    <span class="hljs-comment"># Pytest 使用 yield 关键词将固件分为两部分，yield 之前的代码属于预处理，</span>
+    <span class="hljs-comment"># 会在测试前执行；yield 之后的代码属于后处理，将在测试完成后执行。</span>
+    <span class="hljs-keyword">yield</span> driver
+    driver.quit()
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">read_login_data</span>():
+    <span class="hljs-keyword">return</span> read_csv(<span class="hljs-string">&#x27;./IndustryContest/data/data.csv&#x27;</span>, <span class="hljs-literal">False</span>)
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_login</span>(<span class="hljs-params">driver</span>):
+    driver.get(<span class="hljs-string">&quot;http://apisp.com&quot;</span>)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入公司代码&quot;]&#x27;</span>).send_keys(<span class="hljs-string">&quot;88888888&quot;</span>)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入用户名&quot;]&#x27;</span>).send_keys(<span class="hljs-string">&quot;admin&quot;</span>)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入密码&quot;]&#x27;</span>).send_keys(<span class="hljs-string">&quot;123456&quot;</span>)
+    driver.find_element(By.CLASS_NAME, <span class="hljs-string">&quot;el-button&quot;</span>).click()
+    result = driver.find_element(By.CLASS_NAME, <span class="hljs-string">&#x27;el-message__content&#x27;</span>).text
+    <span class="hljs-keyword">assert</span> result == <span class="hljs-string">&#x27;登录成功,正在跳转!&#x27;</span>
+    time.sleep(<span class="hljs-number">10</span>)
+
+
+<span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;code, username, password, result&quot;</span>, read_login_data(<span class="hljs-params"></span>)</span>)</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_data_driver_login</span>(<span class="hljs-params">driver, code, username, password, result</span>):
+    driver.get(<span class="hljs-string">&quot;http://apisp.com&quot;</span>)
+    time.sleep(<span class="hljs-number">3</span>)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入公司代码&quot;]&#x27;</span>).send_keys(code)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入用户名&quot;]&#x27;</span>).send_keys(username)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入密码&quot;]&#x27;</span>).send_keys(password)
+    driver.find_element(By.CLASS_NAME, <span class="hljs-string">&quot;el-button&quot;</span>).click()
+    time.sleep(<span class="hljs-number">3</span>)
+    actual = driver.find_element(By.CLASS_NAME, <span class="hljs-string">&#x27;el-message__content&#x27;</span>).text
+    <span class="hljs-keyword">assert</span> actual == result
+    time.sleep(<span class="hljs-number">10</span>)
+</code></pre></div>
+
+
+
+<p>例如，我们有一个<code>test_func2</code>函数，里面的功能尚未开发完成，我们只想要<strong>执行指定的测试函数</strong>（这个过程可以称为测试控制）。有以下几种方式可以解决：</p>
+<p><strong>方法一：</strong>显式指定函数名，通过 <code>::</code> 进行标记。例如我们执行<code>test_data_driver_login</code></p>
+<div class="code-wrapper"><pre><code class="hljs autohotkey"><span class="hljs-title">pytest test_login.py::</span>test_dat<span class="hljs-built_in">a_driver</span>_login</code></pre></div>
+
+<p><strong>方法二：</strong>使用模糊匹配的方式，使用 <code>-k</code> 选项进行标识。</p>
+<div class="code-wrapper"><pre><code class="hljs shell">pytest test_login.py -k data</code></pre></div>
+
+<blockquote>
+<p>[!NOTE]</p>
+<p>以上两种方法，第一种一次只能指定一个测试函数，但是需要进行批量测试的时候不可行；第二种方法可以进行批量操作，但是需要所有测试函数，函数名都包含相同的模式。</p>
+</blockquote>
+<p><strong>方法三：</strong>使用 <code>pytest.mark</code> 在函数上进行标记。</p>
+<p>例如，我需要标记<code>test_data_driver_login</code> 这个函数为未完成的函数，在执行测试的时候，自动跳过。</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">@pytest.mark.unfinished</span>
+<span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;code, username, password, result&quot;</span>, read_login_data(<span class="hljs-params"></span>)</span>)</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_data_driver_login</span>(<span class="hljs-params">driver, code, username, password, result</span>):
+    driver.get(<span class="hljs-string">&quot;http://apisp.com&quot;</span>)
+    time.sleep(<span class="hljs-number">3</span>)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入公司代码&quot;]&#x27;</span>).send_keys(code)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入用户名&quot;]&#x27;</span>).send_keys(username)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入密码&quot;]&#x27;</span>).send_keys(password)
+    driver.find_element(By.CLASS_NAME, <span class="hljs-string">&quot;el-button&quot;</span>).click()
+    time.sleep(<span class="hljs-number">3</span>)
+    actual = driver.find_element(By.CLASS_NAME, <span class="hljs-string">&#x27;el-message__content&#x27;</span>).text
+    <span class="hljs-keyword">assert</span> actual == result
+    time.sleep(<span class="hljs-number">10</span>)</code></pre></div>
+
+<p>我只需要在函数之前加上 <code>pytest.mark.unfinished</code> 这个标记，并且在执行测试的时候，加上 <code>-m</code> 选项。因此只需要执行</p>
+<div class="code-wrapper"><pre><code class="hljs shell">pytest test_login.py -m &#x27;not unfinished&#x27;</code></pre></div>
+
+<p>没错，是可以使用布尔运算符的。</p>
+<h3 id="跳过测试"><a href="#跳过测试" class="headerlink" title="跳过测试"></a>跳过测试</h3><p>遇到那些尚未开发完的测试，最好的解决方案就是略过而不执行测试。</p>
+<p>按照正向的思路，我们只需要通过标记制定的需要测试的函数即可；但是有时候，我们可以进行反向操作才可以达成最好的解决途径，即通过标记指定需要跳过的测试。</p>
+<p>Pytest需要使用特定的标记  <code>pytest.mark.skip</code> 即可标记需要跳过的测试。</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">@pytest.mark.skip(<span class="hljs-params">reason=<span class="hljs-string">&#x27;out-of-date api&#x27;</span></span>)</span>
+<span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;code, username, password, result&quot;</span>, read_login_data(<span class="hljs-params"></span>)</span>)</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_data_driver_login</span>(<span class="hljs-params">driver, code, username, password, result</span>):
+    driver.get(<span class="hljs-string">&quot;http://apisp.com&quot;</span>)
+    time.sleep(<span class="hljs-number">3</span>)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入公司代码&quot;]&#x27;</span>).send_keys(code)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入用户名&quot;]&#x27;</span>).send_keys(username)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入密码&quot;]&#x27;</span>).send_keys(password)
+    driver.find_element(By.CLASS_NAME, <span class="hljs-string">&quot;el-button&quot;</span>).click()
+    time.sleep(<span class="hljs-number">3</span>)
+    actual = driver.find_element(By.CLASS_NAME, <span class="hljs-string">&#x27;el-message__content&#x27;</span>).text
+    <span class="hljs-keyword">assert</span> actual == result
+    time.sleep(<span class="hljs-number">10</span>)</code></pre></div>
+
+<p>即可跳过测试。</p>
+<p>同时Pytest 还支持使用 <code>pytest.mark.skipif</code> 为测试函数指定被忽略的条件。</p>
+<h3 id="参数化"><a href="#参数化" class="headerlink" title="参数化"></a>参数化</h3><p>当一个测试函数进行测试的时候，可能会给函数传递多组参数，例如测试账号的登录，可能需要模拟各种千奇百怪的测试和密码。</p>
+<p>我们可以写一个<code>[]</code> 然后在测试函数内部遍历，但是仍然是在一个测试函数内，如果某组测试数据发生错误，导致了断言失败，测试就会终止。</p>
+<p>当然你肯定也知道断言错误的结果是一个异常，可以通过异常处理来保证测试数据能够被完整执行，但是分析测试结果这个过程，就需要不少的额外工作。</p>
+<p>因此，参数化测试就是能够解决这个问题的关键，每组参数都独立执行一次测试，使用<code>pytest.mark.parametrize(argnames,argvalues)</code></p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;code&quot;</span>, [<span class="hljs-string">&#x27;8888888&#x27;</span>,<span class="hljs-string">&#x27;88888888&#x27;</span>,<span class="hljs-string">&#x27;88888888&#x27;</span>]</span>)</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_data_driver_login</span>(<span class="hljs-params">driver, code</span>):
+    driver.get(<span class="hljs-string">&quot;http://apisp.com&quot;</span>)
+    time.sleep(<span class="hljs-number">3</span>)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入公司代码&quot;]&#x27;</span>).send_keys(code)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入用户名&quot;]&#x27;</span>).send_keys(<span class="hljs-string">&quot;admin&quot;</span>)
+    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入密码&quot;]&#x27;</span>).send_keys(<span class="hljs-string">&quot;123456&quot;</span>)
+    driver.find_element(By.CLASS_NAME, <span class="hljs-string">&quot;el-button&quot;</span>).click()
+    time.sleep(<span class="hljs-number">3</span>)
+    actual = driver.find_element(By.CLASS_NAME, <span class="hljs-string">&#x27;el-message__content&#x27;</span>).text
+    <span class="hljs-keyword">assert</span> actual == result
+    time.sleep(<span class="hljs-number">10</span>)</code></pre></div>
+
+<p>例如以上的代码，将会执行3次。同时被pytest记录。当然我们也可以传入多个参数。</p>
+<p>当然，按照实际遇到的环境，我们肯定不会把测试数据写在测试类的头上，如果多个测试函数需要使用同一测试数据，那修改维护是一件很让人头痛的事情。</p>
+<p><strong>因此，我们需要把测试数据单独抽离出来，独立维护。</strong></p>
+<p>我们常规会使用一份<code>csv</code>文件，来保存我们的测试数据。通过使用读取CSV文件的数据，将其转换为Python对象。下面是一段示例代码。</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> csv
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">read_csv</span>(<span class="hljs-params">filename, removeStartLine=<span class="hljs-literal">True</span></span>):
+    data = []
+    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(filename, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:
+        reader = csv.reader(f,delimiter=<span class="hljs-string">&#x27;，&#x27;</span>)
+        <span class="hljs-keyword">if</span> removeStartLine:
+            <span class="hljs-built_in">next</span>(reader)
+        <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> reader:
+            data.append(row)
+    <span class="hljs-keyword">return</span> data
+</code></pre></div>
+
+<p>注意，这里可以使用<code>delimiter</code>参数来解决，如果CSV文件的默认分隔符（<code>,</code>）和文本冲突的问题。</p>
+<h3 id="固件"><a href="#固件" class="headerlink" title="固件"></a>固件</h3><p>固件（Fixture）是一些函数，pytest将会在执行测试函数之前或之后执行他们。</p>
+<h4 id="预处理和后处理"><a href="#预处理和后处理" class="headerlink" title="预处理和后处理"></a>预处理和后处理</h4><p>很多时候都需要在测试之前进行预处理（例如新建数据库链接、初始化Selenium浏览器），并在测试完成后进行清理。这时候最好的方法是使用固件来自动化所有预处理和后处理。</p>
+<p>Pytest中使用<code>yield</code>关键词将固件分为两个部分，<code>yield</code> 之前的代码属于预处理，会在测试前执行；<code>yield</code> 之后的代码属于后处理，将在测试完成后执行。例如</p>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">@pytest.fixture()</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">driver</span>():
+    driver = webdriver.Chrome()
+    driver.implicitly_wait(<span class="hljs-number">10</span>)
+    driver.maximize_window()
+    <span class="hljs-keyword">yield</span> driver
+    driver.quit()</code></pre></div>
+
+<p>例如以上代码，前半部分进行初始化，后半部分进行浏览器的关闭。</p>
+<h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><p>固件的作用是为了抽离重复的工作和方便复用，为了更加精细化控制固件，例如我想要在每次测试都开启或关闭一次浏览器。</p>
+<p>因此，在定义固件时，通过 <code>scope</code> 参数声明作用域，可选项有：</p>
+<ul>
+<li><code>function</code>: 函数级，每个测试函数都会执行一次固件；</li>
+<li><code>class</code>: 类级别，每个测试类执行一次，所有方法都可以使用；</li>
+<li><code>module</code>: 模块级，每个模块执行一次，模块内函数和方法都可使用；</li>
+<li><code>session</code>: 会话级，一次测试只执行一次，所有被找到的函数和方法都可用。</li>
+</ul>
+<p>默认的作用域为 <code>function</code></p>
+<h3 id="PageObject怎么办？"><a href="#PageObject怎么办？" class="headerlink" title="PageObject怎么办？"></a>PageObject怎么办？</h3><p>其实也一样，要明白<strong>PageObject思想的核心</strong>，其他的只是在基础上进行进一步的抽象，解耦。</p>
+<p>其实就是以页面为核心，封装页面的各种操作，例如<strong>打开菜单、输入内容</strong>等。然而，为了使这些操作便与维护，因此实现一个继承类是很有必要的。所以要求每个页面从BasePage中继承基本操作，然后有逐个的特性。</p>
+<p>例如在BasePage中封装打开页面、元素查找等功能。然后其他页面继承自BasePage，并进行特殊的操作。然后在每个Page中暴露出一个测试方法，可供外部测试函数进行调用。</p>
+<p>其他的就是继续抽象结耦。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/post/27328/" title="基于Node.js实现WebSocket服务器">
+                        <span class="hidden-mobile">基于Node.js实现WebSocket服务器</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      浙ICP备2023031974号
+    </a>
+  </span>
+  
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

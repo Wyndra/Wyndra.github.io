@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title></title>
+    <link href="/post/0/"/>
+    <url>/post/0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Pytest-学习笔记"><a href="#Pytest-学习笔记" class="headerlink" title="Pytest 学习笔记"></a>Pytest 学习笔记</h1><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Pytest 是 Python 中最流行的测试框架之一，它功能强大、灵活且易于使用，适合编写单元测试和功能测试，同时支持复杂的测试场景。</p><p>注意：笔者这里的<strong>功能测试也包括了“自动化测试”</strong>。这里的分类方式是从<strong>测试实施方式</strong>的角度来划分的。本文主要讨论Pytest在自动化测试的应用。</p><p>技术栈：Pytest + Selenium + ChromeDirver + Allure</p><h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><p>在pytest中，<code>assert</code> 是编写测试的最基础工具，其实就是可以直接看成判断语句，如果为True则说明“测试通过”，如果为False则为“测试失败”。</p><h3 id="标记函数"><a href="#标记函数" class="headerlink" title="标记函数"></a>标记函数</h3><p>在学习标记函数之前，我们需要理解一个概念，<strong>测试函数</strong>和<strong>函数</strong>的区别。</p><ul><li>测试函数是用于验证被测代码是否按照预期运行的函数，通常由测试框架（如<code>pytest</code>）<strong>自动识别</strong>并调用。</li><li>普通函数是为实现特定业务逻辑或辅助功能而定义的函数。</li></ul><p>那既然需要自动识别，那就要知道在怎么样的规则下，一个函数会被识别为测试函数呢？</p><h4 id="查找测试策略"><a href="#查找测试策略" class="headerlink" title="查找测试策略"></a>查找测试策略</h4><p>在默认情况下，pytest会递归查找当前目录下所有以<code>test</code>开始或结束的Python脚本，并执行文件内所有以<code>test</code>开始或结束的函数和方法。</p><h4 id="标记的作用"><a href="#标记的作用" class="headerlink" title="标记的作用"></a>标记的作用</h4><p>什么是标记，为什么要标记？一定是需要说明这个函数的特殊性，才需要标记对吧。</p><p>在此之前，我们先提供一段测试代码，供解析。</p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># @filename: test_login</span><span class="hljs-keyword">import</span> time<span class="hljs-keyword">import</span> pytest<span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By<span class="hljs-keyword">from</span> utils.csvv <span class="hljs-keyword">import</span> *<span class="hljs-meta">@pytest.fixture()</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">driver</span>():    driver = webdriver.Chrome()    driver.implicitly_wait(<span class="hljs-number">10</span>)    driver.maximize_window()    <span class="hljs-comment"># Pytest 使用 yield 关键词将固件分为两部分，yield 之前的代码属于预处理，</span>    <span class="hljs-comment"># 会在测试前执行；yield 之后的代码属于后处理，将在测试完成后执行。</span>    <span class="hljs-keyword">yield</span> driver    driver.quit()<span class="hljs-keyword">def</span> <span class="hljs-title function_">read_login_data</span>():    <span class="hljs-keyword">return</span> read_csv(<span class="hljs-string">&#x27;./IndustryContest/data/data.csv&#x27;</span>, <span class="hljs-literal">False</span>)<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_login</span>(<span class="hljs-params">driver</span>):    driver.get(<span class="hljs-string">&quot;http://apisp.com&quot;</span>)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入公司代码&quot;]&#x27;</span>).send_keys(<span class="hljs-string">&quot;88888888&quot;</span>)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入用户名&quot;]&#x27;</span>).send_keys(<span class="hljs-string">&quot;admin&quot;</span>)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入密码&quot;]&#x27;</span>).send_keys(<span class="hljs-string">&quot;123456&quot;</span>)    driver.find_element(By.CLASS_NAME, <span class="hljs-string">&quot;el-button&quot;</span>).click()    result = driver.find_element(By.CLASS_NAME, <span class="hljs-string">&#x27;el-message__content&#x27;</span>).text    <span class="hljs-keyword">assert</span> result == <span class="hljs-string">&#x27;登录成功,正在跳转!&#x27;</span>    time.sleep(<span class="hljs-number">10</span>)<span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;code, username, password, result&quot;</span>, read_login_data(<span class="hljs-params"></span>)</span>)</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_data_driver_login</span>(<span class="hljs-params">driver, code, username, password, result</span>):    driver.get(<span class="hljs-string">&quot;http://apisp.com&quot;</span>)    time.sleep(<span class="hljs-number">3</span>)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入公司代码&quot;]&#x27;</span>).send_keys(code)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入用户名&quot;]&#x27;</span>).send_keys(username)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入密码&quot;]&#x27;</span>).send_keys(password)    driver.find_element(By.CLASS_NAME, <span class="hljs-string">&quot;el-button&quot;</span>).click()    time.sleep(<span class="hljs-number">3</span>)    actual = driver.find_element(By.CLASS_NAME, <span class="hljs-string">&#x27;el-message__content&#x27;</span>).text    <span class="hljs-keyword">assert</span> actual == result    time.sleep(<span class="hljs-number">10</span>)</code></pre></div><p>例如，我们有一个<code>test_func2</code>函数，里面的功能尚未开发完成，我们只想要<strong>执行指定的测试函数</strong>（这个过程可以称为测试控制）。有以下几种方式可以解决：</p><p><strong>方法一：</strong>显式指定函数名，通过 <code>::</code> 进行标记。例如我们执行<code>test_data_driver_login</code></p><div class="code-wrapper"><pre><code class="hljs autohotkey"><span class="hljs-title">pytest test_login.py::</span>test_dat<span class="hljs-built_in">a_driver</span>_login</code></pre></div><p><strong>方法二：</strong>使用模糊匹配的方式，使用 <code>-k</code> 选项进行标识。</p><div class="code-wrapper"><pre><code class="hljs shell">pytest test_login.py -k data</code></pre></div><blockquote><p>[!NOTE]</p><p>以上两种方法，第一种一次只能指定一个测试函数，但是需要进行批量测试的时候不可行；第二种方法可以进行批量操作，但是需要所有测试函数，函数名都包含相同的模式。</p></blockquote><p><strong>方法三：</strong>使用 <code>pytest.mark</code> 在函数上进行标记。</p><p>例如，我需要标记<code>test_data_driver_login</code> 这个函数为未完成的函数，在执行测试的时候，自动跳过。</p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">@pytest.mark.unfinished</span><span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;code, username, password, result&quot;</span>, read_login_data(<span class="hljs-params"></span>)</span>)</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_data_driver_login</span>(<span class="hljs-params">driver, code, username, password, result</span>):    driver.get(<span class="hljs-string">&quot;http://apisp.com&quot;</span>)    time.sleep(<span class="hljs-number">3</span>)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入公司代码&quot;]&#x27;</span>).send_keys(code)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入用户名&quot;]&#x27;</span>).send_keys(username)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入密码&quot;]&#x27;</span>).send_keys(password)    driver.find_element(By.CLASS_NAME, <span class="hljs-string">&quot;el-button&quot;</span>).click()    time.sleep(<span class="hljs-number">3</span>)    actual = driver.find_element(By.CLASS_NAME, <span class="hljs-string">&#x27;el-message__content&#x27;</span>).text    <span class="hljs-keyword">assert</span> actual == result    time.sleep(<span class="hljs-number">10</span>)</code></pre></div><p>我只需要在函数之前加上 <code>pytest.mark.unfinished</code> 这个标记，并且在执行测试的时候，加上 <code>-m</code> 选项。因此只需要执行</p><div class="code-wrapper"><pre><code class="hljs shell">pytest test_login.py -m &#x27;not unfinished&#x27;</code></pre></div><p>没错，是可以使用布尔运算符的。</p><h3 id="跳过测试"><a href="#跳过测试" class="headerlink" title="跳过测试"></a>跳过测试</h3><p>遇到那些尚未开发完的测试，最好的解决方案就是略过而不执行测试。</p><p>按照正向的思路，我们只需要通过标记制定的需要测试的函数即可；但是有时候，我们可以进行反向操作才可以达成最好的解决途径，即通过标记指定需要跳过的测试。</p><p>Pytest需要使用特定的标记  <code>pytest.mark.skip</code> 即可标记需要跳过的测试。</p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">@pytest.mark.skip(<span class="hljs-params">reason=<span class="hljs-string">&#x27;out-of-date api&#x27;</span></span>)</span><span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;code, username, password, result&quot;</span>, read_login_data(<span class="hljs-params"></span>)</span>)</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_data_driver_login</span>(<span class="hljs-params">driver, code, username, password, result</span>):    driver.get(<span class="hljs-string">&quot;http://apisp.com&quot;</span>)    time.sleep(<span class="hljs-number">3</span>)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入公司代码&quot;]&#x27;</span>).send_keys(code)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入用户名&quot;]&#x27;</span>).send_keys(username)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入密码&quot;]&#x27;</span>).send_keys(password)    driver.find_element(By.CLASS_NAME, <span class="hljs-string">&quot;el-button&quot;</span>).click()    time.sleep(<span class="hljs-number">3</span>)    actual = driver.find_element(By.CLASS_NAME, <span class="hljs-string">&#x27;el-message__content&#x27;</span>).text    <span class="hljs-keyword">assert</span> actual == result    time.sleep(<span class="hljs-number">10</span>)</code></pre></div><p>即可跳过测试。</p><p>同时Pytest 还支持使用 <code>pytest.mark.skipif</code> 为测试函数指定被忽略的条件。</p><h3 id="参数化"><a href="#参数化" class="headerlink" title="参数化"></a>参数化</h3><p>当一个测试函数进行测试的时候，可能会给函数传递多组参数，例如测试账号的登录，可能需要模拟各种千奇百怪的测试和密码。</p><p>我们可以写一个<code>[]</code> 然后在测试函数内部遍历，但是仍然是在一个测试函数内，如果某组测试数据发生错误，导致了断言失败，测试就会终止。</p><p>当然你肯定也知道断言错误的结果是一个异常，可以通过异常处理来保证测试数据能够被完整执行，但是分析测试结果这个过程，就需要不少的额外工作。</p><p>因此，参数化测试就是能够解决这个问题的关键，每组参数都独立执行一次测试，使用<code>pytest.mark.parametrize(argnames,argvalues)</code></p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">@pytest.mark.parametrize(<span class="hljs-params"><span class="hljs-string">&quot;code&quot;</span>, [<span class="hljs-string">&#x27;8888888&#x27;</span>,<span class="hljs-string">&#x27;88888888&#x27;</span>,<span class="hljs-string">&#x27;88888888&#x27;</span>]</span>)</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_data_driver_login</span>(<span class="hljs-params">driver, code</span>):    driver.get(<span class="hljs-string">&quot;http://apisp.com&quot;</span>)    time.sleep(<span class="hljs-number">3</span>)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入公司代码&quot;]&#x27;</span>).send_keys(code)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入用户名&quot;]&#x27;</span>).send_keys(<span class="hljs-string">&quot;admin&quot;</span>)    driver.find_element(By.XPATH, <span class="hljs-string">&#x27;//input[@placeholder=&quot;请输入密码&quot;]&#x27;</span>).send_keys(<span class="hljs-string">&quot;123456&quot;</span>)    driver.find_element(By.CLASS_NAME, <span class="hljs-string">&quot;el-button&quot;</span>).click()    time.sleep(<span class="hljs-number">3</span>)    actual = driver.find_element(By.CLASS_NAME, <span class="hljs-string">&#x27;el-message__content&#x27;</span>).text    <span class="hljs-keyword">assert</span> actual == result    time.sleep(<span class="hljs-number">10</span>)</code></pre></div><p>例如以上的代码，将会执行3次。同时被pytest记录。当然我们也可以传入多个参数。</p><p>当然，按照实际遇到的环境，我们肯定不会把测试数据写在测试类的头上，如果多个测试函数需要使用同一测试数据，那修改维护是一件很让人头痛的事情。</p><p><strong>因此，我们需要把测试数据单独抽离出来，独立维护。</strong></p><p>我们常规会使用一份<code>csv</code>文件，来保存我们的测试数据。通过使用读取CSV文件的数据，将其转换为Python对象。下面是一段示例代码。</p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> csv<span class="hljs-keyword">def</span> <span class="hljs-title function_">read_csv</span>(<span class="hljs-params">filename, removeStartLine=<span class="hljs-literal">True</span></span>):    data = []    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(filename, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:        reader = csv.reader(f,delimiter=<span class="hljs-string">&#x27;，&#x27;</span>)        <span class="hljs-keyword">if</span> removeStartLine:            <span class="hljs-built_in">next</span>(reader)        <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> reader:            data.append(row)    <span class="hljs-keyword">return</span> data</code></pre></div><p>注意，这里可以使用<code>delimiter</code>参数来解决，如果CSV文件的默认分隔符（<code>,</code>）和文本冲突的问题。</p><h3 id="固件"><a href="#固件" class="headerlink" title="固件"></a>固件</h3><p>固件（Fixture）是一些函数，pytest将会在执行测试函数之前或之后执行他们。</p><h4 id="预处理和后处理"><a href="#预处理和后处理" class="headerlink" title="预处理和后处理"></a>预处理和后处理</h4><p>很多时候都需要在测试之前进行预处理（例如新建数据库链接、初始化Selenium浏览器），并在测试完成后进行清理。这时候最好的方法是使用固件来自动化所有预处理和后处理。</p><p>Pytest中使用<code>yield</code>关键词将固件分为两个部分，<code>yield</code> 之前的代码属于预处理，会在测试前执行；<code>yield</code> 之后的代码属于后处理，将在测试完成后执行。例如</p><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">@pytest.fixture()</span><span class="hljs-keyword">def</span> <span class="hljs-title function_">driver</span>():    driver = webdriver.Chrome()    driver.implicitly_wait(<span class="hljs-number">10</span>)    driver.maximize_window()    <span class="hljs-keyword">yield</span> driver    driver.quit()</code></pre></div><p>例如以上代码，前半部分进行初始化，后半部分进行浏览器的关闭。</p><h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><p>固件的作用是为了抽离重复的工作和方便复用，为了更加精细化控制固件，例如我想要在每次测试都开启或关闭一次浏览器。</p><p>因此，在定义固件时，通过 <code>scope</code> 参数声明作用域，可选项有：</p><ul><li><code>function</code>: 函数级，每个测试函数都会执行一次固件；</li><li><code>class</code>: 类级别，每个测试类执行一次，所有方法都可以使用；</li><li><code>module</code>: 模块级，每个模块执行一次，模块内函数和方法都可使用；</li><li><code>session</code>: 会话级，一次测试只执行一次，所有被找到的函数和方法都可用。</li></ul><p>默认的作用域为 <code>function</code></p><h3 id="PageObject怎么办？"><a href="#PageObject怎么办？" class="headerlink" title="PageObject怎么办？"></a>PageObject怎么办？</h3><p>其实也一样，要明白<strong>PageObject思想的核心</strong>，其他的只是在基础上进行进一步的抽象，解耦。</p><p>其实就是以页面为核心，封装页面的各种操作，例如<strong>打开菜单、输入内容</strong>等。然而，为了使这些操作便与维护，因此实现一个继承类是很有必要的。所以要求每个页面从BasePage中继承基本操作，然后有逐个的特性。</p><p>例如在BasePage中封装打开页面、元素查找等功能。然后其他页面继承自BasePage，并进行特殊的操作。然后在每个Page中暴露出一个测试方法，可供外部测试函数进行调用。</p><p>其他的就是继续抽象结耦。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>基于Node.js实现WebSocket服务器</title>
     <link href="/post/27328/"/>
     <url>/post/27328/</url>
@@ -33,9 +46,9 @@
     
     <tags>
       
-      <tag>软件测试</tag>
-      
       <tag>教程</tag>
+      
+      <tag>软件测试</tag>
       
     </tags>
     
@@ -135,9 +148,9 @@
     
     <tags>
       
-      <tag>比赛</tag>
-      
       <tag>软件测试</tag>
+      
+      <tag>比赛</tag>
       
     </tags>
     
@@ -162,9 +175,9 @@
     
     <tags>
       
-      <tag>比赛</tag>
-      
       <tag>软件测试</tag>
+      
+      <tag>比赛</tag>
       
     </tags>
     
@@ -189,9 +202,9 @@
     
     <tags>
       
-      <tag>比赛</tag>
-      
       <tag>软件测试</tag>
+      
+      <tag>比赛</tag>
       
     </tags>
     
@@ -216,9 +229,9 @@
     
     <tags>
       
-      <tag>比赛</tag>
-      
       <tag>软件测试</tag>
+      
+      <tag>比赛</tag>
       
     </tags>
     
